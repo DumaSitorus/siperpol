@@ -16,7 +16,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');
 
 //Role: User(Admin SDM)
-Route::get('/admin-sdm/dashboard', [DashboardController::class, 'index_admin_sdm'])->name('admin_sdm.dashboard')->middleware('auth:admin_sdm');
+Route::get('/admin_sdm/dashboard', [DashboardController::class, 'index_admin_sdm'])->name('admin_sdm.dashboard')->middleware('auth:admin_sdm');
 // Route::get('/account', [AccountController::class, 'index'])->name('account')->middleware('auth:admin');
 
 //Role: Kapolres & Wakil Kapolres

@@ -19,6 +19,11 @@ class User extends Authenticatable
     protected $fillable = [
         'nrp',
         'password',
+        'position_id',
+        'department_id',
+        'profile_photo',
+        'leave_quota',
+        'name',
     ];
 
     /**
@@ -41,5 +46,15 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(position::class, 'position_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
     }
 }

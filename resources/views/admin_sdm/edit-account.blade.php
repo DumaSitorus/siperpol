@@ -170,7 +170,7 @@
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">      
     
-    <!-- Navbar -->
+        <!-- Navbar -->
     <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
         <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
             <nav>
@@ -181,7 +181,7 @@
                         <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
                     </li>
                     <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
-                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Tambah Akun</li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Edit Akun {{ $users->name }}</li>
 
                 </ol>
             </nav>
@@ -215,177 +215,141 @@
         </div>
     </nav>
 
-    <!-- cards -->
-    <div class="w-full px-6 py-6 mx-auto">
-        @if($errors->any())
-            <div class="mb-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
-                <div class="px-4 flex justify-center items-center bg-red-500">
-                    <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
-                    </svg>
-                </div>
-                
-                <div class="-mx-3 py-2 px-4">
-                    <div class="mx-3">
-                        <span class="text-red-500 font-semibold">Upss.. </span>
-                        <ul>
-                            @foreach ($errors->all() as $item)
-                            <li> {{ $item }} </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        @endif
+            <!-- cards -->
+        <div class="w-full px-6 py-6 mx-auto">
 
-        <!-- cards row 2 -->
-        <div class="flex flex-wrap -mx-3">
-            <div class="w-full px-3 mb-6 lg:mb-0 lg:w-2/3 lg:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border items-center">
-                <div class="flex-auto p-4">
-                    <div class="flex flex-wrap -mx-3">
-                        <div class="max-w-full px-3 lg:flex-none">
-                            <div class="flex flex-col h-full ">
-                                <h5 class="font-bold text-center text-xl">Form Pengajuan Cuti/Izin Anggota Kepolisian</h5>
-                                <p class="mb-8 text-center font-semibold">Polres Humbang Hasundutan</p>
-                                <form action="{{ route('store-account') }}" method="POST">
-                                    @csrf
-                                    <div class="w-full">
-                                        <div class="mb-5">
-                                            <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                Nama
-                                            </label>
-                                            <input type="text" name="name" id="name" value="{{ Session::get('name') }}"
-                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+            <!-- cards row 2 -->
+            <div class="flex flex-wrap -mx-3">
+                <div class="w-full px-3 mb-6 lg:mb-0 lg:flex-none">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border items-center">
+                    <div class="flex-auto p-4">
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="max-w-full px-3 lg:flex-none">
+                                <div class="flex flex-col h-full ">
+                                    <h5 class="mb-8 font-bold text-center text-xl">Edit Akun Pengguna Website SIPERPOL</h5>
+                                    @if($errors->any())
+                                    <div class="flex w-full bg-white shadow-md rounded-lg overflow-hidden">
+                                        <div class="px-4 flex justify-center items-center bg-red-500">
+                                            <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+                                            </svg>
                                         </div>
-                                    </div>
-
-                                    <div class="w-full">
-                                        <div class="mb-5">
-                                            <label for="nrp" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                NRP
-                                            </label>
-                                            <input type="number" name="nrp" id="nrp" value="{{ Session::get('nrp') }}"
-                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-5">
-                                        <label for="department" class="mb-3 block text-base font-medium text-[#07074D]">
-                                            Satuan/Bagian
-                                        </label>
-                                        <select name="department" id="department"
-                                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                                            <option value="" disabled selected>Pilih Satuan/Bagian</option>
-                                            @forelse($departments as $department)
-                                                <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                                @empty
-                                                    <option value="" disabled>Tidak ada Satuan/Bagian tersedia</option>
-                                            @endforelse 
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="mb-5">
-                                        <label for="position" class="mb-3 block text-base font-medium text-[#07074D]">
-                                            Posisi
-                                        </label>
-                                        <select name="position" id="position"
-                                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                                            
-                                                <option value="" disabled selected>Pilih Posisi</option>
-                                            @forelse($positions as $position)
-                                                <option value="{{ $position->id }}">{{ $position->name }}</option>
-                                                @empty
-                                                    <option value="" disabled>Tidak ada posisi tersedia</option>
-                                            @endforelse 
-                                        </select>
-                                    </div>
-                                                                
-                                    <div>
-                                        <button
-                                            class="hover:shadow-form w-full rounded-md bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                            Daftar Akun
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            
-            <div class="w-full max-w-full px-3 lg:w-1/3 lg:flex-none">
-                <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                    <div class="relative h-full overflow-hidden bg-cover rounded-xl">
-                        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
-                        <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                        <h5 class="pt-2 mb-6 font-bold text-lg text-white">Daftar Akun Sekaligus</h5>
-                        <ol class=" pl-2 list-decimal text-white">
-                            <li>
-                                Unduh File Excel Berikut 
-                                <button onclick="window.location.href='{{ route('download-template') }}'"
-                                    class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
-                                    File Excel
-                                </button>
-                            </li>
-                            <li>
-                                Lengkapi data akun sesuai format pada file excel 
-                            </li>
-                            <li>
-                                Upload pada form berikut:
-                        <form action="{{ route('import-account') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                                <div class="w-full px-3">
-                                    <div class="mb-5">
-                                        <div class="w-full">
-                                            <div class="my-2">
-                                                <input type="file" name="file" id="file" required 
-                                                    class="w-full rounded-md bg-white py-2 px-4 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-2 file:rounded-md file:border-0 file:bg-slate-600 file:text-white file:font-medium hover:file:bg-slate-500" />
+                                        
+                                        <div class="-mx-3 py-2 px-4">
+                                            <div class="mx-3">
+                                                <span class="text-red-500 font-semibold">Upss.. </span>
+                                                <ul>
+                                                    @foreach ($errors->all() as $item)
+                                                    <li> {{ $item }} </li>
+                                                    @endforeach
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+                                    <form action="{{ route('update-account', $users->id) }}" method="POST">
+                                        @csrf
+                                        @method("PUT")
+                                        <div class="w-full">
+                                            <div class="mb-5">
+                                                <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                    Nama
+                                                </label>
+                                                <input type="text" name="name" id="name" value="{{ $users->name }}"
+                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full">
+                                            <div class="mb-5">
+                                                <label for="nrp" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                    NRP
+                                                </label>
+                                                <input type="number" name="nrp" id="nrp" value="{{ $users->nrp }}"
+                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-5">
+                                            <label for="department" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                Satuan/Bagian
+                                            </label>
+                                            <select name="department" id="department"
+                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                                <option value="" disabled selected>Pilih Satuan/Bagian</option>
+                                                @forelse($departments as $department)
+                                                    <option value="{{ $department->id }}" 
+                                                        {{ $users->department_id == $department->id ? 'selected' : '' }}>
+                                                        {{ $department->name }}
+                                                    </option>
+                                                    @empty
+                                                        <option value="" disabled>Tidak ada Satuan/Bagian tersedia</option>
+                                                @endforelse 
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-5">
+                                            <label for="position" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                Posisi
+                                            </label>
+                                            <select name="position" id="position"
+                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                                <option value="" disabled selected>Pilih Posisi</option>
+                                                @forelse($positions as $position)
+                                                    <option value="{{ $position->id }}" 
+                                                        {{ $users->position_id == $position->id ? 'selected' : '' }}>
+                                                        {{ $position->name }}
+                                                    </option>
+                                                    @empty
+                                                        <option value="" disabled>Tidak ada posisi tersedia</option>
+                                                @endforelse 
+                                            </select>
+                                        </div>
+
+                                        <div class="w-full">
+                                            <div class="mb-5">
+                                                <label for="leave_quota" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                    Sisa Kuota Cuti Tahunan
+                                                </label>
+                                                <input type="number" name="leave_quota" id="leave_quota" value="{{ $users->leave_quota }}"
+                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                            </div>
+                                        </div>
+                                                                    
+                                        <div>
+                                            <button
+                                                class="hover:shadow-form w-full rounded-md bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80 py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                                Edit Data
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                            
-                            </li>
-                            <li>
-                                Jika sudah, klik tombol Daftar Akun Sekaligus untuk memproses 
-                            </li>
-                            <li>
-                                Pastikan daftar akun yang anda daftarkan tersebut sudah tercantum pada halaman daftar seluruh akun
-                            </li>
-                        </ol>
-                        <div>
-                            <button type="submit"
-                                class="mt-4 hover:shadow-form w-full rounded-md bg-center bg-white opacity-80 py-3 px-8 text-center text-base font-semibold text-dark outline-none">
-                                Daftar Akun Sekaligus
-                            </button>
+                            </div>
                         </div>
-                    </form>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             
 
-    <footer class="flex pt-4 ">
-        <div class="w-full px-6 mx-auto ">
-            <div class="flex  items-center -mx-3">
-            <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:flex-none">
-                <div class="text-sm leading-normal text-center text-slate-500">
-                ©
-                <script>
-                    document.write(new Date().getFullYear() + ",");
-                </script>
-                made with love by
-                <a class="font-semibold text-slate-700">Polres Humbahas</a>
-                for a better Human Resource
+            <footer class="flex pt-4 ">
+                <div class="w-full px-6 mx-auto ">
+                    <div class="flex  items-center -mx-3">
+                    <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:flex-none">
+                        <div class="text-sm leading-normal text-center text-slate-500">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear() + ",");
+                        </script>
+                        made with love by
+                        <a class="font-semibold text-slate-700">Polres Humbahas</a>
+                        for a better Human Resource
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
         </div>
-    </footer>
 
         
 

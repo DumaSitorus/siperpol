@@ -214,245 +214,145 @@
         </div>
     </nav>
 
-            <!-- cards -->
-        <div class="w-full px-6 py-6 mx-auto">
+    <!-- cards -->
+    <div class="w-full px-6 py-6 mx-auto">
 
-            <div class="flex flex-wrap -mx-3">
-                <div class="flex-none w-full max-w-full px-3">
-                    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                      <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <h6 class="mb-2 text-xl text-center underline font-bold">Daftar Seluruh Akun</h6>
-                      </div>
-                      <div class="w-full px-4 py-4 mx-auto md:ml-auto lg:ml-auto flex md:justify-end">
-                        <form action="{{ route('account-search') }}" class="flex md:flex-row gap-3" method="GET">
-                            <div class="flex w-3/4">
-                                <input type="search" placeholder="Search for the tool you like"
-                                    class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-slate-500 focus:outline-none focus:border-slate-500"
-                                    name="search">
-                                <button type="submit" class="bg-slate-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Cari</button>
-                            </div>
-                            <select id="pricingType" name="column"
-                                class="w-1/4 h-10 border-2 border-slate-500 focus:outline-none focus:border-slate-500 text-slate-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
-                                <option value="name" selected="">Nama</option>
-                                <option value="nrp">NRP</option>
-                                <option value="department_name">Satuan</option>
-                            </select>
-                        </form>
-                      </div>
-                      <div class="flex-auto px-0 pt-0 pb-2">
-                        <div class="p-0 overflow-x-auto">
-                          <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
-                            <thead class="align-bottom">
-                              <tr>
-                                <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama</th>
-                                <th class="py-3 font-medium text-semibold text-centert uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">NRP</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Bagian/Satuan</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Posisi</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            @forelse ($users as $user)
-                              <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                        <div class="px-4">
-                                            {{--  penomoran 1 --}}
-                                            {{ $loop->iteration }}
-
-                                          </div>
-                                          <p class="mb-0 text-md leading-tight">{{ $user->name }}</p>
-                                    </div>
-                                </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 text-md text-center leading-tight">{{ $user->nrp }}</p>
-                                </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <p class="mb-0 text-md text-center leading-tight">{{ $user->department->name }}</p>
-                                </td>
-                                <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <span class="text-sm font-semibold leading-tight text-slate-400">{{ $user->position->name }}</span>
-                                </td>
-                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <a class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Edit</a>
-                                    <form action="{{ route('account.destroy', $user->id) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus akun ini?')" 
-                                            class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
-                                            Hapus
-                                        </button>
-                                    </form>
-                                    <a class="bg-gradient-to-tl from-yellow-500 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" 
-                                    href="{{ route('detail-account', $user->id) }}">Detail</a>
-                                </td>
-                                @empty
-                                    <div class="alert alert-danger">
-                                        Data Products belum Tersedia.
-                                    </div>
-
-                              </tr>
-                            @endforelse
-                              {{-- <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                        <div class="px-4">
-                                            2
-                                        </div>
-                                        <p class="mb-0 text-md leading-tight">Lorem Ipsum</p>
-                                    </div>
-                                  </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 text-md text-center leading-tight">1238788484</p>
-                                </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <p class="mb-0 text-md text-center leading-tight">SPKT</p>
-                                </td>
-                                <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <span class="text-sm font-semibold leading-tight text-slate-400">Anggota</span>
-                                </td>
-                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <button class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Edit</button>
-                                    <button class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Hapus</button>
-                                    <button class="bg-gradient-to-tl from-yellow-500 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" onclick="openModal('modelDetail')">Detail</button>
-                                </td>
-                               </tr>
-
-                              <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                      
-                                      <div class="px-4">
-                                         3
-                                      </div>
-                                      <p class="mb-0 text-md leading-tight">Lorem Ipsum</p>
-                                    </div>
-                                  </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 text-md text-center leading-tight">1238788484</p>
-                                </td>
-
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <p class="mb-0 text-md text-center leading-tight">Binmas</p>
-                                </td>
-                                <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                  <span class="text-sm font-semibold leading-tight text-slate-400">Kasat</span>
-                                </td>
-                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <button class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Edit</button>
-                                    <button class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Hapus</button>
-                                    <button class="bg-gradient-to-tl from-yellow-500 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" onclick="openModal('modelDetail')">Detail</button>
-                                </td>
-                              </tr> --}}
-                              
-                            </tbody>
-                          </table>
-                            <div class="mt-8 m-4 flex items-center">
-                                {{ $users->links() }}
+        <div class="flex flex-wrap -mx-3">
+            <div class="flex-none w-full max-w-full px-3">
+                @if(session()->has('import_errors'))
+                    <div class="mb-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
+                        <div class="px-4 flex justify-center items-center bg-red-500">
+                            <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="-mx-3 py-2 px-4">
+                            <div class="mx-3">
+                                <span class="text-red-500 font-semibold">Perhatian! </span>
+                                <p class="font-semibold">Berikut beberapa data excel yang tidak masukkan ke daftar akun karena memiliki NRP yang duplikat dengan NRP akun yang telah terdaftar </span>
+                                <ul class="mt-2">
+                                    @foreach(session('import_errors') as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                                </ul>
+                                <p class="my-2 text-red-500 font-semibold">*Mohon Periksa kembali file excel anda dan perbaiki!</span>
                             </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-            </div>
-        </div>
+                @endif
+                <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                    <h6 class="mb-2 text-xl text-center underline font-bold">Daftar Seluruh Akun</h6>
+                    </div>
+                    <div class="w-full px-4 py-4 mx-auto md:ml-auto lg:ml-auto flex md:justify-end">
+                    <form action="{{ route('account-search') }}" class="flex md:flex-row gap-3" method="GET">
+                        <div class="flex w-3/4">
+                            <input type="search" placeholder="Search for the tool you like"
+                                class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-slate-500 focus:outline-none focus:border-slate-500"
+                                name="search">
+                            <button type="submit" class="bg-slate-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Cari</button>
+                        </div>
+                        <select id="pricingType" name="column"
+                            class="w-1/4 h-10 border-2 border-slate-500 focus:outline-none focus:border-slate-500 text-slate-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
+                            <option value="name" selected="">Nama</option>
+                            <option value="nrp">NRP</option>
+                            <option value="department_name">Satuan</option>
+                        </select>
+                    </form>
+                    </div>
+                    <div class="flex-auto px-0 pt-0 pb-2">
+                    <div class="p-0 overflow-x-auto">
+                        <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                        <thead class="align-bottom">
+                            <tr>
+                            <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama</th>
+                            <th class="py-3 font-medium text-semibold text-centert uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">NRP</th>
+                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Bagian/Satuan</th>
+                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Posisi</th>
+                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @forelse ($users as $user)
+                            <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4">
+                                        {{--  penomoran 1 --}}
+                                        {{ $loop->iteration }}
 
-            <footer class="pt-4">
-            <div class="w-full px-6 mx-auto">
-                <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-                <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                    <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                    ©
-                    <script>
-                        document.write(new Date().getFullYear() + ",");
-                    </script>
-                    made with <i class="fa fa-heart"></i> by
-                    <a href="https://www.creative-tim.com" class="font-semibold text-slate-700" target="_blank">Creative Tim</a>
-                    for a better web.
+                                        </div>
+                                        <p class="mb-0 text-md leading-tight">{{ $user->name }}</p>
+                                </div>
+                            </td>
+
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md text-center leading-tight">{{ $user->nrp }}</p>
+                            </td>
+
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md text-center leading-tight">{{ $user->department->name }}</p>
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <span class="text-sm font-semibold leading-tight text-slate-400">{{ $user->position->name }}</span>
+                            </td>
+                            <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <a class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white"
+                                href="{{ route('edit-account', $user->id) }}">Edit</a>
+                                <form action="{{ route('account.destroy', $user->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus akun ini?')" 
+                                        class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                        Hapus
+                                    </button>
+                                </form>
+                                <a class="bg-gradient-to-tl from-yellow-500 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" 
+                                href="{{ route('detail-account', $user->id) }}">Detail</a>
+                            </td>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
+                                        Data Pengguna Tidak Ditemukan
+                                    </td>
+                                </tr>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                        </table>
+                        <div class="mt-8 m-4 flex items-center">
+                            {{ $users->links() }}
+                        </div>
+                    </div>
                     </div>
                 </div>
-            </div>
-            </footer>
+                </div>
         </div>
+    </div>
+
+    <footer class="flex pt-4 ">
+        <div class="w-full px-6 mx-auto ">
+            <div class="flex  items-center -mx-3">
+            <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:flex-none">
+                <div class="text-sm leading-normal text-center text-slate-500">
+                ©
+                <script>
+                    document.write(new Date().getFullYear() + ",");
+                </script>
+                made with love by
+                <a class="font-semibold text-slate-700">Polres Humbahas</a>
+                for a better Human Resource
+                </div>
+            </div>
+        </div>
+    </footer>
+        
 
         
 
         <!-- end cards -->
     <!-- end Navbar -->
-    </main>
-
-    <div id="modelDetail" class="fixed hidden z-50 inset-0 bg-gray-700/50 overflow-x-auto h-full w-full px-4 ">
-        <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
-    
-            <div class="flex justify-end p-2">
-                <button onclick="closeModal('modelDetail')" type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
-    
-            <div class="p-6 pt-0 text-center">
-                <h3 class="text-xl font-normal text-gray-500 mt-5 mb-2">Detail Pengajuan Izin</h3>
-                <hr class="my-2 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                <p class="text-sm font-normal text-gray-400 mt-5 mb-2">12 Desember 2025</p>
-                <p class="mt-4 font-bold text-md">Jenis Cuti: </p>
-                <span>Sakit</span>
-                <p class="mt-4 font-bold text-md">Periode Cuti:</p>
-                <span>4/1/2025 - 1/1/2025</span>
-                <p class="mt-4 font-bold text-md">Catatan:</p>
-                <p>Sedang menjalani perawatan di rumah sakit umum ABCD karena mengalami tipus</p>
-                <p class="mt-4 font-bold text-md">Status: </p>
-                <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diproses Di Bag SDM</span>
-                <p class="mt-4 font-bold text-md">Surat Penyerta: </p>
-                <img src="" alt="">
-
-                {{-- <a href="#"  onclick="closeModal('modelDetail')"
-                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
-                    Yes, I'm sure
-                </a>
-                <a href="#" onclick="closeModal('modelDetail')"
-                    class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
-                    data-modal-toggle="delete-user-modal">
-                    No, cancel
-                </a> --}}
-            </div>
-    
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        window.openModal = function(modalId) {
-            document.getElementById(modalId).style.display = 'block'
-            document.getElementsByTagName('body')[0].classList.add('overflow-y-hidden')
-        }
-    
-        window.closeModal = function(modalId) {
-            document.getElementById(modalId).style.display = 'none'
-            document.getElementsByTagName('body')[0].classList.remove('overflow-y-hidden')
-        }
-    
-        // Close all modals when press ESC
-        document.onkeydown = function(event) {
-            event = event || window.event;
-            if (event.keyCode === 27) {
-                document.getElementsByTagName('body')[0].classList.remove('overflow-y-hidden')
-                let modals = document.getElementsByClassName('modal');
-                Array.prototype.slice.call(modals).forEach(i => {
-                    i.style.display = 'none'
-                })
-            }
-        };
-    </script>
-
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         const sidebar = document.getElementById("sidebar");

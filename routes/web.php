@@ -1,10 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('login.login');
@@ -13,9 +13,6 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'verify'])->name('auth.verify');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-//Role:Polisi & PNS
-Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');
 
 //Role: User(Admin SDM)
 Route::get('/admin_sdm/dashboard', [DashboardController::class, 'index_admin_sdm'])->name('admin_sdm.dashboard')->middleware('auth:admin_sdm');
@@ -26,9 +23,16 @@ Route::post('/account/store', [UserController::class, 'store'])->name('store-acc
 Route::get('/account/detail/{id}', [UserController::class, 'show'])->name('detail-account')->middleware('auth:admin_sdm');
 Route::post('/account/reset-password/{id}', [UserController::class, 'reset_psw_tonrp'])->name('reset-password')->middleware('auth:admin_sdm');
 Route::delete('/account/{id}', [UserController::class, 'destroy'])->name('account.destroy')->middleware('auth:admin_sdm');
+Route::get('/account/edit/{id}', [UserController::class, 'edit'])->name('edit-account')->middleware('auth:admin_sdm');
+Route::put('account/update/{id}', [UserController::class, 'update'])->name('update-account')->middleware('auth:admin_sdm');
+Route::post('/account/import', [UserController::class, 'import'])->name('import-account')->middleware('auth:admin_sdm');
+Route::get('/download-template', [UserController::class, 'download_tamplate'])->name('download-template')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');
 
 //Role: Kepala satuan & kepala bagian
 Route::get('/department_head/dashboard', [DashboardController::class, 'index_department_head'])->name('department_head.dashboard')->middleware('auth:department_head');
+
+//Role:Polisi & PNS
+Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');

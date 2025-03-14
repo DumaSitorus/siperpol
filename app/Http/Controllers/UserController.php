@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsersImport;
 use App\Models\User;
 use App\Models\Position;
 use Illuminate\View\View;
@@ -9,7 +10,9 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -120,7 +123,6 @@ class UserController extends Controller
         $user->password = Hash::make($user->nrp);
         $user->save();
 
-        $users = User::with(['position', 'department'])->findOrFail($id);
         return back()->with('success', 'Password pengguna telah direset ke NRP.');
     }
 
@@ -130,6 +132,70 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back()->with('success', 'Akun pengguna berhasil dihapus.');
+    }
+
+    public function edit($id)
+    {
+        $users = User::with(['position', 'department'])->where('id', $id)->first();
+        $departments = Department::all(); 
+        $positions = Position::all(); 
+
+        return view('admin_sdm.edit-account', compact('users', 'departments', 'positions'));
+
+        // return view('admin_sdm.edit-account', compact('users'));
+    }
+
+    public function update(Request $request, $id){
+
+        $request->validate([
+            'name' => 'required',
+            'nrp'=> 'required',
+            'department' => 'required',
+            'position' => 'required',
+            'leave_quota' => 'required'
+            ],
+            [
+                'name.required' => 'Nama wajib diisi',
+                'nrp.required' => 'NRP wajib diisi',
+                'department.required' => 'Satuan/Bagian wajib diisi',
+                'position.required' => 'Posisi wajib diisi',
+                'leave_quota.required' => 'Sisa kuota cuti tahunan wajib diisi',
+            ],
+        );
+
+        $password = $request->nrp;
+        $hashedPassword = Hash::make($password);
+
+        $data = [
+            'name' => $request->name,
+            'nrp' => $request->nrp,
+            'department_id' => (int) $request->department,
+            'position_id' => (int) $request->position,
+            'leave_quota' => 12,
+        ];
+
+        User::where('id', $id)->update($data);
+        return redirect()->to('account')->with('success', 'Berhasil melakukan edit data');
+    }
+
+    
+    public function import(Request $request)
+    {
+        
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls'
+        ], [
+            'file.required' => 'File Excel wajib diunggah',
+            'file.mimes' => 'File harus berformat .xlsx atau .xls'
+        ]);
+
+        Excel::import(new UsersImport, $request->file('file'));
+        return redirect()->route('account')->with('success', 'Import Akun pengguna dari Excel berhasil.');
+    }
+
+    public function download_tamplate(){
+        $filePath = public_path('templates/template_akun.xlsx');
+        return response()->download($filePath, 'template_akun.xlsx');
     }
 
 }

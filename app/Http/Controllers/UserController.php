@@ -10,7 +10,6 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -163,9 +162,6 @@ class UserController extends Controller
             ],
         );
 
-        $password = $request->nrp;
-        $hashedPassword = Hash::make($password);
-
         $data = [
             'name' => $request->name,
             'nrp' => $request->nrp,
@@ -198,4 +194,32 @@ class UserController extends Controller
         return response()->download($filePath, 'template_akun.xlsx');
     }
 
+    public function profile()
+    {
+        $user = User::with(['position', 'department'])->find(Auth::id());
+
+        return view('police_pns.profile', compact('user'));
+    }
+
+    public function reset_psw_self(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+        ], [
+            'old_password.required' => 'Kata sandi lama wajib diisi.',
+            'new_password.required' => 'Kata sandi baru wajib diisi.',
+        ]);
+
+        $user = Auth::User();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->with('error', 'Kata sandi lama anda salah.');
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password berhasil diperbarui.');
+    }
 }

@@ -281,9 +281,8 @@
                             <h6 class="mb-0">Reset Password Pengguna</h6>
                             <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
                             <form action="/account/reset-password/{{ $users->id }}" method="POST" class="mb-9">
-                            {{-- <form action="" method="POST" class="mb-8"> --}}
-
                                 @csrf
+                                @method("PUT")
                                 <label for="admin_password">Masukkan Kata Sandi Anda:</label>
                                 <input type="password" id="admin_password" name="admin_password" required 
                                     class="w-full px-4 py-2 border rounded-md bg-gray-100 mt-2">

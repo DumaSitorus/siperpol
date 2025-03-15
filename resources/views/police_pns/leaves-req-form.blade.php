@@ -29,7 +29,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/dashboard-anggota">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('police_pns.dashboard') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -50,7 +50,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/profile">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"  href="{{ route('profile') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>credit-card</title>
@@ -98,7 +98,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/pengajuan-cuti/riwayat">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -143,7 +143,7 @@
                     <li class="mx-2 flex items-center">
                         <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
                         <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden xl:inline">Nama Anggota</span>
+                        <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
                         </a>
                     </li>
                     
@@ -178,13 +178,34 @@
                             <div class="max-w-full px-3 lg:flex-none">
                                 <div class="flex flex-col h-full ">
                                     <h5 class="font-bold text-center text-xl">Form Pengajuan Cuti/Izin Anggota Kepolisian</h5>
-                                    <p class="mb-8 text-center font-semibold">Polres Humbang Hasundutan</p>
-                                    <form>
+                                    <p class="mb-4 text-center font-semibold">Polres Humbang Hasundutan</p>
+                                    @if($errors->any())
+                                        <div class="mb-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
+                                            <div class="px-4 flex justify-center items-center bg-red-500">
+                                                <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+                                                </svg>
+                                            </div>
+                                            
+                                            <div class="-mx-3 py-2 px-4">
+                                                <div class="mx-3">
+                                                    <span class="text-red-500 font-semibold">Upss.. </span>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $item)
+                                                        <li> {{ $item }} </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <form action="{{ route('store-leave-req') }}" method="POST" required enctype="multipart/form-data">
+                                        @csrf
                                         <div class="mb-5">
-                                            <label for="jenis-cuti" class="mb-3 block text-base font-medium text-[#07074D]">
+                                            <label for="leave_type" class="mb-3 block text-base font-medium text-[#07074D]">
                                                 Jenis Cuti
                                             </label>
-                                            <select name="jenis-cuti" id="jenis-cuti"
+                                            <select name="leave_type" id="leave_type"
                                                 class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md">
                                                 <option value="" disabled selected class="text-slate-500">Pilih jenis cuti</option>
                                                 @foreach ($leave_types as $leave_type)
@@ -195,21 +216,29 @@
                                         
                                         <div class="-mx-3 flex flex-wrap">
                                             <div class="w-full px-3 sm:w-1/2">
-                                                <div class="mb-5">
-                                                    <label for="first-date" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                <div class="mb-2">
+                                                    <label for="start_leave" class="mb-3 block text-base font-medium text-[#07074D]">
                                                         Hari Pertama Cuti
                                                     </label>
-                                                    <input type="date" name="first-date" id="first-date"
+                                                    <input type="date" name="start_leave" id="start_leave"
                                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                                 </div>
                                             </div>
                                             <div class="w-full px-3 sm:w-1/2">
-                                                <div class="mb-5">
-                                                    <label for="last-date" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                <div class="mb-2">
+                                                    <label for="end_leave" class="mb-3 block text-base font-medium text-[#07074D]">
                                                         Hari Terakhir Cuti
                                                     </label>
-                                                    <input type="date" name="last-date" id="last-date"
+                                                    <input type="date" name="end_leave" id="end_leave"
                                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="-mx-3 flex flex-wrap">
+                                            <div class="w-full px-3 sm:w-1/2">
+                                                <p id="error_message" class="text-red-500 text-sm mt-1 hidden">❌ Tanggal akhir harus setelah tanggal mulai!</p>
+                                                <div class="mb-5">
+                                                    <p>Pengajuan cuti selama:&nbsp;<span id="leave_days" class="font-semibold font-sm">0</span>&nbsp;hari</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,23 +246,45 @@
                                             <label for="notes" class="mb-3 block text-base font-medium text-[#07074D]">
                                                 Catatan
                                             </label>
-                                            <textarea name="notes" id="notes" rows="4" placeholder="Tambahkan catatan pesan keterangan pengajuan cuti"
+                                            <textarea name="notes" id="notes" rows="3" placeholder="Tambahkan catatan pesan keterangan pengajuan cuti"
                                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none"></textarea>
                                         </div>
-                                        
                             
                                         <div class="mb-5 pt-3">
                                             <div class="-mx-3 flex flex-wrap items-center">
                                                 <div class="w-full px-3 sm:w-1/2">
-                                                    <label class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                                                        Unggah Surat penyerta/Bukti Lainnya
+                                                    <label for="evident_1"
+                                                        class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+                                                        Unggah Surat penyerta/Bukti <span class="text-rose-500">*</span> 
                                                     </label>
                                                 </div>
                                                 <div class="w-full px-3 sm:w-1/2">
                                                     <div class="mb-5">
                                                         <div class="w-full">
                                                             <div class="mb-5">
-                                                                <input type="file" name="supporting_document" id="supporting_document" 
+                                                                <input type="file" name="evident_1" id="evident_1" 
+                                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-[#6A64F1] file:text-white file:font-medium hover:file:bg-[#5850EC]" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-5 pt-3">
+                                            <div class="-mx-3 flex flex-wrap items-center">
+                                                <div class="w-full px-3 sm:w-1/2">
+                                                    <label for="evident_2"
+                                                        class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+                                                        Unggah Surat penyerta/Bukti 
+                                                    </label>
+                                                </div>
+                                                <div class="w-full px-3 sm:w-1/2">
+                                                    <div class="mb-5">
+                                                        <div class="w-full">
+                                                            <div class="mb-5">
+                                                                <input type="file" name="evident_2" id="evident_2"
                                                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-[#6A64F1] file:text-white file:font-medium hover:file:bg-[#5850EC]" />
                                                             </div>
                                                         </div>
@@ -244,7 +295,7 @@
                                         </div>
                             
                                         <div>
-                                            <button
+                                            <button type="submit"
                                                 class="hover:shadow-form w-full rounded-md bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80 py-3 px-8 text-center text-base font-semibold text-white outline-none">
                                                 Ajukan Cuti
                                             </button>
@@ -325,6 +376,44 @@
                 sidebar.classList.remove("translate-x-0");
             });
         }
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const startLeave = document.getElementById("start_leave");
+        const endLeave = document.getElementById("end_leave");
+        const leaveDays = document.getElementById("leave_days");
+        const errorMessage = document.getElementById("error_message");
+
+        const today = new Date().toISOString().split("T")[0]; 
+        startLeave.setAttribute("min", today);
+        endLeave.setAttribute("min", today);
+
+        function calculateLeaveDays() {
+            const startDate = new Date(startLeave.value);
+            const endDate = new Date(endLeave.value);
+            const todayDate = new Date(today);
+
+            if (!isNaN(startDate) && !isNaN(endDate))  {
+                if (startDate <= endDate) {
+                    errorMessage.classList.add("hidden"); 
+                    const timeDiff = endDate - startDate;
+                    const dayDiff = timeDiff / (1000 * 60 * 60 * 24) + 1; 
+                    leaveDays.textContent = dayDiff;
+
+                
+                } else {
+                    errorMessage.classList.remove("hidden"); 
+                    leaveDays.textContent = "0"; 
+                }
+            } else {
+                leaveDays.textContent = "0";
+            }
+        }
+
+        startLeave.addEventListener("change", calculateLeaveDays);
+        endLeave.addEventListener("change", calculateLeaveDays);
     });
 </script>
 </body>

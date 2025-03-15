@@ -41,7 +41,9 @@ Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_p
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth:police_pns');
 Route::post('/profile/add-profile-photo', [UserController::class, 'update_pp'])->name('update-profile-photo')->middleware('auth:police_pns');
 Route::post('/profile/reset-password', [UserController::class, 'reset_psw_self'])->name('reset-password-self')->middleware('auth:police_pns');
-Route::get('/leave/add', [LeaveController::class, 'index'])->name('create-leave-req')->middleware('auth:police_pns');
+Route::get('/leave/add', [LeaveController::class, 'create'])->name('create-leave-req')->middleware('auth:police_pns');
+Route::post('leave/send', [LeaveController::class, 'store'])->name('store-leave-req')->middleware('auth:police_pns');
+Route::get('leave/request',[LeaveController::class, 'index'])->name('leave-req')->middleware('auth:police_pns');
 
 //test route
 Route::get('/upload', function(){

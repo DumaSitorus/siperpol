@@ -17,7 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('leave_type_id');
             $table->dateTime('start_leave');
             $table->dateTime('end_leave');
-            $table->string('evident');
+            $table->text('notes');
+            $table->string('evident_1');
+            $table->string('evident_2')->nullable();
+            $table->string('leave_status');
             $table->timestamps();
         });
     }

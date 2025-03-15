@@ -197,7 +197,7 @@
                 <div class="flex flex-wrap -mx-3">
                 <div class="flex-none w-auto max-w-full px-3">
                     <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                    <img src="{{ Auth::user()->profile_photo ?? 'images/empty_profile_photo.png' }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                    <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) ?? 'images/empty_profile_photo.png' }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
                     
                     </div>
                 </div>
@@ -208,10 +208,10 @@
                     </div>
                 </div>
                 <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
-                    <div class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3">
+                    <div class="inline-flex max-w-sm w-full bg-lime-400 shadow-md rounded-lg overflow-hidden ml-3">
                         <div class="-mx-3 py-2 px-4">
                             <div class="mx-3">
-                                <span class="text-slate-500 font-semibold">Sedang Cuti</span>
+                                <span class="text-gray-700 font-semibold">Tidak Sedang Cuti</span>
                             </div>
                         </div>
                     </div>
@@ -222,11 +222,30 @@
         <!-- end cards -->
 
         {{-- section 2 --}}
-        <div class="w-full p-6 mx-auto">
+        <div class=" p-6 mx-auto">
+            @if($errors->any())
+                <div class="mx-4 flex bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="px-4 flex justify-center items-center bg-red-500">
+                        <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="-mx-3 py-2 px-4">
+                        <div class="mx-3">
+                            <span class="text-red-500 font-semibold">Upss.. </span>
+                            <ul>
+                                @foreach ($errors->all() as $item)
+                                <li> {{ $item }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="flex flex-wrap justify-center">
-
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
-                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">                     
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
                             <div class="flex flex-wrap -mx-3">
                                 <div class="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
@@ -240,7 +259,34 @@
                                 <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">NRP:</strong> &nbsp; {{ Auth::user()->nrp }}</li>
                                 <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Satuan:</strong> &nbsp; {{ Auth::user()->department->name }}</li>
                                 <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Kuota cuti tahunan:</strong> &nbsp; {{ Auth::user()->leave_quota }}</li>
+                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"> <strong class="text-slate-700">Perbarui Photo Profil</strong>
+                                    <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data" class="my-4">
+                                        @csrf
+                                        <div class="mb-5 pt-3">
+                                            <div class="-mx-3 flex flex-wrap items-center justify-between">
+                                                <div class="w-full px-3 sm:w-1/2">
+                                                    <!-- Input File -->
+                                                    <div class="w-full items-center justify-center">
+                                                        <div class="mb-5">
+                                                            <input type="file" id="image" name="image" accept="image/*" 
+                                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-700 file:text-white file:font-medium hover:file:bg-gray-500" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full px-3 sm:w-1/2 ">
+                                                    <!-- Tombol Upload -->
+                                                    <button type="submit" class="py-4 -mt-4 px-6 bg-gray-800 text-white font-semibold rounded-full shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                                                        Terapkan
+                                                    </button>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
                             </ul>
+
+                            
 
                             <p class="leading-normal text-sm">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data kepihak BAG SDM.</p>
                         </div>
@@ -273,31 +319,9 @@
                                     <button type="submit" class="px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Simpan Kata Sandi</button>
                                 </div>
                             </form>
-
-                            @if($errors->any())
-                                <div class="my-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
-                                    <div class="px-4 flex justify-center items-center bg-red-500">
-                                        <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
-                                        </svg>
-                                    </div>
-                                    
-                                    <div class="-mx-3 py-2 px-4">
-                                        <div class="mx-3">
-                                            <span class="text-red-500 font-semibold">Upss.. </span>
-                                            <ul>
-                                                @foreach ($errors->all() as $item)
-                                                <li> {{ $item }} </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
                         </div>
                     </div>
                 </div>
-
     </div>    
                     
     <footer class="flex pt-4 ">

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
@@ -221,5 +222,38 @@ class UserController extends Controller
         $user->save();
 
         return back()->with('success', 'Password berhasil diperbarui.');
+    }
+
+    public function update_pp(Request $request)
+    {
+        $request->validate(
+            [
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            ],
+            [
+                'image.required'=>'Unggah gambar terlebih dahulu',
+                'image.mimes'=> 'Photo profil harus berekstensi jpeg, png, atau jpg',
+                'image.images'=> 'Photo profil harus berupa file gambar',  
+                'image.max'=> 'Photo profil maksimal berukuran 2MB' 
+            ]
+        );
+
+        $user = Auth::user();
+
+        // Hapus foto lama jika ada
+        if (!empty($user->profile_photo)) {
+            Storage::disk('public')->delete("images/{$user->profile_photo}");
+        }
+
+        // Simpan foto baru di storage dan dapatkan nama file
+        $filename = $request->file('image')->store('images', 'public');
+        $filename = basename($filename); // Ambil hanya nama file
+
+        // Update database dengan hanya menyimpan nama file
+        $user->update([
+            'profile_photo' => $filename,
+        ]);
+
+        return back()->with('success', 'Foto profil berhasil diperbarui!');
     }
 }

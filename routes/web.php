@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaveController;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('login.login');
@@ -38,5 +39,16 @@ Route::get('/department_head/dashboard', [DashboardController::class, 'index_dep
 //Role:Polisi & PNS
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth:police_pns');
+Route::post('/profile/add-profile-photo', [UserController::class, 'update_pp'])->name('update-profile-photo')->middleware('auth:police_pns');
 Route::post('/profile/reset-password', [UserController::class, 'reset_psw_self'])->name('reset-password-self')->middleware('auth:police_pns');
 Route::get('/leave/add', [LeaveController::class, 'index'])->name('create-leave-req')->middleware('auth:police_pns');
+
+//test route
+Route::get('/upload', function(){
+    Storage::disk('public')->put('example1.txt', 'halo00');
+});
+
+Route::get('/getthefile', function(){
+    // return asset('storage/example.txt');
+    return Storage::get('example1.txt');
+});

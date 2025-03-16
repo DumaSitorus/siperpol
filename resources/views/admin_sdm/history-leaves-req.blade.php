@@ -14,7 +14,7 @@
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
         <div class="h-19.5">
             <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap" href="javascript:;" target="_blank">
+            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap">
             {{-- <img src="../assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
             <span class="font-bold transition-all duration-200 ease-nav-brand">SIPERPOL</span>
             </a>
@@ -77,7 +77,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history') }}">
+                    <a class="py-2.7 py-3 bg-white/40 rounded-md  text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -102,7 +102,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('account') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('account') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -171,142 +171,146 @@
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">      
     
         <!-- Navbar -->
-        <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
-            <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-                <nav>
-                    <!-- breadcrumb -->
-                    <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
-                    <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
-                        <li class="leading-normal text-sm">
-                            <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
-                        </li>
-                        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
-                        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Detail Akun</li>
+    <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
+        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+            <nav>
+                <!-- breadcrumb -->
+                <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
+                <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+                    <li class="leading-normal text-sm">
+                        <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
+                    </li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
+                </ol>
+            </nav>
 
-                    </ol>
-                </nav>
-    
-                <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-                    <div class="flex items-center justify-end sm:ml-auto md:pr-4">
-                        <li class="mx-2 flex items-center">
-                            <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
-                            <i class="fa fa-user sm:mr-1"></i>
-                            <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
-                            </a>
-                        </li>
+            <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+                <div class="flex items-center justify-end sm:ml-auto md:pr-4">
+                    <li class="mx-2 flex items-center">
+                        <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                        <i class="fa fa-user sm:mr-1"></i>
+                        <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
+                        </a>
+                    </li>
+                    
+                    <li class="mx-2 items-center hidden xl:inline">
+                        <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
                         
-                        <li class="mx-2 items-center hidden xl:inline">
-                            <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
-                            
-                            href="{{ route('logout') }}">Logout</a>
-                        </li>
-    
-                        <li class="mx-auto flex items-center xl:hidden">
-                            <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
-                            <div class="w-4.5 overflow-hidden">
-                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                                <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            </div>
-                            </a>
-                        </li>
-                        
-                    </div>
+                        href="{{ route('logout') }}">Logout</a>
+                    </li>
+
+                    <li class="mx-auto flex items-center xl:hidden">
+                        <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
+                        <div class="w-4.5 overflow-hidden">
+                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                        </div>
+                        </a>
+                    </li>
+                    
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <!-- cards -->
-        <div class="w-full px-6 mx-auto">
-            <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%">
-                <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
-            </div>
-            <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
-                <div class="flex flex-wrap -mx-3">
-                <div class="flex-none w-auto max-w-full px-3">
-                    <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                        @if($users->profile_photo && file_exists(public_path('storage/images/'.$users->profile_photo)))
-                            <a href="{{ asset('storage/images/' . $users->profile_photo) }}" target="_blank">
-                                <img src="{{ asset('storage/images/'.$users->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
-                            </a>
-                        @else
-                        <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
-                            <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
-                        </a>
-                        @endif
-                    </div>
-                </div>
-                <div class="flex-none w-auto max-w-full px-3 my-auto">
-                    <div class="h-full">
-                    <h5 class="mb-1">{{ $users->name }}</h5>
-                    <p class="mb-0 font-semibold leading-normal text-sm">{{ $users->position->name }} <br> {{ $users->department->name }} </p>
-                    </div>
-                </div>
-                <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
-                    <div class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3">
-                        <div class="-mx-3 py-2 px-4">
-                            <div class="mx-3">
-                                <span class="text-slate-500 font-semibold">Sedang Cuti</span>
-                            </div>
+        <div class="w-full px-6 py-6 mx-auto">
+
+            <!-- cards row 2 -->
+            <div class="flex flex-wrap -mx-3">
+                <div class="flex-none w-full max-w-full px-3">
+                    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                        <h6 class="mb-6 text-xl text-center underline font-bold">Riwayat Pengajuan Cuti Anggota</h6>
+                        </div>
+                        <div class="w-full px-4 py-4 mx-auto md:ml-auto lg:ml-auto flex md:justify-end">
+                            <form action="{{ route('all-leave-search') }}" class="flex md:flex-row gap-3" method="GET">
+                                <div class="flex w-3/4">
+                                    <input type="search" placeholder="Cari pengajuan cuti/izin"
+                                        class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-slate-500 focus:outline-none focus:border-slate-500"
+                                        name="search">
+                                    <button type="submit" class="bg-slate-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Cari</button>
+                                </div>
+                                <select id="pricingType" name="column"
+                                    class="w-1/4 h-10 border-2 border-slate-500 focus:outline-none focus:border-slate-500 text-slate-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
+                                    <option value="name" selected="">Nama</option>
+                                    <option value="nrp">NRP</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="flex-auto px-0 pt-0 pb-2">
+                        <div class="p-0 overflow-x-auto">
+                            <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                            <thead class="align-bottom">
+                                <tr>
+                                    <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama</th>
+                                    <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Cuti</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($leaves as $leave)
+                                    <tr>
+                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <div class="flex px-2 py-1">
+                                                <div class="px-4">
+                                                    {{ $loop->iteration }}
+                                                </div>
+                                                <div class="flex flex-col justify-center">
+                                                    <p class="mb-0 text-md text-semibold leading-tight">{{ $leave->user->name }}</p>
+                                                    <p class="mb-0 text-xs leading-tight text-slate-400"> NRP.{{ $leave->user->nrp }} </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <div class="flex px-2 py-1">
+                                                <div class="flex flex-col justify-center">
+                                                    <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
+                                                    <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <p class="mb-0 text-md leading-tight text-center">{{ $leave->leave_type->type }}</p>
+                                        </td>
+                                        <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
+                                        </td>
+                                        <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            @if ( $leave->leave_status == 'Diizinkan')
+                                                <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
+                                            @elseif ( $leave->leave_status == 'Ditolak')
+                                                <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
+                                            @else 
+                                                <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diproses</span>
+                                            @endif
+                                            
+                                        </td>
+                                        <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('admin-leave-req-detail', $leave->id) }}">Lihat Detail</a>
+                                        </td>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
+                                            Data Pengajuan Cuti/Izin Tidak Tersedia
+                                        </td>
+                                    </tr>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                            </table>
+                        </div>
                         </div>
                     </div>
-                </div>
-                </div>
+                    </div>
             </div>
         </div>
         <!-- end cards -->
 
-        {{-- section 2 --}}
-        <div class="w-full p-6 mx-auto">
-            <div class="flex flex-wrap justify-center">
-
-                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
-                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                            <div class="flex flex-wrap -mx-3 ">
-                                <div class="flex items-center w-full max-w-full px-3  md:w-8/12 ">
-                                    <h6 class="mb-0 text-xl underline">Informasi Profile</h6>
-                                </div>
-                                <hr class="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            </div>
-                        </div>
-                        <div class="flex-auto p-4">
-                            <ul class="flex flex-col pl-0 mb-0 rounded-lg">
-                                <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">NRP:</strong> &nbsp; {{ $users->nrp }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Satuan:</strong> &nbsp; {{ $users->department->name }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Kuota cuti tahunan:</strong> &nbsp; {{ $users->leave_quota }}</li>
-                            </ul>
-
-                            <p class="leading-normal text-sm">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data kepihak BAG SDM.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
-                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
-                            <h6 class="mb-0">Reset Password Pengguna</h6>
-                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            <form action="/account/reset-password/{{ $users->id }}" method="POST" class="mb-9">
-                                @csrf
-                                @method("PUT")
-                                <label for="admin_password">Masukkan Kata Sandi Anda:</label>
-                                <input type="password" id="admin_password" name="admin_password" required 
-                                    class="w-full px-4 py-2 border rounded-md bg-gray-100 mt-2">
-                
-                                <button type="submit" 
-                                    class="mt-3  px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-700">
-                                    Reset Password ke NRP
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-
-    </div>    
-                    
     <footer class="flex pt-4 ">
         <div class="w-full px-6 mx-auto ">
             <div class="flex  items-center -mx-3">
@@ -323,42 +327,41 @@
             </div>
         </div>
     </footer>
-            
+        
 
-        {{-- end section 2 --}}
-        <!-- end Navbar -->
-    </main>
+        
 
+        <!-- end cards -->
+    <!-- end Navbar -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sidebar = document.getElementById("sidebar");
-            const sidenavTrigger = document.querySelector("[sidenav-trigger]");
-            const sidenavClose = document.querySelector("[sidenav-close]");
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const sidenavTrigger = document.querySelector("[sidenav-trigger]");
+        const sidenavClose = document.querySelector("[sidenav-close]");
 
-            // Fungsi untuk toggle sidebar
-            function toggleSidebar() {
-                if (sidebar.classList.contains("-translate-x-full")) {
-                    sidebar.classList.remove("-translate-x-full");
-                    sidebar.classList.add("translate-x-0");
-                } else {
-                    sidebar.classList.add("-translate-x-full");
-                    sidebar.classList.remove("translate-x-0");
-                }
+        // Fungsi untuk toggle sidebar
+        function toggleSidebar() {
+            if (sidebar.classList.contains("-translate-x-full")) {
+                sidebar.classList.remove("-translate-x-full");
+                sidebar.classList.add("translate-x-0");
+            } else {
+                sidebar.classList.add("-translate-x-full");
+                sidebar.classList.remove("translate-x-0");
             }
+        }
 
-            // Tambahkan event click pada tombol sidenav-trigger
-            sidenavTrigger.addEventListener("click", toggleSidebar);
+        // Tambahkan event click pada tombol sidenav-trigger
+        sidenavTrigger.addEventListener("click", toggleSidebar);
 
-            // Jika ada tombol close, tambahkan event click untuk menutup sidebar
-            if (sidenavClose) {
-                sidenavClose.addEventListener("click", function () {
-                    sidebar.classList.add("-translate-x-full");
-                    sidebar.classList.remove("translate-x-0");
-                });
-            }
-        });
-    </script>
-
+        // Jika ada tombol close, tambahkan event click untuk menutup sidebar
+        if (sidenavClose) {
+            sidenavClose.addEventListener("click", function () {
+                sidebar.classList.add("-translate-x-full");
+                sidebar.classList.remove("translate-x-0");
+            });
+        }
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

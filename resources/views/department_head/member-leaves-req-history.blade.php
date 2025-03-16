@@ -123,7 +123,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" >
+                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('member-leave-req',  ['department_id' => Auth::user()->department_id]) }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -206,16 +206,32 @@
                         <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <h6 class="mb-6 text-xl text-center underline font-bold">Riwayat Pengajuan Cuti Anggota</h6>
                         </div>
+                        <div class="w-full px-4 py-4 mx-auto md:ml-auto lg:ml-auto flex md:justify-end">
+                            <form action="{{ route('member-leave-search') }}" class="flex md:flex-row gap-3" method="GET">
+                                <div class="flex w-3/4">
+                                    <input type="search" placeholder="Cari pengajuan cuti/izin"
+                                        class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-slate-500 focus:outline-none focus:border-slate-500"
+                                        name="search">
+                                    <button type="submit" class="bg-slate-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Cari</button>
+                                </div>
+                                <select id="pricingType" name="column"
+                                    class="w-1/4 h-10 border-2 border-slate-500 focus:outline-none focus:border-slate-500 text-slate-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
+                                    <option value="name" selected="">Nama</option>
+                                    <option value="nrp">NRP</option>
+                                </select>
+                            </form>
+                        </div>
                         <div class="flex-auto px-0 pt-0 pb-2">
                         <div class="p-0 overflow-x-auto">
                             <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
                             <thead class="align-bottom">
                                 <tr>
-                                <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
-                                <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Izin/Cuti</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
+                                    <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama</th>
+                                    <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Cuti</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
+                                    <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -224,8 +240,16 @@
                                         <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                             <div class="flex px-2 py-1">
                                                 <div class="px-4">
-                                                {{--  penomoran --}} {{ $loop->iteration }}
+                                                    {{ $loop->iteration }}
                                                 </div>
+                                                <div class="flex flex-col justify-center">
+                                                    <p class="mb-0 text-md text-semibold leading-tight">{{ $leave->user->name }}</p>
+                                                    <p class="mb-0 text-xs leading-tight text-slate-400"> NRP.{{ $leave->user->nrp }} </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                            <div class="flex px-2 py-1">
                                                 <div class="flex flex-col justify-center">
                                                     <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
                                                     <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
@@ -233,7 +257,7 @@
                                             </div>
                                         </td>
                                         <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
+                                            <p class="mb-0 text-md leading-tight text-center">{{ $leave->leave_type->type }}</p>
                                         </td>
                                         <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                             <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
@@ -254,7 +278,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
-                                            Anda belum pernah mengajukan cuti/izin
+                                            Data Pengajuan Cuti/Izin Tidak Tersedia
                                         </td>
                                     </tr>
                                     </tr>

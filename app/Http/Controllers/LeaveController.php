@@ -34,6 +34,21 @@ class LeaveController extends Controller
         return view('department_head.leaves-req-history', compact('leaves',));
     }
 
+    public function all_history() : View 
+    {
+        $leaves = Leave::with(['leave_type', 'user'])->paginate(10);
+
+        return view('admin_sdm.history-leaves-req', compact('leaves',));
+    }
+
+    public function pending_leave() : View 
+    {
+        $pending = "Diizinkan" ;
+        $leaves = Leave::with(['leave_type', 'user'])->whereNot('leave_status', $pending)->paginate(10);
+
+        return view('admin_sdm.pending-leaves-req', compact('leaves',));
+    }
+
     public function create() : View
     {
         //
@@ -190,6 +205,19 @@ class LeaveController extends Controller
         return view('department_head.leave-req-detail', compact('leave', 'leave_types', 'positions', 'departments', 'user'));
     }
 
+    public function show_req($id) : View
+    {
+        $leave_types = LeaveType::all();
+        $positions = Position::all();
+        $departments = Department::all();
+        $user = Auth::user();
+
+        $leave = Leave::with(['leave_type', 'user.position', 'user.department'])
+                ->findOrFail($id);
+
+        return view('admin_sdm.leave-req-detail', compact('leave', 'leave_types', 'positions', 'departments', 'user'));
+    }
+
     public function download_evident($filename){
         $filePath = 'evident/' . $filename; 
 
@@ -203,13 +231,6 @@ class LeaveController extends Controller
     }
 
     public function show_member_req($department_id) {
-
-        // $user = Auth::user();
-
-        // $department_id = $user->department_id;
-
-        // $leaves = Leave::with('leave_type')->where('department_id', $department_id)->paginate(10);
-
         $user = Auth::user(); 
         $leaves = Leave::whereHas('user', function ($query) use ($user) {
             $query->where('department_id', $user->department_id);
@@ -219,5 +240,52 @@ class LeaveController extends Controller
         return view('department_head.member-leaves-req-history', compact('leaves'));
     }
 
+    public function search(Request $request)
+    {
+        $query = Leave::with(['user', 'leave_type']);
+
+        if ($request->has('search') && $request->filled('search')) {
+            $column = $request->input('column', 'name');
+            $search = $request->input('search');
+    
+            $allowedColumns = ['name', 'nrp'];
+            if (in_array($column, $allowedColumns)) {
+                $query->whereHas('user', function ($q) use ($search, $column) {
+                    $q->where($column, 'LIKE', '%' . $search . '%');
+                });
+            }
+        }
+
+        $leaves = $query->paginate(10);
+
+        return view('admin_sdm.history-leaves-req', ['leaves' => $leaves]);
+    }
+
+    public function search_member_leave(Request $request)
+    {
+        $user = Auth::user();
+        $query = Leave::whereHas('user', function ($query) use ($user) {
+            $query->where('department_id', $user->department_id);
+        });
+
+        if ($request->has('search') && $request->has('column')) {
+            $search = $request->input('search');
+            $column = $request->input('column');
+
+            if ($column === 'name') {
+                $query->whereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            } elseif ($column === 'nrp') {
+                $query->whereHas('user', function ($q) use ($search) {
+                    $q->where('nrp', 'like', '%' . $search . '%');
+                });
+            }
+        }
+
+        $leaves = $query->get();
+
+        return view('department_head.member-leaves-req-history', compact('leaves'));
+    }
 
 }

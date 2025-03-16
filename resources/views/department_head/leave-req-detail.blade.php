@@ -98,7 +98,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 py-3 bg-white/40 rounded-md  text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('head-leave-req') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('head-leave-req') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -123,7 +123,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/pengajuan-cuti/riwayat-cuti-anggota">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('member-leave-req',  ['department_id' => Auth::user()->department_id]) }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -159,11 +159,10 @@
                     <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                     <li class="leading-normal text-sm">
-                        <a class="opacity-50 text-slate-700">Dasbor</a>
+                        <a class="opacity-50 text-slate-700">Pengajuan Cuti/Izin</a>
                     </li>
-                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Pengaturan Akun</li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Detail</li>
                     </ol>
-                    
                 </nav>
 
                 <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -223,6 +222,24 @@
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <p class="mb-0 text-md leading-tight">{{ $leave->user->name }}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        NRP Pengaju 
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->user->nrp }}</p>
                             </td>
                         </tr>
 

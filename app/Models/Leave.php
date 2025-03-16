@@ -34,4 +34,9 @@ class Leave extends Model
     {
         return $this->belongsTo(LeaveType::class, 'leave_type_id');
     }
+
+    public function leave_status()
+    {
+        return $this->belongsTo(LeaveType::class, 'leave_statuses_id');
+    }
 }

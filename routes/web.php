@@ -29,6 +29,10 @@ Route::get('/account/edit/{id}', [UserController::class, 'edit'])->name('edit-ac
 Route::put('account/update/{id}', [UserController::class, 'update'])->name('update-account')->middleware('auth:admin_sdm');
 Route::post('/account/import', [UserController::class, 'import'])->name('import-account')->middleware('auth:admin_sdm');
 Route::get('/download-template', [UserController::class, 'download_tamplate'])->name('download-template')->middleware('auth:admin_sdm');
+Route::get('leave-request/history',[LeaveController::class, 'all_history'])->name('leave-req-history')->middleware('auth:admin_sdm');
+Route::get('leave-request/search', [LeaveController::class, 'search'])->name('all-leave-search')->middleware('auth:admin_sdm');
+Route::get('pending-leave-request/history',[LeaveController::class, 'pending_leave'])->name('pending-leave-req')->middleware('auth:admin_sdm');
+Route::get('leave-request/detail/{id}',[LeaveController::class, 'show_req'])->name('admin-leave-req-detail')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');
@@ -41,6 +45,7 @@ Route::post('leave-head/send', [LeaveController::class, 'store_head_req'])->name
 Route::get('leave-head/request', [LeaveController::class, 'history'])->name('head-leave-req')->middleware('auth:department_head');
 Route::get('head-leave/request/detail/{id}',[LeaveController::class, 'show_head_req'])->name('head-leave-req-detail')->middleware('auth:department_head');
 Route::get('leave/member-leave-request/{department_id}',[LeaveController::class, 'show_member_req'])->name('member-leave-req')->middleware('auth:department_head');
+Route::get('/member-leave/search', [LeaveController::class, 'search_member_leave'])->name('member-leave-search')->middleware('auth:department_head');
 
 //Role:Polisi & PNS
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');

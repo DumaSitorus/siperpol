@@ -18,9 +18,10 @@ return new class extends Migration
             $table->dateTime('start_leave');
             $table->dateTime('end_leave');
             $table->text('notes');
-            $table->string('evident_1');
+            $table->string('evident_1')->nullable();
             $table->string('evident_2')->nullable();
-            $table->string('leave_status');
+            $table->unsignedBigInteger('leave_statuses_id');
+            $table->text('leave_rejection_reason')->nullable();
             $table->timestamps();
         });
     }

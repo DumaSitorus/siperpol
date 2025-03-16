@@ -198,9 +198,13 @@
                 <div class="flex-none w-auto max-w-full px-3">
                     <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
                         @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
-                            <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                            <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
+                                <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                            </a>
                         @else
-                            <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                            <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
+                                <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                            </a>
                         @endif
                     </div>
                 </div>

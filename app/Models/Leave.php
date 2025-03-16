@@ -30,7 +30,7 @@ class Leave extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function LeaveType()
+    public function leave_type()
     {
         return $this->belongsTo(LeaveType::class, 'leave_type_id');
     }

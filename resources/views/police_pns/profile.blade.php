@@ -293,7 +293,6 @@
 
                             <p class="leading-normal text-sm">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data kepihak BAG SDM.</p>
                         </div>
-
                     </div>
                 </div>
 
@@ -325,7 +324,8 @@
                         </div>
                     </div>
                 </div>
-    </div>    
+            </div>  
+        </div>    
                     
     <footer class="flex pt-4 ">
         <div class="w-full px-6 mx-auto ">

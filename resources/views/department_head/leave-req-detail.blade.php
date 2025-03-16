@@ -123,7 +123,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('member-leave-req',  ['department_id' => Auth::user()->department_id]) }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/pengajuan-cuti/riwayat-cuti-anggota">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -197,80 +197,243 @@
         <!-- end Navbar -->
 
         <!-- cards -->
-        <div class="w-full px-6 py-6 mx-auto">
+        <div class="flex flex-wrap w-full px-6 py-6 mx-auto">
+            <div class="w-full px-3 mb-6 lg:mb-0 lg:w-2/3 lg:flex-none">
+                <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="p-6 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-center rounded-t-2xl">
+                        <h2 class="text-2xl font-bold">Detail Pengajuan Cuti</h2>
+                        <p class="text-sm mt-1">Diajukan pada: {{ \Carbon\Carbon::parse($leave->created_at)->format('d M Y') }}</p>
+                    </div>
+                    <div class="flex-auto px-0 pt-0 pb-2">
+                    <div class="p-0 overflow-x-auto">
+                        <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                        <tbody>
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Nama Pengaju 
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->user->name }}</p>
+                            </td>
+                        </tr>
 
-            <!-- cards row 2 -->
-            <div class="flex flex-wrap -mx-3">
-                <div class="flex-none w-full max-w-full px-3">
-                    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <h6 class="mb-6 text-xl text-center underline font-bold">Riwayat Pengajuan Cuti</h6>
-                        </div>
-                        <div class="flex-auto px-0 pt-0 pb-2">
-                        <div class="p-0 overflow-x-auto">
-                            <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
-                            <thead class="align-bottom">
-                                <tr>
-                                <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
-                                <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Izin/Cuti</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
-                                <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($leaves as $leave)
-                                    <tr>
-                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2 py-1">
-                                                <div class="px-4">
-                                                {{--  penomoran --}} {{ $loop->iteration }}
-                                                </div>
-                                                <div class="flex flex-col justify-center">
-                                                    <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
-                                                    <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
-                                        </td>
-                                        <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
-                                        </td>
-                                        <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            @if ( $leave->leave_status == 'Diizinkan')
-                                                <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
-                                            @elseif ( $leave->leave_status == 'Ditolak')
-                                                <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
-                                            @else 
-                                                <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diproses</span>
-                                            @endif
-                                            
-                                        </td>
-                                        <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('head-leave-req-detail', $leave->id) }}">Lihat Detail</a>
-                                        </td>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
-                                            Anda belum pernah mengajukan cuti/izin
-                                        </td>
-                                    </tr>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                            </table>
-                        </div>
-                        </div>
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Satuan / Bagian
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->user->department->name }}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Posisi
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->user->position->name }}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Jenis Cuti
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Periode Cuti
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Total Hari
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                {{ \Carbon\Carbon::parse($leave->start_leave)->diffInDays(\Carbon\Carbon::parse($leave->end_leave)) + 1 }} Hari
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Catatan 
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->notes}}</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Status Pengajuan
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                @if ( $leave->leave_status == 'Diizinkan')
+                                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
+                                    @elseif ( $leave->leave_status == 'Ditolak')
+                                        <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
+                                    @else 
+                                        <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diproses</span>
+                                        <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status }}</span>
+                                    @endif
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Surat / Bukti
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2  align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="grid grid-cols-2 gap-2">
+                                    <a href="{{ asset('storage/evident/' . $leave->evident_1) }}" 
+                                        target="_blank"
+                                        class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
+                                        Lihat bukti/surat 1
+                                    </a>
+                                    <a 
+                                        href="{{ route('download.evident', $leave->evident_1) }}"
+                                        class="bg-gradient-to-tl from-cyan-600 to-cyan-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
+                                        Unduh bukti/surat 1
+                                    </a>
+                                    @if ( $leave->evident_2 != null)
+                                        <a href="{{ asset('storage/evident/' . $leave->evident_2) }}" 
+                                            target="_blank"
+                                            class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
+                                            Lihat bukti/surat 2
+                                        </a>
+                                        <a 
+                                            href="{{ route('download.evident', $leave->evident_2) }}"
+                                            class="bg-gradient-to-tl from-cyan-600 to-cyan-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
+                                            Unduh bukti/surat 2
+                                        </a>
+                                    @endif
+                                </div>
+                            </td>
+                            
+                        </tr>
+
+                        
+                        </tbody>
+                        </table>
                     </div>
                     </div>
+                </div>
             </div>
-
             
+            <div class="w-full max-w-full px-3 lg:w-1/3 lg:flex-none">
+                <div class="border-black/12.5 shadow-soft-xl relative flex  min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                    <div class="relative h-full overflow-hidden bg-cover rounded-xl">
+                        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
+                        <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                        <h5 class="pt-2 mb-6 font-bold text-lg text-white">Alur Persetujuan</h5>
+
+                        <p class="text-white"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi asperiores nesciunt nemo sapiente eius aut vel repellendus sed dolorem. Aut, voluptas. Quas, ut neque? Suscipit a sunt dolore magni libero?</p>
+                        <ol class=" pl-2 list-decimal text-white">
+                            <li>
+                                Jenis cuti disesuaikan dengan cuti yang ingin anda ajukan. Jika ingin mengajukan cuti tahunan mohon perhatikan sisa kuota cuti tahunan anda.
+                            </li>
+                            <li>
+                                Jenis cuti disesuaikan dengan cuti yang ingin anda ajukan. Jika ingin mengajukan cuti tahunan mohon perhatikan sisa kuota cuti tahunan anda.
+                            </li>
+                            <li>
+                                nanti saya coba pelajari perkap dulu yah gess
+                            </li>
+                        </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- end cards -->
-
         <footer class="flex pt-4 ">
             <div class="w-full px-6 mx-auto ">
                 <div class="flex  items-center -mx-3">

@@ -202,6 +202,13 @@ class UserController extends Controller
         return view('police_pns.profile', compact('user'));
     }
 
+    public function profile_head()
+    {
+        $user = User::with(['position', 'department'])->find(Auth::id());
+
+        return view('department_head.profile', compact('user'));
+    }
+
     public function reset_psw_self(Request $request)
     {
         $request->validate([

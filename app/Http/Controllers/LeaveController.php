@@ -14,13 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class LeaveController extends Controller
 {
-    //
-
     public function index() : View
     {
-
         $user_id = Auth::user()->id;
-        $leaves = Leave::with('leave_type')->where('user_id', $user_id)->paginate(10);
+        $leaves = Leave::with(['leave_type', 'leave_status'])->where('user_id', $user_id)->paginate(10);
 
         return view('police_pns.leaves-req-history', compact('leaves',));
     }
@@ -29,7 +26,7 @@ class LeaveController extends Controller
     {
 
         $user_id = Auth::user()->id;
-        $leaves = Leave::with('leave_type')->where('user_id', $user_id)->paginate(10);
+        $leaves = Leave::with(['leave_type', 'leave_status'])->where('user_id', $user_id)->paginate(10);
 
         return view('department_head.leaves-req-history', compact('leaves',));
     }
@@ -117,7 +114,7 @@ class LeaveController extends Controller
             'evident_1' => $evident_1,
             'evident_2' => $evident_2,
             'notes' => $request->notes,
-            'leave_status' => 'Diproses',
+            'leave_statuses_id' => 1,
         ];
 
         Leave::create($data);
@@ -172,7 +169,7 @@ class LeaveController extends Controller
             'evident_1' => $evident_1,
             'evident_2' => $evident_2,
             'notes' => $request->notes,
-            'leave_status' => 'Diajukan Ke BAG SDM',
+            'leave_statuses_id' => 2,
         ];
 
         Leave::create($data);
@@ -186,7 +183,7 @@ class LeaveController extends Controller
         $departments = Department::all();
         $user = Auth::user();
 
-        $leave = Leave::with(['leave_type', 'user.position', 'user.department'])
+        $leave = Leave::with(['leave_type', 'user.position', 'user.department', 'leave_status'])
                 ->findOrFail($id);
 
         return view('police_pns.leave-req-detail', compact('leave', 'leave_types', 'positions', 'departments', 'user'));
@@ -203,6 +200,19 @@ class LeaveController extends Controller
                 ->findOrFail($id);
 
         return view('department_head.leave-req-detail', compact('leave', 'leave_types', 'positions', 'departments', 'user'));
+    }
+
+    public function show_req_self($id) : View
+    {
+        $leave_types = LeaveType::all();
+        $positions = Position::all();
+        $departments = Department::all();
+        $user = Auth::user();
+
+        $leave = Leave::with(['leave_type', 'user.position', 'user.department'])
+                ->findOrFail($id);
+
+        return view('department_head.leave-req-detail-self', compact('leave', 'leave_types', 'positions', 'departments', 'user'));
     }
 
     public function show_req($id) : View
@@ -234,9 +244,9 @@ class LeaveController extends Controller
         $user = Auth::user(); 
         $leaves = Leave::whereHas('user', function ($query) use ($user) {
             $query->where('department_id', $user->department_id);
-        })->get();
-
-
+        })->where('user_id', '!=', $user->id)
+        ->get();
+    
         return view('department_head.member-leaves-req-history', compact('leaves'));
     }
 
@@ -286,6 +296,67 @@ class LeaveController extends Controller
         $leaves = $query->get();
 
         return view('department_head.member-leaves-req-history', compact('leaves'));
+    }
+
+    public function approve_by_head($id){
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 2;
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti diberi Izin');
+    }
+
+    public function reject_by_head(Request $request ,$id){
+
+        $request->validate(
+            [
+                'leave_rejection_reason' => 'required',
+            ],
+            [
+                'leave_rejection_reason.required' => '*Alasan Penolakan harus diisi',
+        
+            ],
+        );
+
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 3;
+        $leave->leave_rejection_reason = $request->leave_rejection_reason;
+
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti ditolak');
+    }
+
+    public function approve_by_sdm($id){
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 4;
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti diberi Izin');
+    }
+
+    public function reject_by_sdm($id){
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 5;
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti ditolak');
+    }
+
+    public function approve_by_kawapolres($id){
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 6;
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti diberi Izin');
+    }
+
+    public function reject_by_kawapolres($id){
+        $leave = Leave::findOrFail($id);
+
+        $leave->leave_statuses_id = 7;
+        $leave->save();
+        return back()->with('success', 'Berhasil, cuti ditolak');
     }
 
 }

@@ -239,17 +239,19 @@
                                             <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
                                         </td>
                                         <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            @if ( $leave->leave_status == 'Diizinkan')
-                                                <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
-                                            @elseif ( $leave->leave_status == 'Ditolak')
-                                                <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
+                                            @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
+                                                <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Disetujui Kapolres/Wakapolres</span>
+                                            @elseif ( $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                                <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span>
+                                            @elseif ( $leave->leave_status->status == 'Disetujui SDM')
+                                                <span class="bg-gradient-to-tl from-yellow-600 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span>
                                             @else 
                                                 <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diproses</span>
                                             @endif
                                             
                                         </td>
                                         <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                            <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('head-leave-req-detail', $leave->id) }}">Lihat Detail</a>
+                                            <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('self-head-req-detail', $leave->id) }}">Lihat Detail</a>
                                         </td>
                                 @empty
                                     <tr>

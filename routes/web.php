@@ -16,7 +16,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'verify'])->name('auth.verify');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//Role: User(Admin SDM)
+//Role: Admin SDM
 Route::get('/admin_sdm/dashboard', [DashboardController::class, 'index_admin_sdm'])->name('admin_sdm.dashboard')->middleware('auth:admin_sdm');
 Route::get('/account', [UserController::class, 'index'])->name('account')->middleware('auth:admin_sdm');
 Route::get('/account/search', [UserController::class, 'search'])->name('account-search')->middleware('auth:admin_sdm');
@@ -33,9 +33,13 @@ Route::get('leave-request/history',[LeaveController::class, 'all_history'])->nam
 Route::get('leave-request/search', [LeaveController::class, 'search'])->name('all-leave-search')->middleware('auth:admin_sdm');
 Route::get('pending-leave-request/history',[LeaveController::class, 'pending_leave'])->name('pending-leave-req')->middleware('auth:admin_sdm');
 Route::get('leave-request/detail/{id}',[LeaveController::class, 'show_req'])->name('admin-leave-req-detail')->middleware('auth:admin_sdm');
+Route::post('approve/adm_sdm/{id}', [LeaveController::class, 'approve_by_sdm'])->name('approve-by-sdm')->middleware('auth:admin_sdm');
+Route::post('reject/adm_sdm/{id}', [LeaveController::class, 'reject_by_sdm'])->name('reject-by-sdm')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');
+Route::post('approve/kawapolres/{id}', [LeaveController::class, 'approve_by_kawapolres'])->name('approve-by-kawapolres')->middleware('auth:kawapolres');
+Route::post('reject/kawapolres/{id}', [LeaveController::class, 'reject_by_kawapolres'])->name('reject-by-kawapolres')->middleware('auth:kawapolres');
 
 //Role: Kepala satuan & kepala bagian
 Route::get('/department_head/dashboard', [DashboardController::class, 'index_department_head'])->name('department_head.dashboard')->middleware('auth:department_head');
@@ -44,8 +48,11 @@ Route::get('/leave_head/add', [LeaveController::class, 'create_req_head'])->name
 Route::post('leave-head/send', [LeaveController::class, 'store_head_req'])->name('store-head-leave-req')->middleware('auth:department_head');
 Route::get('leave-head/request', [LeaveController::class, 'history'])->name('head-leave-req')->middleware('auth:department_head');
 Route::get('head-leave/request/detail/{id}',[LeaveController::class, 'show_head_req'])->name('head-leave-req-detail')->middleware('auth:department_head');
+Route::get('head-leave-request/detail/{id}',[LeaveController::class, 'show_req_self'])->name('self-head-req-detail')->middleware('auth:department_head');
 Route::get('leave/member-leave-request/{department_id}',[LeaveController::class, 'show_member_req'])->name('member-leave-req')->middleware('auth:department_head');
 Route::get('/member-leave/search', [LeaveController::class, 'search_member_leave'])->name('member-leave-search')->middleware('auth:department_head');
+Route::post('approve/head/{id}', [LeaveController::class, 'approve_by_head'])->name('approve-by-head')->middleware('auth:department_head');
+Route::post('reject/head/{id}', [LeaveController::class, 'reject_by_head'])->name('reject-by-head')->middleware('auth:department_head');
 
 //Role:Polisi & PNS
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');

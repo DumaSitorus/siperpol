@@ -205,7 +205,7 @@
                     </div>
                     <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto">
-                        <table class=" items-center w-full -mb-4 pb-4 align-top border-gray-200 text-slate-500">
+                        <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
                         <tbody>
                         <tr>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
@@ -366,14 +366,18 @@
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
-                                    <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                    <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Disetujui Kapolres/Wakapolres</span><br>
                                     <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
-                                @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
-                                    <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                @elseif ( $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                    <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span><br>
                                     <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                @elseif ( $leave->leave_status->status == 'Disetujui SDM')
+                                    <span class="bg-gradient-to-tl from-yellow-600 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span><br>
+                                    <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{$leave->leave_status->information}}</span>
                                 @else 
-                                    <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
-                                    <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                    <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diajukan</span>
+                                    <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{$leave->leave_status->information}}</span>
+
                                 @endif
                             </td>
                         </tr>
@@ -419,75 +423,7 @@
                                     @endif
                                 </div>
                             </td>
-                            
                         </tr>
-                        
-                            
-                         @if ($leave->leave_statuses_id == 1)
-                            <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                        <div class="px-4 font-semibold">
-                                            Aksi
-                                        </div>
-                                    <div class="flex flex-col justify-center">
-                                </td>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 text-md leading-tight">:</p>
-                                </td>
-                                <td class="p-2 md:w-3/4  align-middle bg-transparent border-b border-gray-200 shadow-transparent">
-                                        <form action="{{ route('approve-by-head', $leave->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit"
-                                                class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
-                                                Izinkan
-                                            </button>
-                                        </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                    </div>
-                                </td>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 text-md leading-tight"></p>
-                                </td>
-                                <td class="p-2 md:w-3/4  align-middle bg-transparent border-b border-gray-200 shadow-transparent">
-                                    <form action="{{ route('reject-by-head', $leave->id) }}" method="POST">
-                                        @csrf
-                                        <textarea name="leave_rejection_reason" id="leave_rejection_reason" rows="3" placeholder="Jika anda tidak mengizinkan, berikan alasan anda pada kolom ini"
-                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none"></textarea>
-                                                @if($errors->has('leave_rejection_reason'))
-                                                    <p class="text-red-500 font-semibold"> {{ $errors->first('leave_rejection_reason') }} </p> <br>
-                                                @endif
-                                        <button type="submit"
-                                            class="mb-8 bg-gradient-to-tl from-rose-600 to-rose-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
-                                            Tidak Diizinkan
-                                        </button>
-                                    </form>
-                            </td>
-                            </tr>
-                            @else
-                            <tr class="my-8">
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
-                                        <div class="mb-8 px-4 font-semibold">
-                                            Aksi
-                                        </div>
-                                    <div class="flex flex-col justify-center">
-                                </td>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-8 text-md leading-tight">:</p>
-                                </td>
-                                <td>
-                                    <p class="mb-8 justify-center text-md leading-tight">Anda sudah mengonfirmasi pengajuan izin/cuti ini sebelumnya</p>
-                                </td>
-                            </tr>
-                            @endif  
-                    
-
-                        
                         </tbody>
                         </table>
                     </div>

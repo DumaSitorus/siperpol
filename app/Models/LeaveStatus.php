@@ -22,7 +22,7 @@ class LeaveStatus extends Model
 
     public function leave()
     {
-        return $this->hasMany(Leave::class, 'leave_id');
+        return $this->hasMany(Leave::class, 'leave_statuses_id');
     }
     
 }

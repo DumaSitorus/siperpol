@@ -22,7 +22,8 @@ class Leave extends Model
         'notes',
         'evident_1',
         'evident_2',
-        'leave_status'
+        'leave_statuses_id',
+        'leave_rejection_reason',
     ];
 
     public function user()
@@ -37,6 +38,6 @@ class Leave extends Model
 
     public function leave_status()
     {
-        return $this->belongsTo(LeaveType::class, 'leave_statuses_id');
+        return $this->belongsTo(LeaveStatus::class, 'leave_statuses_id');
     }
 }

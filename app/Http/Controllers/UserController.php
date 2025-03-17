@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\UsersImport;
 use App\Models\User;
+use App\Models\Leave;
 use App\Models\Position;
+use App\Models\LeaveType;
 use Illuminate\View\View;
 use App\Models\Department;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -21,10 +23,16 @@ class UserController extends Controller
      */
     public function index() : View
     {
-        //
         $users = User::with(['position', 'department'])->paginate(10);
 
         return view('admin_sdm.accounts-list', compact('users'));
+    }
+
+    public function index_by_kawapolres() : View
+    {
+        $users = User::with(['position', 'department'])->paginate(10);
+
+        return view('kawapolres.accounts-list', compact('users'));
     }
 
     public function search(Request $request)
@@ -53,6 +61,34 @@ class UserController extends Controller
         $users = $query->paginate(10);
 
         return view('admin_sdm.accounts-list', ['users' => $users]);
+    }
+
+    public function search_by_kawapolres(Request $request)
+    {
+        $query = User::with(['position', 'department']);
+
+        if ($request->has('search') && $request->filled('search')) {
+            $column = $request->input('column', 'name'); // Default ke 'name' jika tidak dipilih
+            $search = $request->input('search');
+
+            // Pastikan kolom yang dicari valid untuk mencegah SQL Injection
+            $allowedColumns = ['name', 'nrp', 'department_name'];
+            if (in_array($column, $allowedColumns)) {
+                if ($column === 'department_name') {
+                    // Jika pencarian berdasarkan satuan (department_name), gunakan relasi
+                    $query->whereHas('department', function ($q) use ($search) {
+                        $q->where('name', 'LIKE', '%' . $search . '%');
+                    });
+                } else {
+                    // Pencarian langsung pada tabel users
+                    $query->where($column, 'LIKE', '%' . $search . '%');
+                }
+            }
+        }
+
+        $users = $query->paginate(10);
+
+        return view('kawapolres.accounts-list', ['users' => $users]);
     }
 
     public function create(){
@@ -105,6 +141,25 @@ class UserController extends Controller
         $users = User::with(['position', 'department'])->findOrFail($id);
 
         return view('admin_sdm.account-detail', compact('users'));
+    }
+
+    public function show_account($id){
+
+        $leaves = Leave::with(['leave_type','leave_status'])->where('user_id', $id)->latest()->get();
+
+        $leave_total = Leave::where('user_id', $id)->count();
+        $leave_approved = Leave::where('user_id', $id)->where('leave_statuses_id', 6)->count();
+        $leave_rejected = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [3, 5, 7])->count();
+        $leave_processed = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [1, 2, 4])->count();
+                
+        $users = User::with(['position', 'department'])->findOrFail($id);
+
+        $isOnLeave = Leave::where('user_id', $id)
+            ->whereDate('start_leave', '<=', now())
+            ->whereDate('end_leave', '>=', now())  
+            ->exists();
+
+        return view('kawapolres.account-detail', compact('users', 'isOnLeave', 'leaves', 'leave_total', 'leave_approved', 'leave_rejected', 'leave_processed'));
     }
 
     public function reset_psw_tonrp(Request $request,$id){
@@ -207,6 +262,13 @@ class UserController extends Controller
         $user = User::with(['position', 'department'])->find(Auth::id());
 
         return view('department_head.profile', compact('user'));
+    }
+
+    public function profile_kawapolres()
+    {
+        $user = User::with(['position', 'department'])->find(Auth::id());
+
+        return view('kawapolres.profile', compact('user'));
     }
 
     public function reset_psw_self(Request $request)

@@ -102,7 +102,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ Route('account-all') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ Route('account-all') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -124,7 +124,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-kawapolres') }}">
+                    <a class="py-2.7  py-3 bg-white/40 rounded-md  text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-kawapolres') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -171,156 +171,203 @@
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">      
     
         <!-- Navbar -->
-    <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
-        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-            <nav>
-                <!-- breadcrumb -->
-                <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
-                <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+        <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
+            <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+                <nav>
+                    <!-- breadcrumb -->
+                    <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
+                    <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                     <li class="leading-normal text-sm">
-                        <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
+                        <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
                     </li>
-                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
-                </ol>
-            </nav>
-
-            <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-                <div class="flex items-center justify-end sm:ml-auto md:pr-4">
-                    <li class="mx-2 flex items-center">
-                        <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
-                        <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
-                        </a>
-                    </li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Pengaturan Akun</li>
+                    </ol>
                     
-                    <li class="mx-2 items-center hidden xl:inline">
-                        <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
+                </nav>
+
+                <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+                    <div class="flex items-center justify-end sm:ml-auto md:pr-4">
+                        <li class="mx-2 flex items-center">
+                            <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                            <i class="fa fa-user sm:mr-1"></i>
+                            <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
+                            </a>
+                        </li>
                         
-                        href="{{ route('logout') }}">Logout</a>
-                    </li>
+                        <li class="mx-2 items-center hidden xl:inline">
+                            <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
+                            href="{{ route('logout') }}">Logout</a>
+                        </li>
 
-                    <li class="mx-auto flex items-center xl:hidden">
-                        <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
-                        <div class="w-4.5 overflow-hidden">
-                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                        </div>
-                        </a>
-                    </li>
-                    
+                        <li class="mx-auto flex items-center xl:hidden">
+                            <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
+                            <div class="w-4.5 overflow-hidden">
+                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                                <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                            </div>
+                            </a>
+                        </li>
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- cards -->
+        <div class="w-full px-6 mx-auto">
+            <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%">
+                <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
+            </div>
+            <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
+                <div class="flex flex-wrap -mx-3">
+                <div class="flex-none w-auto max-w-full px-3">
+                    <div class="text-base ease-soft-in-out h-40 w-40 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+                        @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
+                            <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
+                                <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="h-40 w-40 shadow-soft-sm rounded-xl object-cover" />
+                            </a>
+                        @else
+                            <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
+                                <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="h-40 w-40 shadow-soft-sm rounded-xl" />
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="flex-none w-auto max-w-full px-3 my-auto">
+                    <div class="h-full">
+                    <h5 class="mb-1">{{ Auth::user()->name }}</h5>
+                    <p class="mb-0 font-semibold leading-normal text-md">{{ Auth::user()->position->name }}</p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
-    </nav>
+        <!-- end cards -->
 
-    <!-- cards -->
-    <div class="w-full px-6 py-6 mx-auto">
-
-        <div class="flex flex-wrap -mx-3">
-            <div class="flex-none w-full max-w-full px-3">
-                @if(session()->has('import_errors'))
-                    <div class="mb-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
-                        <div class="px-4 flex justify-center items-center bg-red-500">
-                            <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="-mx-3 py-2 px-4">
-                            <div class="mx-3">
-                                <span class="text-red-500 font-semibold">Perhatian! </span>
-                                <p class="font-semibold">Berikut beberapa data excel yang tidak masukkan ke daftar akun karena memiliki NRP yang duplikat dengan NRP akun yang telah terdaftar </span>
-                                <ul class="mt-2">
-                                    @foreach(session('import_errors') as $error)
-                                    <li>{{ $error }}</li>
+        {{-- section 2 --}}
+        <div class=" p-6 mx-auto">
+            @if($errors->any())
+                <div class="mx-4 flex bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="px-4 flex justify-center items-center bg-red-500">
+                        <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="-mx-3 py-2 px-4">
+                        <div class="mx-3">
+                            <span class="text-red-500 font-semibold">Upss.. </span>
+                            <ul>
+                                @foreach ($errors->all() as $item)
+                                <li> {{ $item }} </li>
                                 @endforeach
-                                </ul>
-                                <p class="my-2 text-red-500 font-semibold">*Mohon Periksa kembali file excel anda dan perbaiki!</span>
-                            </div>
+                            </ul>
                         </div>
                     </div>
-                @endif
-                <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="mb-2 text-xl text-center underline font-bold">Daftar Seluruh Akun</h6>
-                    </div>
-                    <div class="w-full px-4 py-4 mx-auto md:ml-auto lg:ml-auto flex md:justify-end">
-                    <form action="{{ route('account-search-all') }}" class="flex md:flex-row gap-3" method="GET">
-                        <div class="flex w-3/4">
-                            <input type="search" placeholder="Cari Pengguna"
-                                class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-slate-500 focus:outline-none focus:border-slate-500"
-                                name="search">
-                            <button type="submit" class="bg-slate-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Cari</button>
-                        </div>
-                        <select id="pricingType" name="column"
-                            class="w-1/4 h-10 border-2 border-slate-500 focus:outline-none focus:border-slate-500 text-slate-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
-                            <option value="name" selected="">Nama</option>
-                            <option value="nrp">NRP</option>
-                            <option value="department_name">Satuan</option>
-                        </select>
-                    </form>
-                    </div>
-                    <div class="flex-auto px-0 pt-0 pb-2">
-                    <div class="p-0 overflow-x-auto">
-                        <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
-                        <thead class="align-bottom">
-                            <tr>
-                            <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama</th>
-                            <th class="py-3 font-medium text-semibold text-centert uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">NRP</th>
-                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Bagian/Satuan</th>
-                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Posisi</th>
-                            <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @forelse ($users as $user)
-                            <tr>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <div class="flex px-2 py-1">
-                                    <div class="px-4">
-                                        {{--  penomoran 1 --}}
-                                        {{ $loop->iteration }}
+                </div>
+            @endif
+            <div class="flex flex-wrap justify-center">
 
-                                        </div>
-                                        <p class="mb-0 text-md leading-tight">{{ $user->name }}</p>
+                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Pengguna</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <table class="table-auto w-full text-md text-left text-inherit">
+                                <tbody class="">
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">NRP</td>
+                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->nrp  }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Posisi</td>
+                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->position->name }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Edit Foto Profil</td>
+                                        <td class="px-2 py-2 w-2/3">: </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table >
+                            <table class="w-full mb-4 text-md text-inherit">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="px-2 py-2 w-full bg-slate-50">
+                                            <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data" class="">
+                                                @csrf
+                                                <div class="-mx-3 flex flex-wrap items-center justify-between">
+                                                    <div class="w-full px-2">
+                                                        <!-- Input File -->
+                                                        <div class="w-full">
+                                                            <div class="mb-2">
+                                                                <input type="file" id="image" name="image" accept="image/*" 
+                                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-700 file:text-white file:font-medium hover:file:bg-gray-500" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-full text-center  mt-2 px-3">
+                                                        <!-- Tombol Upload -->
+                                                        <button type="submit" class="py-2 -mt-4 px-3 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                                                            Terapkan
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <p class="text-sm mt-2">*sebaiknya gunakan foto dengan ukuran 1:1</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Perbarui Kata Sandi</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <form  action="{{ route('reset-password-self') }}" method="POST">
+                                @csrf
+                                <div>
+                                    <label class="text-gray-700" for="old_password">Kata Sandi Lama</label>
+                                    <input class="form-input w-full mt-2 rounded-md border border-gray-300 focus:border-indigo-600 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2" 
+                                    type="password" 
+                                    name="old_password" id="old_password">
                                 </div>
-                            </td>
 
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md text-center leading-tight">{{ $user->nrp }}</p>
-                            </td>
+                                <div class="mt-4">
+                                    <label class="text-gray-700" for="new_password">Kata Sandi Baru</label>
+                                    <input class="form-input w-full mt-2 rounded-md border border-gray-300 focus:border-indigo-600 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2" 
+                                    type="password" 
+                                    name="new_password" id="old_password">
+                                </div>
 
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md text-center leading-tight">{{ $user->department->name }}</p>
-                            </td>
-                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <span class="text-sm font-semibold leading-tight text-slate-400">{{ $user->position->name }}</span>
-                            </td>
-                            <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <a class="bg-gradient-to-tl from-yellow-500 to-yellow-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" 
-                                href="{{ route('detail-account-user', $user->id) }}">Detail</a>
-                            </td>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
-                                        Data Pengguna Tidak Ditemukan
-                                    </td>
-                                </tr>
-                            </tr>
-                        @endforelse
-                        </tbody>
-                        </table>
-                        <div class="mt-8 m-4 flex items-center">
-                            {{ $users->links() }}
+                                <div class="flex justify-center my-4">
+                                    <button type="submit" class="px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Simpan Kata Sandi</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                </div>
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-2/12">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Informasi</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <p class="leading-normal text-md text-center">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data ke admin (BAG SDM)</p>
+                        </div>
                     </div>
                 </div>
-                </div>
-        </div>
-    </div>
 
+            </div>  
+        </div>    
+                    
     <footer class="flex pt-4 ">
         <div class="w-full px-6 mx-auto ">
             <div class="flex  items-center -mx-3">
@@ -337,41 +384,42 @@
             </div>
         </div>
     </footer>
-        
+            
 
-        
+        {{-- end section 2 --}}
+        <!-- end Navbar -->
+    </main>
 
-        <!-- end cards -->
-    <!-- end Navbar -->
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const sidebar = document.getElementById("sidebar");
-        const sidenavTrigger = document.querySelector("[sidenav-trigger]");
-        const sidenavClose = document.querySelector("[sidenav-close]");
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidenavTrigger = document.querySelector("[sidenav-trigger]");
+            const sidenavClose = document.querySelector("[sidenav-close]");
 
-        // Fungsi untuk toggle sidebar
-        function toggleSidebar() {
-            if (sidebar.classList.contains("-translate-x-full")) {
-                sidebar.classList.remove("-translate-x-full");
-                sidebar.classList.add("translate-x-0");
-            } else {
-                sidebar.classList.add("-translate-x-full");
-                sidebar.classList.remove("translate-x-0");
+            // Fungsi untuk toggle sidebar
+            function toggleSidebar() {
+                if (sidebar.classList.contains("-translate-x-full")) {
+                    sidebar.classList.remove("-translate-x-full");
+                    sidebar.classList.add("translate-x-0");
+                } else {
+                    sidebar.classList.add("-translate-x-full");
+                    sidebar.classList.remove("translate-x-0");
+                }
             }
-        }
 
-        // Tambahkan event click pada tombol sidenav-trigger
-        sidenavTrigger.addEventListener("click", toggleSidebar);
+            // Tambahkan event click pada tombol sidenav-trigger
+            sidenavTrigger.addEventListener("click", toggleSidebar);
 
-        // Jika ada tombol close, tambahkan event click untuk menutup sidebar
-        if (sidenavClose) {
-            sidenavClose.addEventListener("click", function () {
-                sidebar.classList.add("-translate-x-full");
-                sidebar.classList.remove("translate-x-0");
-            });
-        }
-    });
-</script>
+            // Jika ada tombol close, tambahkan event click untuk menutup sidebar
+            if (sidenavClose) {
+                sidenavClose.addEventListener("click", function () {
+                    sidebar.classList.add("-translate-x-full");
+                    sidebar.classList.remove("translate-x-0");
+                });
+            }
+        });
+    </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

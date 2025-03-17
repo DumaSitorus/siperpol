@@ -14,7 +14,7 @@
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
         <div class="h-19.5">
             <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap">
+            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap" href="javascript:;" target="_blank">
             {{-- <img src="../assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
             <span class="font-bold transition-all duration-200 ease-nav-brand">SIPERPOL</span>
             </a>
@@ -29,7 +29,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('admin_sdm.dashboard') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('kawapolres.dashboard') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -55,7 +55,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('pending-leave-req') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('pending-leave-req-all') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -77,7 +77,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history-all') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -102,7 +102,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('account') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ Route('account-all') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -119,12 +119,12 @@
                             </g>
                         </svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Lihat Akun</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Lihat Akun Pengguna</span>
                     </a>
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-account') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-kawapolres') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -140,7 +140,7 @@
                             </g>
                         </svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Akun</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Akun Saya</span>
                     </a>
                 </li>
                 <li class="mt-8 w-full xl:hidden">
@@ -240,7 +240,7 @@
                                 <p class="mb-0 text-md leading-tight">:</p>
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <a class="mb-0 text-md leading-tight underline" href="{{ route('detail-account', $leave->user->id) }}">{{ $leave->user->name }}</a>
+                                <a class="mb-0 text-md leading-tight underline" href="{{ route('detail-account-user', $leave->user->id) }}">{{ $leave->user->name }}</a>
                             </td>
                         </tr>
 
@@ -387,13 +387,13 @@
                                 @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
                                         <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
                                         <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
-                                    @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
-                                        <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
-                                        <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
-                                    @else 
-                                        <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
-                                        <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
-                                    @endif
+                                @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                    <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                    <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                @else 
+                                    <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                    <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                @endif
                             </td>
                         </tr>
 
@@ -459,7 +459,7 @@
                             
                         </tr>
 
-                        @if ($leave->leave_statuses_id == 2)
+                        @if ($leave->leave_statuses_id == 4)
                             <tr>
                                 <td class="p-2 align-middle bg-transparent  whitespace-nowrap shadow-transparent">
                                     <div class="flex px-2 py-1">
@@ -472,7 +472,7 @@
                                     <p class="mb-0 text-md leading-tight">:</p>
                                 </td>
                                 <td class="p-2 md:w-3/4  align-middle bg-transparent  shadow-transparent">
-                                        <form action="{{ route('approve-by-sdm', $leave->id) }}" method="POST">
+                                        <form action="{{ route('approve-by-kawapolres', $leave->id) }}" method="POST">
                                             @csrf
                                             <button type="submit"
                                                 class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
@@ -490,7 +490,7 @@
                                     <p class="mb-0 text-md leading-tight"></p>
                                 </td>
                                 <td class="p-2 md:w-3/4  align-middle bg-transparent border-b border-gray-200 shadow-transparent">
-                                    <form action="{{ route('reject-by-sdm', $leave->id) }}" method="POST">
+                                    <form action="{{ route('reject-by-kawapolres', $leave->id) }}" method="POST">
                                         @csrf
                                         <textarea name="leave_rejection_reason" id="leave_rejection_reason" rows="3" placeholder="Jika anda tidak mengizinkan, berikan alasan anda pada kolom ini"
                                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none"></textarea>
@@ -517,57 +517,10 @@
                                     <p class="mb-0 text-md leading-tight">:</p>
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                    <p class="mb-0 justify-center text-md leading-tight">Anda sudah mengonfirmasi pengajuan izin/cuti ini sebelumnya</p>
+                                    <p class="mb-0 justify-center text-md leading-tight">Aksi tidak tersedia</p>
                                 </td>
                             </tr>
                         @endif 
-
-                        <tr>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <div class="flex px-2 py-1">
-                                    <div class="px-4 font-semibold">
-                                        Atur Status lanjutan
-                                    </div>
-                                <div class="flex flex-col justify-center">
-                                </div>
-                                </div>
-                            </td>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md leading-tight">:</p>
-                            </td>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <div class="w-full mb-6 lg:mb-0 lg:flex-none mt-2 items-center" >
-                                    <div class="relative flex flex-col min-w-0 break-words shadow-soft-xl rounded-2xl bg-clip-border">
-                                        <div class="flex-auto p-4">
-                                                <div class="flex flex-wrap -mx-3">
-                                                    <div class="grid grid-cols-2 gap-2">
-                                                        <form action="{{ route('set_status', $leave->id) }}" method="POST">
-                                                            @csrf
-                                                            <select name="leave_status" id="leave_status"
-                                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-3 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                                                                <option value="" disabled selected>{{ $leave->leave_status->status }}</option>
-                                                                @forelse($leave_statuses as $leave_status) 
-                                                                    <option value="{{ $leave_status->id }}">{{ $leave_status->status }}</option>
-                                                                    @empty 
-                                                                        <option value="" disabled>Status tidak tersedia</option>
-                                                                @endforelse 
-                                                            </select>
-                                                            <button type="submit" class="p-2.5 rounded-md text-sm font-semibold leading-normal group text-slate-500 bg-amber-300" href="">
-                                                                Simpan Status
-                                                            </button>
-                                                            @if($errors->has('leave_status'))
-                                                                <p class="text-red-500 font-semibold"> {{ $errors->first('leave_status') }} </p> <br>
-                                                            @endif
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        
                         </tbody>
                         </table>
 

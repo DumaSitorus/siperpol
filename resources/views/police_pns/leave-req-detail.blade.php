@@ -371,6 +371,28 @@
                             </td>
                         </tr>
 
+                        @if ($leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Alasan Penolakan 
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->leave_rejection_reason}}</p>
+                            </td>
+                        </tr>
+                        @endif
+
+                        
+
                         <tr>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">

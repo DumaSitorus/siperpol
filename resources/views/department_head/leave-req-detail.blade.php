@@ -378,6 +378,26 @@
                             </td>
                         </tr>
 
+                        @if ($leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Alasan Penolakan 
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">{{ $leave->leave_rejection_reason}}</p>
+                            </td>
+                        </tr>
+                        @endif
+
                         
                         <tr>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
@@ -399,7 +419,6 @@
                                         class="bg-gradient-to-tl from-cyan-600 to-cyan-400 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
                                         Lihat bukti/surat 1
                                     </a>
-                                    {{-- <br class="md:hidden"> --}}
                                     <a 
                                         href="{{ route('download.evident', $leave->evident_1) }}"
                                         class="bg-gradient-to-tl from-cyan-400 to-cyan-600 px-2.5 py-2 text-xs rounded-sm text-center font-bold uppercase leading-none text-white">
@@ -423,19 +442,19 @@
                         </tr>
                         
                             
-                         @if ($leave->leave_statuses_id == 1)
+                        @if ($leave->leave_statuses_id == 1)
                             <tr>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <td class="p-2 align-middle bg-transparent  whitespace-nowrap shadow-transparent">
                                     <div class="flex px-2 py-1">
                                         <div class="px-4 font-semibold">
                                             Aksi
                                         </div>
                                     <div class="flex flex-col justify-center">
                                 </td>
-                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <td class="p-2 align-middle bg-transparent  whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 text-md leading-tight">:</p>
                                 </td>
-                                <td class="p-2 md:w-3/4  align-middle bg-transparent border-b border-gray-200 shadow-transparent">
+                                <td class="p-2 md:w-3/4  align-middle bg-transparent  shadow-transparent">
                                         <form action="{{ route('approve-by-head', $leave->id) }}" method="POST">
                                             @csrf
                                             <button type="submit"
@@ -484,10 +503,7 @@
                                     <p class="mb-8 justify-center text-md leading-tight">Anda sudah mengonfirmasi pengajuan izin/cuti ini sebelumnya</p>
                                 </td>
                             </tr>
-                            @endif  
-                    
-
-                        
+                        @endif 
                         </tbody>
                         </table>
                     </div>
@@ -569,43 +585,6 @@
     });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const startLeave = document.getElementById("start_leave");
-        const endLeave = document.getElementById("end_leave");
-        const leaveDays = document.getElementById("leave_days");
-        const errorMessage = document.getElementById("error_message");
-
-        const today = new Date().toISOString().split("T")[0]; 
-        startLeave.setAttribute("min", today);
-        endLeave.setAttribute("min", today);
-
-        function calculateLeaveDays() {
-            const startDate = new Date(startLeave.value);
-            const endDate = new Date(endLeave.value);
-            const todayDate = new Date(today);
-
-            if (!isNaN(startDate) && !isNaN(endDate))  {
-                if (startDate <= endDate) {
-                    errorMessage.classList.add("hidden"); 
-                    const timeDiff = endDate - startDate;
-                    const dayDiff = timeDiff / (1000 * 60 * 60 * 24) + 1; 
-                    leaveDays.textContent = dayDiff;
-
-                
-                } else {
-                    errorMessage.classList.remove("hidden"); 
-                    leaveDays.textContent = "0"; 
-                }
-            } else {
-                leaveDays.textContent = "0";
-            }
-        }
-
-        startLeave.addEventListener("change", calculateLeaveDays);
-        endLeave.addEventListener("change", calculateLeaveDays);
-    });
-</script>
 </body>
 
 </html>

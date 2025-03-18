@@ -12,13 +12,9 @@
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-200 ">
     <!-- sidenav  -->
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
-        <div class="h-19.5">
-            <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap" href="javascript:;" target="_blank">
-            {{-- <img src="../assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
-            <span class="font-bold transition-all duration-200 ease-nav-brand">SIPERPOL</span>
-            </a>
-        </div>
+        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('admin_sdm.dashboard') }}" >
+            <img class="w-50 mx-auto " src="{{ asset('images/logo2.png') }}" alt="logo" /> <br>
+        </a>
       
         <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       
@@ -224,7 +220,7 @@
             <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
                 <div class="flex flex-wrap -mx-3">
                 <div class="flex-none w-auto max-w-full px-3">
-                    <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+                    <div class="text-base ease-soft-in-out h-40 w-40 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
                         @if($users->profile_photo && file_exists(public_path('storage/images/'.$users->profile_photo)))
                             <a href="{{ asset('storage/images/' . $users->profile_photo) }}" target="_blank">
                                 <img src="{{ asset('storage/images/'.$users->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
@@ -239,14 +235,18 @@
                 <div class="flex-none w-auto max-w-full px-3 my-auto">
                     <div class="h-full">
                     <h5 class="mb-1">{{ $users->name }}</h5>
-                    <p class="mb-0 font-semibold leading-normal text-sm">{{ $users->position->name }} <br> {{ $users->department->name }} </p>
+                    <p class="mb-0 font-semibold leading-normal text-md">{{ $users->position->name }}</p>
                     </div>
                 </div>
                 <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
                     <div class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3">
                         <div class="-mx-3 py-2 px-4">
                             <div class="mx-3">
-                                <span class="text-slate-500 font-semibold">Sedang Cuti</span>
+                                @if($isOnLeave)
+                                    <span class="text-red-500 font-semibold">Sedang Cuti</span>
+                                @else
+                                    <span class="text-slate-500 font-semibold">Tidak Sedang Cuti</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -262,43 +262,130 @@
 
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                            <div class="flex flex-wrap -mx-3 ">
-                                <div class="flex items-center w-full max-w-full px-3  md:w-8/12 ">
-                                    <h6 class="mb-0 text-xl underline">Informasi Profile</h6>
-                                </div>
-                                <hr class="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            </div>
-                        </div>
-                        <div class="flex-auto p-4">
-                            <ul class="flex flex-col pl-0 mb-0 rounded-lg">
-                                <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">NRP:</strong> &nbsp; {{ $users->nrp }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Satuan:</strong> &nbsp; {{ $users->department->name }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Kuota cuti tahunan:</strong> &nbsp; {{ $users->leave_quota }}</li>
-                            </ul>
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Pengguna</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <table class="table-auto w-full text-md text-left text-inherit">
+                                <tbody class="">
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">NRP</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->nrp }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Satuan</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->department->name }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Sisa jatah cuti tahunan</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->leave_quota }} Hari</td>
+                                    </tr>
 
-                            <p class="leading-normal text-sm">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data kepihak BAG SDM.</p>
-                        </div>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Total Pengajuan Cuti</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $leave_total }} </td>
+                                    </tr>
+                                </tbody>
+                            </table >
 
+                            <br>
+                            <table class="table-auto w-full mb-4 text-md text-inherit">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-lime-200"> Diizinkan: <br> {{ $leave_approved }}  </td>
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-slate-200">Diproses: <br> {{ $leave_processed }} </td>
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-rose-200">Ditolak: <br> {{ $leave_rejected }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                <div class="w-full max-w-full px-3 mt-4 xl:w-6/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
-                            <h6 class="mb-0">Reset Password Pengguna</h6>
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Cuti Pengguna</h6>
                             <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            <form action="/account/reset-password/{{ $users->id }}" method="POST" class="mb-9">
+                            <div class="flex-auto px-0 pt-0 pb-2">
+                                <div class="p-0 overflow-x-auto">
+                                  <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                                    <thead class="align-bottom">
+                                      <tr>
+                                        <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
+                                        <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Izin/Cuti</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($leaves as $leave)
+                                            <tr>
+                                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <div class="flex px-2 py-1">
+                                                        <div class="px-4">
+                                                        {{--  penomoran --}} {{ $loop->iteration }}
+                                                        </div>
+                                                        <div class="flex flex-col justify-center">
+                                                            <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
+                                                            <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
+                                                </td>
+                                                <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
+                                                </td>
+                                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
+                                                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
+                                                    @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                                        <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
+                                                    @else 
+                                                        <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span>
+                                                    @endif
+                                                    
+                                                </td>
+                                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('admin-leave-req-detail', $leave->id) }}">Lihat Detail</a>
+                                                </td>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
+                                                    Belum pernah mengajukan cuti/izin
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-2/12">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Reset Password Pengguna</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <form action="{{ route('reset-password', $users->id)  }}" method="POST" class="mb-9">
                                 @csrf
                                 @method("PUT")
                                 <label for="admin_password">Masukkan Kata Sandi Anda:</label>
                                 <input type="password" id="admin_password" name="admin_password" required 
                                     class="w-full px-4 py-2 border rounded-md bg-gray-100 mt-2">
                 
-                                <button type="submit" 
-                                    class="mt-3  px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-700">
-                                    Reset Password ke NRP
-                                </button>
+                                <div class="flex w-full justify-center items-center">
+                                    <button type="submit" 
+                                        class="flex justify-center items-center mt-3  px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-700">
+                                        Reset Password ke NRP
+                                    </button>
+                                </div>
+                                
                             </form>
                         </div>
                     </div>

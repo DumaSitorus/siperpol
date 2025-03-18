@@ -12,13 +12,9 @@
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-200 ">
     <!-- sidenav  -->
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
-        <div class="h-19.5">
-            <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap">
-            {{-- <img src="../assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
-            <span class="font-bold transition-all duration-200 ease-nav-brand">SIPERPOL</span>
-            </a>
-        </div>
+        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('department_head.dashboard') }}" >
+            <img class="w-50 mx-auto " src="{{ asset('images/logo2.png') }}" alt="logo" /> <br>
+        </a>
       
         <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       
@@ -203,34 +199,38 @@
             </div>
             <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
                 <div class="flex flex-wrap -mx-3">
-                <div class="flex-none w-auto max-w-full px-3">
-                    <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                        @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
-                            <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
-                                <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
-                            </a>
-                        @else
-                            <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
-                                <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
-                            </a>
-                        @endif
+                    <div class="flex-none w-auto max-w-full px-3">
+                        <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+                            @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
+                                <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
+                                    <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                                </a>
+                            @else
+                                <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
+                                    <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                                </a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <div class="flex-none w-auto max-w-full px-3 my-auto">
-                    <div class="h-full">
-                    <h5 class="mb-1">{{ Auth::user()->name }}</h5>
-                    <p class="mb-0 font-semibold leading-normal text-sm">{{ Auth::user()->position->name }}</p>
+                    <div class="flex-none w-auto max-w-full px-3 my-auto">
+                        <div class="h-full">
+                        <h5 class="mb-1">{{ Auth::user()->name }}</h5>
+                        <p class="mb-0 font-semibold leading-normal text-sm">{{ Auth::user()->position->name }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
-                    <div class="inline-flex max-w-sm w-full bg-lime-400 shadow-md rounded-lg overflow-hidden ml-3">
-                        <div class="-mx-3 py-2 px-4">
-                            <div class="mx-3">
-                                <span class="text-gray-700 font-semibold">Tidak Sedang Cuti</span>
+                    <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
+                        <div class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3">
+                            <div class="-mx-3 py-2 px-4">
+                                <div class="mx-3">
+                                    @if($isOnLeave)
+                                        <span class="text-red-500 font-semibold">Sedang Cuti</span>
+                                    @else
+                                        <span class="text-slate-500 font-semibold">Tidak Sedang Cuti</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -260,58 +260,66 @@
             @endif
             <div class="flex flex-wrap justify-center">
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
-                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">                     
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                            <div class="flex flex-wrap -mx-3">
-                                <div class="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
-                                    <h6 class="mb-0">Informasi Profile</h6>
-                                </div>
-                                <hr class="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            </div>
-                        </div>
-                        <div class="flex-auto p-4">
-                            <ul class="flex flex-col pl-0 mb-0 rounded-lg">
-                                <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">NRP:</strong> &nbsp; {{ Auth::user()->nrp }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Satuan:</strong> &nbsp; {{ Auth::user()->department->name }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Kuota cuti tahunan:</strong> &nbsp; {{ Auth::user()->leave_quota }}</li>
-                                <li class="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit"> <strong class="text-slate-700">Perbarui Photo Profil</strong>
-                                    <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data" class="my-4">
-                                        @csrf
-                                        <div class="mb-5 pt-3">
-                                            <div class="-mx-3 flex flex-wrap items-center justify-between">
-                                                <div class="w-full px-3 sm:w-1/2">
-                                                    <!-- Input File -->
-                                                    <div class="w-full items-center justify-center">
-                                                        <div class="mb-5">
-                                                            <input type="file" id="image" name="image" accept="image/*" 
-                                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-700 file:text-white file:font-medium hover:file:bg-gray-500" />
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Pengguna</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <table class="table-auto w-full text-md text-left text-inherit">
+                                <tbody class="">
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">NRP</td>
+                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->nrp  }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Posisi</td>
+                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->position->name }}</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Edit Foto Profil</td>
+                                        <td class="px-2 py-2 w-2/3">: </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table >
+                            <table class="w-full mb-4 text-md text-inherit">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="px-2 py-2 w-full bg-slate-50">
+                                            <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data" class="">
+                                                @csrf
+                                                <div class="-mx-3 flex flex-wrap items-center justify-between">
+                                                    <div class="w-full px-2">
+                                                        <!-- Input File -->
+                                                        <div class="w-full">
+                                                            <div class="mb-2">
+                                                                <input type="file" id="image" name="image" accept="image/*" 
+                                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-700 file:text-white file:font-medium hover:file:bg-gray-500" />
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="w-full text-center  mt-2 px-3">
+                                                        <!-- Tombol Upload -->
+                                                        <button type="submit" class="py-2 -mt-4 px-3 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                                                            Terapkan
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div class="w-full px-3 sm:w-1/2 ">
-                                                    <!-- Tombol Upload -->
-                                                    <button type="submit" class="py-4 -mt-4 px-6 bg-gray-800 text-white font-semibold rounded-full shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                                                        Terapkan
-                                                    </button>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-
-                            
-
-                            <p class="leading-normal text-sm">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data kepihak BAG SDM.</p>
+                                            </form>
+                                            <p class="text-sm mt-2">*sebaiknya gunakan foto dengan ukuran 1:1</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
+                
+
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
-                            <h6 class="mb-0">Perbarui Kata Sandi</h6>
+                            <h6 class="mb-0 text-center text-lg font-semibold">Perbarui Kata Sandi</h6>
                             <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
                             <form  action="{{ route('reset-password-self') }}" method="POST">
                                 @csrf
@@ -336,8 +344,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-2/12">
+                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Informasi</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <p class="leading-normal text-md text-center">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data ke admin (BAG SDM)</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>  
-        </div> 
+        </div>    
     
     </main>
 

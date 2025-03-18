@@ -12,7 +12,7 @@
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-200 ">
     <!-- sidenav  -->
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
-        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('kawapolres.dashboard') }}" >
+        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('department_head.dashboard') }}" >
             <img class="w-50 mx-auto " src="{{ asset('images/logo2.png') }}" alt="logo" /> <br>
         </a>
       
@@ -25,7 +25,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('kawapolres.dashboard') }}">
+                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('department_head.dashboard') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -41,7 +41,28 @@
                             </g>
                         </svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Ringkasan Cuti</span>
+                    </a>
+                </li>
+    
+                <li class="mt-4 w-full">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-head') }}">
+                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>credit-card</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                    <path class="fill-slate-800 opacity-60" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
+                                    <path class="fill-slate-800" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                </g>
+                                </g>
+                            </g>
+                            </g>
+                        </svg>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pengaturan Akun</span>
                     </a>
                 </li>
     
@@ -51,7 +72,7 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('pending-leave-req-all') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-head-leave-req') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -68,12 +89,12 @@
                             </g>
                         </svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Belum Dikonfirmasi</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan Cuti</span>
                     </a>
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history-all') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('head-leave-req') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -94,11 +115,11 @@
                 </li>
 
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Manajemen Akun</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Monitor Anggota</h6>
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ Route('account-all') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('member-leave-req',  ['department_id' => Auth::user()->department_id]) }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -115,50 +136,10 @@
                             </g>
                         </svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Lihat Akun Pengguna</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Permohonan Cuti Anggota</span>
                     </a>
                 </li>
-    
-                <li class="mt-4 w-full">
-                    <a class="py-2.7  py-3 bg-white/40 rounded-md  text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-kawapolres') }}">
-                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                        <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>document</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(154.000000, 300.000000)">
-                                    <path class="fill-slate-800 opacity-60" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z"></path>
-                                    <path class="fill-slate-800" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z"></path>
-                                </g>
-                                </g>
-                            </g>
-                            </g>
-                        </svg>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Akun Saya</span>
-                    </a>
-                </li>
-                <li class="mt-8 w-full xl:hidden">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('logout') }}">
-                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                        <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>logout</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(154.000000, 300.000000)">
-                                    <path class="fill-slate-800 opacity-60" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z"></path>
-                                    <path class="fill-slate-800" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z"></path>
-                                </g>
-                                </g>
-                            </g>
-                            </g>
-                        </svg>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">logout</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </aside>
@@ -173,14 +154,15 @@
                     <!-- breadcrumb -->
                     <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
-                    <li class="leading-normal text-sm">
-                        <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
-                    </li>
-                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Pengaturan Akun</li>
-                    </ol>
-                    
-                </nav>
+                        <li class="leading-normal text-sm">
+                            <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
+                        </li>
+                        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
+                        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Detail Akun</li>
 
+                    </ol>
+                </nav>
+    
                 <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                     <div class="flex items-center justify-end sm:ml-auto md:pr-4">
                         <li class="mx-2 flex items-center">
@@ -192,9 +174,10 @@
                         
                         <li class="mx-2 items-center hidden xl:inline">
                             <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
+                            
                             href="{{ route('logout') }}">Logout</a>
                         </li>
-
+    
                         <li class="mx-auto flex items-center xl:hidden">
                             <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
                             <div class="w-4.5 overflow-hidden">
@@ -219,21 +202,34 @@
                 <div class="flex flex-wrap -mx-3">
                 <div class="flex-none w-auto max-w-full px-3">
                     <div class="text-base ease-soft-in-out h-40 w-40 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                        @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
-                            <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
-                                <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="h-40 w-40 shadow-soft-sm rounded-xl object-cover" />
+                        @if($users->profile_photo && file_exists(public_path('storage/images/'.$users->profile_photo)))
+                            <a href="{{ asset('storage/images/' . $users->profile_photo) }}" target="_blank">
+                                <img src="{{ asset('storage/images/'.$users->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
                             </a>
                         @else
-                            <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
-                                <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="h-40 w-40 shadow-soft-sm rounded-xl" />
-                            </a>
+                        <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
+                            <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                        </a>
                         @endif
                     </div>
                 </div>
                 <div class="flex-none w-auto max-w-full px-3 my-auto">
                     <div class="h-full">
-                    <h5 class="mb-1">{{ Auth::user()->name }}</h5>
-                    <p class="mb-0 font-semibold leading-normal text-md">{{ Auth::user()->position->name }}</p>
+                    <h5 class="mb-1">{{ $users->name }}</h5>
+                    <p class="mb-0 font-semibold leading-normal text-md">{{ $users->position->name }}</p>
+                    </div>
+                </div>
+                <div class="w-auto px-3 mx-auto mt-4 sm:my-auto mr-8 ">
+                    <div class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3">
+                        <div class="-mx-3 py-2 px-4">
+                            <div class="mx-3">
+                                @if($isOnLeave)
+                                    <span class="text-red-500 font-semibold">Sedang Cuti</span>
+                                @else
+                                    <span class="text-slate-500 font-semibold">Tidak Sedang Cuti</span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -242,29 +238,8 @@
         <!-- end cards -->
 
         {{-- section 2 --}}
-        <div class=" p-6 mx-auto">
-            @if($errors->any())
-                <div class="mx-4 flex bg-white shadow-md rounded-lg overflow-hidden">
-                    <div class="px-4 flex justify-center items-center bg-red-500">
-                        <svg class="h-6 w-6 fill-current text-white" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="-mx-3 py-2 px-4">
-                        <div class="mx-3">
-                            <span class="text-red-500 font-semibold">Upss.. </span>
-                            <ul>
-                                @foreach ($errors->all() as $item)
-                                <li> {{ $item }} </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endif
+        <div class="w-full p-6 mx-auto">
             <div class="flex flex-wrap justify-center">
-
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
@@ -273,46 +248,32 @@
                             <table class="table-auto w-full text-md text-left text-inherit">
                                 <tbody class="">
                                     <tr class="">
-                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">NRP</td>
-                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->nrp  }}</td>
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">NRP</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->nrp }}</td>
                                     </tr>
                                     <tr class="">
-                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Posisi</td>
-                                        <td class="px-2 py-2 w-2/3">: {{ Auth::user()->position->name }}</td>
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Satuan</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->department->name }}</td>
                                     </tr>
                                     <tr class="">
-                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/3">Edit Foto Profil</td>
-                                        <td class="px-2 py-2 w-2/3">: </td>
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Sisa jatah cuti tahunan</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $users->leave_quota }} Hari</td>
                                     </tr>
-                                    
+
+                                    <tr class="">
+                                        <td class="px-2 py-2 font-semibold text-slate-700 w-1/2">Total Pengajuan Cuti</td>
+                                        <td class="px-2 py-2 w-1/2">: {{ $leave_total }} </td>
+                                    </tr>
                                 </tbody>
                             </table >
-                            <table class="w-full mb-4 text-md text-inherit">
+
+                            <br>
+                            <table class="table-auto w-full mb-4 text-md text-inherit">
                                 <tbody>
                                     <tr class="">
-                                        <td class="px-2 py-2 w-full bg-slate-50">
-                                            <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data" class="">
-                                                @csrf
-                                                <div class="-mx-3 flex flex-wrap items-center justify-between">
-                                                    <div class="w-full px-2">
-                                                        <!-- Input File -->
-                                                        <div class="w-full">
-                                                            <div class="mb-2">
-                                                                <input type="file" id="image" name="image" accept="image/*" 
-                                                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-700 file:text-white file:font-medium hover:file:bg-gray-500" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="w-full text-center  mt-2 px-3">
-                                                        <!-- Tombol Upload -->
-                                                        <button type="submit" class="py-2 -mt-4 px-3 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                                                            Terapkan
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <p class="text-sm mt-2">*sebaiknya gunakan foto dengan ukuran 1:1</p>
-                                        </td>
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-lime-200"> Diizinkan: <br> {{ $leave_approved }}  </td>
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-slate-200">Diproses: <br> {{ $leave_processed }} </td>
+                                        <td class="m-2 px-2 py-2 w-1/3 text-center bg-rose-200">Ditolak: <br> {{ $leave_rejected }} </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -320,49 +281,72 @@
                     </div>
                 </div>
 
-                
-
-                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                <div class="w-full max-w-full px-3 mt-4 xl:w-8/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
-                            <h6 class="mb-0 text-center text-lg font-semibold">Perbarui Kata Sandi</h6>
+                            <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Cuti Pengguna</h6>
                             <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            <form  action="{{ route('reset-password-self') }}" method="POST">
-                                @csrf
-                                <div>
-                                    <label class="text-gray-700" for="old_password">Kata Sandi Lama</label>
-                                    <input class="form-input w-full mt-2 rounded-md border border-gray-300 focus:border-indigo-600 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2" 
-                                    type="password" 
-                                    name="old_password" id="old_password">
+                            <div class="flex-auto px-0 pt-0 pb-2">
+                                <div class="p-0 overflow-x-auto">
+                                  <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                                    <thead class="align-bottom">
+                                      <tr>
+                                        <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Diajukan Pada</th>
+                                        <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Izin/Cuti</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Periode Cuti</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Status Pengajuan</th>
+                                        <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Aksi</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($leaves as $leave)
+                                            <tr>
+                                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <div class="flex px-2 py-1">
+                                                        <div class="px-4">
+                                                        {{--  penomoran --}} {{ $loop->iteration }}
+                                                        </div>
+                                                        <div class="flex flex-col justify-center">
+                                                            <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
+                                                            <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
+                                                </td>
+                                                <td class="p-2 text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
+                                                </td>
+                                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
+                                                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Diizinkan</span>
+                                                    @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                                        <span class="bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Ditolak</span>
+                                                    @else 
+                                                        <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span>
+                                                    @endif
+                                                    
+                                                </td>
+                                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                                    <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('kawapolres-leave-req', $leave->id) }}">Lihat Detail</a>
+                                                </td>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
+                                                    Belum pernah mengajukan cuti/izin
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                  </table>
                                 </div>
-
-                                <div class="mt-4">
-                                    <label class="text-gray-700" for="new_password">Kata Sandi Baru</label>
-                                    <input class="form-input w-full mt-2 rounded-md border border-gray-300 focus:border-indigo-600 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2" 
-                                    type="password" 
-                                    name="new_password" id="old_password">
-                                </div>
-
-                                <div class="flex justify-center my-4">
-                                    <button type="submit" class="px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Simpan Kata Sandi</button>
-                                </div>
-                            </form>
+                              </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="w-full max-w-full px-3 mt-4 xl:w-2/12">
-                    <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
-                            <h6 class="mb-0 text-center text-lg font-semibold">Informasi</h6>
-                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            <p class="leading-normal text-md text-center">Apabila terdapat kesalahan data pribadi dapat mengajukan perbaikan data ke admin (BAG SDM)</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>  
-        </div>    
+    </div>    
                     
     <footer class="flex pt-4 ">
         <div class="w-full px-6 mx-auto ">

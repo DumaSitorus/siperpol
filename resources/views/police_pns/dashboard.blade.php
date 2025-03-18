@@ -12,13 +12,9 @@
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-200 ">
     <!-- sidenav  -->
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
-        <div class="h-19.5">
-            <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap" href="javascript:;" target="_blank">
-            {{-- <img src="../assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
-            <span class="font-bold transition-all duration-200 ease-nav-brand">SIPERPOL</span>
-            </a>
-        </div>
+        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('police_pns.dashboard') }}" >
+            <img class="w-50 mx-auto " src="{{ asset('images/logo2.png') }}" alt="logo" /> <br>
+        </a>
       
         <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       

@@ -22,8 +22,8 @@ Route::get('/account', [UserController::class, 'index'])->name('account')->middl
 Route::get('/account/search', [UserController::class, 'search'])->name('account-search')->middleware('auth:admin_sdm');
 Route::get('/account/add', [UserController::class, 'create'])->name('create-account')->middleware('auth:admin_sdm');
 Route::post('/account/store', [UserController::class, 'store'])->name('store-account')->middleware('auth:admin_sdm');
-Route::get('/account/detail/{id}', [UserController::class, 'show'])->name('detail-account')->middleware('auth:admin_sdm');
-Route::post('/account/reset-password/{id}', [UserController::class, 'reset_psw_tonrp'])->name('reset-password')->middleware('auth:admin_sdm');
+Route::get('admin/account/detail/{id}', [UserController::class, 'show'])->name('detail-account')->middleware('auth:admin_sdm');
+Route::put('/account/reset-password/{id}', [UserController::class, 'reset_psw_tonrp'])->name('reset-password')->middleware('auth:admin_sdm');
 Route::delete('/account/{id}', [UserController::class, 'destroy'])->name('account.destroy')->middleware('auth:admin_sdm');
 Route::get('/account/edit/{id}', [UserController::class, 'edit'])->name('edit-account')->middleware('auth:admin_sdm');
 Route::put('account/update/{id}', [UserController::class, 'update'])->name('update-account')->middleware('auth:admin_sdm');
@@ -31,6 +31,7 @@ Route::post('/account/import', [UserController::class, 'import'])->name('import-
 Route::get('/download-template', [UserController::class, 'download_tamplate'])->name('download-template')->middleware('auth:admin_sdm');
 Route::get('leave-request/history',[LeaveController::class, 'all_history'])->name('leave-req-history')->middleware('auth:admin_sdm');
 Route::get('leave-request/search', [LeaveController::class, 'search'])->name('all-leave-search')->middleware('auth:admin_sdm');
+Route::get('pending-leave-request/search', [LeaveController::class, 'search_pending'])->name('pending-leave-search-admin')->middleware('auth:admin_sdm');
 Route::get('pending-leave-request/history',[LeaveController::class, 'pending_leave'])->name('pending-leave-req')->middleware('auth:admin_sdm');
 Route::get('leave-request/detail/{id}',[LeaveController::class, 'show_req'])->name('admin-leave-req-detail')->middleware('auth:admin_sdm');
 Route::post('approve/adm_sdm/{id}', [LeaveController::class, 'approve_by_sdm'])->name('approve-by-sdm')->middleware('auth:admin_sdm');
@@ -66,6 +67,7 @@ Route::get('leave/member-leave-request/{department_id}',[LeaveController::class,
 Route::get('/member-leave/search', [LeaveController::class, 'search_member_leave'])->name('member-leave-search')->middleware('auth:department_head');
 Route::post('approve/head/{id}', [LeaveController::class, 'approve_by_head'])->name('approve-by-head')->middleware('auth:department_head');
 Route::post('reject/head/{id}', [LeaveController::class, 'reject_by_head'])->name('reject-by-head')->middleware('auth:department_head');
+Route::get('head/account/detail/{id}', [UserController::class, 'show_account_in_head'])->name('detail-account-user-head')->middleware('auth:department_head');
 
 //Role:Polisi & PNS
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');

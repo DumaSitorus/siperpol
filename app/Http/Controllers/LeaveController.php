@@ -35,9 +35,12 @@ class LeaveController extends Controller
 
     public function all_history() : View 
     {
-        $leaves = Leave::with(['leave_type', 'user'])->paginate(10);
 
-        return view('admin_sdm.history-leaves-req', compact('leaves',));
+        $leaves_approved = Leave::with(['leave_type', 'user'])->where('leave_statuses_id', 6)->paginate(10);
+        $leaves_rejected = Leave::with(['leave_type', 'user'])->whereIn('leave_statuses_id', [3,5,7])->paginate(10);
+        $leaves_processed = Leave::with(['leave_type', 'user'])->whereIn('leave_statuses_id', [1,2,4])->paginate(10);
+
+        return view('admin_sdm.history-leaves-req', compact('leaves_approved', 'leaves_rejected', 'leaves_processed'));
     }
 
     public function history_all() : View 
@@ -304,9 +307,33 @@ class LeaveController extends Controller
             }
         }
 
+        $leaves_approved = (clone $query)->where('leave_statuses_id', 6)->paginate(10);
+        $leaves_processed = (clone $query)->whereIn('leave_statuses_id', [1,2,4])->paginate(10);
+        $leaves_rejected = (clone $query)->whereIn('leave_statuses_id', [3,5,5])->paginate(10);
+
+        return view('admin_sdm.history-leaves-req', compact('leaves_approved', 'leaves_processed', 'leaves_rejected'));
+    }
+
+    public function search_pending(Request $request)
+    {
+        $query = Leave::with(['user', 'leave_type'])
+            ->whereIn('leave_statuses_id', [1,2]);
+
+        if ($request->has('search') && $request->filled('search')) {
+            $column = $request->input('column', 'name');
+            $search = $request->input('search');
+    
+            $allowedColumns = ['name', 'nrp'];
+            if (in_array($column, $allowedColumns)) {
+                $query->whereHas('user', function ($q) use ($search, $column) {
+                    $q->where($column, 'LIKE', '%' . $search . '%');
+                });
+            }
+        }
+
         $leaves = $query->paginate(10);
 
-        return view('admin_sdm.history-leaves-req', ['leaves' => $leaves]);
+        return view('admin_sdm.pending-leaves-req', ['leaves' => $leaves]);
     }
 
     public function search_by_wakapolres(Request $request)

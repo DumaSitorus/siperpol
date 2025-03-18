@@ -39,7 +39,7 @@ class AuthController extends Controller
                 }
             }
         }
-        return redirect(route('login'))->with('msg', 'Email atau password salah');
+        return redirect(route('login'))->with('msg', 'NRP atau kata sandi salah');
     }
 
     public function logout(): RedirectResponse

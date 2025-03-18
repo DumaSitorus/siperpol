@@ -138,9 +138,22 @@ class UserController extends Controller
     }
 
     public function show($id){
+        $leaves = Leave::with(['leave_type','leave_status'])->where('user_id', $id)->latest()->get();
+
+        $leave_total = Leave::where('user_id', $id)->count();
+        $leave_approved = Leave::where('user_id', $id)->where('leave_statuses_id', 6)->count();
+        $leave_rejected = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [3, 5, 7])->count();
+        $leave_processed = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [1, 2, 4])->count();
+                
         $users = User::with(['position', 'department'])->findOrFail($id);
 
-        return view('admin_sdm.account-detail', compact('users'));
+        $isOnLeave = Leave::where('user_id', $id)
+            ->where('leave_statuses_id', 6 )
+            ->whereDate('start_leave', '<=', now())
+            ->whereDate('end_leave', '>=', now())  
+            ->exists();
+
+        return view('admin_sdm.account-detail', compact('users', 'isOnLeave', 'leaves', 'leave_total', 'leave_approved', 'leave_rejected', 'leave_processed'));
     }
 
     public function show_account($id){
@@ -155,11 +168,32 @@ class UserController extends Controller
         $users = User::with(['position', 'department'])->findOrFail($id);
 
         $isOnLeave = Leave::where('user_id', $id)
+            ->where('leave_statuses_id', 6 )
             ->whereDate('start_leave', '<=', now())
             ->whereDate('end_leave', '>=', now())  
             ->exists();
 
         return view('kawapolres.account-detail', compact('users', 'isOnLeave', 'leaves', 'leave_total', 'leave_approved', 'leave_rejected', 'leave_processed'));
+    }
+
+    public function show_account_in_head($id){
+
+        $leaves = Leave::with(['leave_type','leave_status'])->where('user_id', $id)->latest()->get();
+
+        $leave_total = Leave::where('user_id', $id)->count();
+        $leave_approved = Leave::where('user_id', $id)->where('leave_statuses_id', 6)->count();
+        $leave_rejected = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [3, 5, 7])->count();
+        $leave_processed = Leave::where('user_id', $id)->whereIn('leave_statuses_id', [1, 2, 4])->count();
+                
+        $users = User::with(['position', 'department'])->findOrFail($id);
+
+        $isOnLeave = Leave::where('user_id', $id)
+            ->where('leave_statuses_id', 6 )
+            ->whereDate('start_leave', '<=', now())
+            ->whereDate('end_leave', '>=', now())  
+            ->exists();
+
+        return view('department_head.account-detail', compact('users', 'isOnLeave', 'leaves', 'leave_total', 'leave_approved', 'leave_rejected', 'leave_processed'));
     }
 
     public function reset_psw_tonrp(Request $request,$id){
@@ -223,7 +257,7 @@ class UserController extends Controller
             'nrp' => $request->nrp,
             'department_id' => (int) $request->department,
             'position_id' => (int) $request->position,
-            'leave_quota' => 12,
+            'leave_quota' => $request->leave_quota,
         ];
 
         User::where('id', $id)->update($data);
@@ -253,15 +287,27 @@ class UserController extends Controller
     public function profile()
     {
         $user = User::with(['position', 'department'])->find(Auth::id());
+        
+        $isOnLeave = Leave::where('user_id', $user->id)
+            ->where('leave_statuses_id', 6 )
+            ->whereDate('start_leave', '<=', now())
+            ->whereDate('end_leave', '>=', now())  
+            ->exists();
 
-        return view('police_pns.profile', compact('user'));
+        return view('police_pns.profile', compact('user', 'isOnLeave'));
     }
 
     public function profile_head()
     {
         $user = User::with(['position', 'department'])->find(Auth::id());
 
-        return view('department_head.profile', compact('user'));
+        $isOnLeave = Leave::where('user_id', $user->id)
+            ->where('leave_statuses_id', 6 )
+            ->whereDate('start_leave', '<=', now())
+            ->whereDate('end_leave', '>=', now())  
+            ->exists();
+
+        return view('department_head.profile', compact('user', 'isOnLeave'));
     }
 
     public function profile_kawapolres()

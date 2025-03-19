@@ -232,6 +232,11 @@
 
             <!-- cards -->
         <div class="w-full px-6 py-6 mx-auto">
+
+            <h5 class="mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
+                Ringkasan Cuti
+            </h5>  
+
             <!-- row 1 -->
             <div class="flex flex-wrap -mx-3">
                 <!-- card1 -->
@@ -425,7 +430,11 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap mt-6 -mx-3">
+            <h5 class="mt-8 mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
+                Panduan Cuti
+            </h5>  
+
+            <div class="flex flex-wrap mt-4 -mx-3">
                 <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-1/3 lg:flex-none">
                     <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col text-white break-words rounded-2xl border-0 border-solid bg-gradient-to-tl from-gray-900 to-slate-800 bg-clip-border">
                         <div class="flex-auto p-4">
@@ -450,7 +459,7 @@
                                                 </g>
                                             </svg>
                                             </div>
-                                            <a class="mb-0 text-md font-semibold leading-tight underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Lihat Buka Panduan</a>
+                                            <a class="mb-0 text-md font-semibold leading-tight underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Lihat Buku Panduan</a>
                                         </div>
                                             
                                         <div class="flex mb-2">
@@ -512,12 +521,12 @@
                         </div>
                     </div>
                 </div>
-
-                
- 
             </div>
 
-            <div class="flex flex-wrap mt-6 -mx-3">
+            <h5 class="mt-8 mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
+                Pengaturan lain
+            </h5>  
+            <div class="flex flex-wrap -mx-3">
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">

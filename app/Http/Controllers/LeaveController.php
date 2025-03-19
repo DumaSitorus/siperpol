@@ -417,8 +417,6 @@ class LeaveController extends Controller
         $leaves_approved = $leaves->where('leave_statuses_id', 6);
 
         return view('department_head.member-leaves-req-history', compact('leaves_pending', 'leaves_approved', 'leaves_rejected', 'leaves_processed'));
-
-        // return view('department_head.member-leaves-req-history', compact('leaves'));
     }
 
     public function approve_by_head($id){

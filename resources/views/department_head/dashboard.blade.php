@@ -212,7 +212,7 @@
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block text-center rounded-full bg-gradient-to-tl from-purple-700 to-pink-500">
                                 <h5 class="mb-0 px-2 text-white text-sm font-semibold">
-                                    12 Hari
+                                    {{ Auth::user()->leave_quota }} Hari
                                 </h5>                            
                             </div>
                         </div>
@@ -228,13 +228,13 @@
                         <div class="flex flex-row -mx-3 items-center justify-center">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                            <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total cuti yang diajukan</p>
+                            <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total cuti diajukan</p>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block text-center rounded-full bg-gradient-to-tl from-sky-500 to-sky-300">
                                 <h5 class="px-2 text-white font-semibold text-sm">
-                                    2
+                                    {{ $total_leave }}
                                 </h5>                            
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block text-center rounded-full bg-gradient-to-tl from-lime-700 to-lime-500">
                                 <h5 class="px-2 text-sm font-semibold text-white">
-                                    3
+                                    {{ $approved_leave }}
                                 </h5>                            
                             </div>
                         </div>
@@ -278,7 +278,7 @@
                         <div class="px-3 text-right basis-1/3">
                             <div class="inline-block text-center rounded-full bg-gradient-to-tl from-rose-700 to-pink-500">
                                 <h5 class="px-2 text-sm font-semibold text-white">
-                                    1
+                                    {{ $rejected_leave }}
                                 </h5>                            
                             </div>
                         </div>
@@ -288,47 +288,9 @@
                 </div>
             </div>
 
-            <h5 class="mt-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50 lg:w-1/4">
+            <h5 class="mt-8 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50 lg:w-1/4">
                 Status Pengajuan Cuti Anda
             </h5>  
-            <!-- cards row 2 -->
-            <div class="flex flex-wrap mt-4 -mx-3 mb-6">
-                <div class="w-full px-3 mb-6 lg:mb-0 lg:w-1/2 lg:flex-none">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="flex-auto p-4">
-                            <div class="flex flex-wrap -mx-3">
-                                <div class="max-w-full px-3 lg:flex-none">
-                                    <div class="flex flex-col h-full">
-                                        <p class="">Status Cuti Diajukan</p>
-                                        <h5 class="my-4 font-semibold bg-slate-500 px-2 rounded-full text-white">Sedang Diajukan ke Bagian SDM</h5>
-                                        <a class="text-sm font-semibold leading-normal text-slate-500 underline"  href="">
-                                            Lihat Selengkapnya
-                                        </a>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div class="w-full max-w-full px-3 lg:w-1/2 lg:flex-none">
-                <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('./assets/img/ivancik.jpg')">
-                    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
-                    <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                    <h5 class="font-bold text-white">Anda sedang dalam masa cuti</h5>
-                    <p class="text-white">Sisa waktu cuti:</p>
-                    <p class="text-md font-semibold leading-normal text-white group" href="javascript:;">
-                        3 Hari
-                    </p>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <h5 class="mt-8 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50 lg:w-1/3">
-                Status Pengajuan Cuti Anggota Anda
-            </h5>
 
             <div class="flex flex-wrap mt-4 -mx-3">
                 <!-- card1 -->
@@ -344,7 +306,7 @@
                                 <div class="px-3 text-right basis-1/3">
                                     <div class="inline-block text-center rounded-full bg-gradient-to-tl from-rose-700 to-pink-500">
                                         <h5 class="px-2 text-white">
-                                            12
+                                            {{ $member_pending_leaves }}
                                         </h5>
                                     </div>
                                 </div>
@@ -367,7 +329,7 @@
                                 <div class="px-3 text-right basis-1/3">
                                     <div class="inline-block text-center rounded-full bg-gradient-to-tl from-sky-700 to-lime-500">
                                         <h5 class="px-2 text-white">
-                                            12
+                                            {{ $member_total_leaves }}
                                         </h5>
                                     </div>
                                 </div>
@@ -378,11 +340,128 @@
 
             </div>
 
-            <div class="flex flex-wrap mt-6 -mx-3">
+            <!-- cards row 3 -->
+            <h5 class="mt-8 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50 lg:w-1/3">
+                Status Pengajuan Cuti Anggota Anda
+            </h5>
+            <div class="flex flex-wrap mt-4 -mx-3">
+                <div class="w-full px-3 mb-6 lg:mb-0 lg:w-3/4 lg:flex-none">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="flex-auto p-4">
+                        <div class="flex flex-wrap -mx-3 items-center justify-center">
+                            <div class="max-w-full px-3 lg:flex-none">
+                                <div class="flex flex-col h-full">
+                                    <p class="mb-4 text-xl font-semibold text-center">Status Cuti Terbaru</p>
+                                    <div class="flex-auto px-0 pt-0 pb-2">
+                                        <div class="p-0 overflow-x-auto ">
+                                          <table class=" items-center w-full align-top border-gray-200 text-slate-500">
+                                            <tbody>
+                                                @forelse ($ongoing_leave as $leave)
+                                                    <tr>
+                                                        <td 
+                                                        class="py-3 px-2 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">
+                                                        Diajukan Pada
+                                                            
+                                                        </td>
+                                                        <td class="p-2 align-middle bg-transparent border border-gray-200 whitespace-nowrap shadow-transparent">
+                                                            <div class="flex px-2 py-1">
+                                                                <div class="flex flex-col justify-center">
+                                                                    <h6 class="mb-0 text-sm leading-normal"> {{ ($leave->created_at)->locale('id')->translatedFormat('d F Y') }} </h6> <span class="hidden">12 Desember 2025</span>
+                                                                    <p class="mb-0 text-xs leading-tight text-slate-400"> {{ ($leave->created_at)->format('H.i') }} WIB </p><span class="hidden">23.58 WIB</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td 
+                                                        class="py-3 px-2 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">
+                                                        Jenis Cuti
+                                                        </td>
+                                                        <td class="p-2 align-middle bg-transparent border border-gray-200 whitespace-nowrap shadow-transparent">
+                                                            <p class="mb-0 text-md leading-tight">{{ $leave->leave_type->type }}</p>
+                                                        </td>
+                                                    </tr>
+    
+                                                    <tr>
+                                                        <td 
+                                                        class="py-3 px-2 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">
+                                                        Periode Cuti
+                                                        </td>
+                                                        <td class="p-2 text-left align-middle bg-transparent border border-gray-200 whitespace-nowrap shadow-transparent">
+                                                            <span class="text-sm font-semibold leading-tight text-slate-400">{{ \Carbon\Carbon::parse($leave->start_leave)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($leave->end_leave)->locale('id')->translatedFormat('d F Y') }} </span>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td 
+                                                        class="py-3 px-2 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">
+                                                        Status
+                                                        </td>
+                                                        <td class="p-2 text-sm leading-normal text-left align-middle bg-transparent border border-gray-200 whitespace-nowrap shadow-transparent">
+                                                            @if ( $leave->leave_status->status == 'Disetujui Kapolres/Wakapolres')
+                                                                <span class="m-2 bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                                                <span class="m-2 bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                                            @elseif ( $leave->leave_status->status == 'Ditolak Kasat/kabag' || $leave->leave_status->status == 'Ditolak SDM' || $leave->leave_status->status == 'Ditolak Kapolres/Wakapolres')
+                                                                <span class="m-2 bg-gradient-to-tl from-rose-600 to-rose-300 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                                                <span class="m-2 bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                                            @else 
+                                                                <span class="m-2 bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->status }}</span> <br>
+                                                                <span class="m-2 bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-sm rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $leave->leave_status->information }}</span>
+                                                            @endif   
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="5" class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent text-red-500 font-semibold text-center">
+                                                            Anda belum pernah mengajukan cuti/izin
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                @endforelse
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+    
+                                    <a class="mt-auto mb-0 text-md underline font-semibold leading-normal group text-slate-500" href="{{ route('head-leave-req') }}">
+                                        Lihat Selengkapnya
+                                        <i class="fas fa-arrow-right ease-bounce text-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="w-full max-w-full px-3 lg:w-1/4 lg:flex-none">
+                    <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                    <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('./assets/img/ivancik.jpg')">
+                        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
+                        <div class="relative z-10 flex flex-col flex-auto h-full p-4 text-center">
+                        @if ($is_on_leave)
+                            <h5 class="pt-2 mb-2 font-bold text-white">Anda sedang dalam masa cuti</h5>
+                            <p class="text-white">Sisa waktu cuti: <span> {{ $remain_leave }} Hari</span></p>
+                        @else
+                            <h5 class="pt-2 mb-6 font-bold text-white">Anda tidak sedang dalam masa cuti</h5>
+                            
+                        @endif
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-6 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
+                Panduan Cuti
+            </h5>  
+
+            <div class="flex flex-wrap mt-4 -mx-3">
                 <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-3/12 lg:flex-none">
                     <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col text-white break-words rounded-2xl border-0 border-solid bg-gradient-to-tl from-gray-900 to-slate-800 bg-clip-border">
                     <div class="flex-auto p-4">
-                        <h6 class="mt-6 mb-0 ml-2">Pelajari Panduan Pengajuan Cuti</h6>
+                        <h6 class="mt-4 mb-0 ml-2 font-semibold">Panduan Cuti</h6>
                         <div class="w-full px-6 mx-auto max-w-screen-2xl rounded-xl">
                             <div class="flex flex-wrap mt-0 -mx-3">
                                 <div class="flex-none  max-w-full py-4 pl-0 pr-3 mt-0">
@@ -402,7 +481,7 @@
                                             </g>
                                         </svg>
                                         </div>
-                                        <p class="mt-1 mb-0 text-xs font-semibold leading-tight">Buka Panduan</p>
+                                        <a class="mb-0 text-md leading-tight underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Lihat Panduan</a>
                                     </div>                      
                                 </div>
                             </div>

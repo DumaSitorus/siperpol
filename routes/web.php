@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeaveController;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,9 @@ Route::get('leave-request/detail/{id}',[LeaveController::class, 'show_req'])->na
 Route::post('approve/adm_sdm/{id}', [LeaveController::class, 'approve_by_sdm'])->name('approve-by-sdm')->middleware('auth:admin_sdm');
 Route::post('reject/adm_sdm/{id}', [LeaveController::class, 'reject_by_sdm'])->name('reject-by-sdm')->middleware('auth:admin_sdm');
 Route::post('set_status/{id}', [LeaveController::class, 'set_status'])->name('set_status')->middleware('auth:admin_sdm');
-
+Route::post('/manualbook/add', [DashboardController::class, 'update_manual_book'])->name('update-manual-book')->middleware('auth:admin_sdm');
+Route::get('/department', [DepartmentController::class, 'index'])->name('department')->middleware('auth:admin_sdm');
+Route::post('/add-department', [DepartmentController::class, 'store'])->name('add-department')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');
@@ -73,7 +76,7 @@ Route::get('head/account/detail/{id}', [UserController::class, 'show_account_in_
 Route::get('/police_pns/dashboard', [DashboardController::class, 'index_police_pns'])->name('police_pns.dashboard')->middleware('auth:police_pns');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth:police_pns');
 Route::post('/profile/add-profile-photo', [UserController::class, 'update_pp'])->name('update-profile-photo')->middleware('auth:police_pns,department_head,kawapolres');
-Route::post('/profile/reset-password', [UserController::class, 'reset_psw_self'])->name('reset-password-self')->middleware('auth:police_pns,department_head,kawapolres');
+Route::post('/profile/reset-password', [UserController::class, 'reset_psw_self'])->name('reset-password-self')->middleware('auth:police_pns,department_head,kawapolres,admin_sdm');
 Route::get('/leave/add', [LeaveController::class, 'create'])->name('create-leave-req')->middleware('auth:police_pns');
 Route::post('leave/send', [LeaveController::class, 'store'])->name('store-leave-req')->middleware('auth:police_pns');
 Route::get('leave/request',[LeaveController::class, 'index'])->name('leave-req')->middleware('auth:police_pns');

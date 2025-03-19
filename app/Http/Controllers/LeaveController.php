@@ -52,6 +52,21 @@ class LeaveController extends Controller
         return view('kawapolres.history-leaves-req', compact('leaves_approved', 'leaves_rejected', 'leaves_processed'));
     }
 
+    public function show_member_req($department_id) {
+        $user = Auth::user(); 
+        $leaves = Leave::whereHas('user', function ($query) use ($user) {
+            $query->where('department_id', $user->department_id);
+        })->where('user_id', '!=', $user->id)
+        ->get();
+
+        $leaves_pending = $leaves->where('leave_statuses_id', 1);
+        $leaves_processed = $leaves->whereIn('leave_statuses_id', [2,4]);
+        $leaves_rejected = $leaves->whereIn('leave_statuses_id', [3,5,7]);
+        $leaves_approved = $leaves->where('leave_statuses_id', 6);
+
+        return view('department_head.member-leaves-req-history', compact('leaves_pending', 'leaves_approved', 'leaves_rejected', 'leaves_processed'));
+    }
+
     public function pending_leave() : View 
     {
         $pending_statuses = [1, 2];
@@ -281,15 +296,7 @@ class LeaveController extends Controller
         return Storage::disk('public')->download($filePath);
     }
 
-    public function show_member_req($department_id) {
-        $user = Auth::user(); 
-        $leaves = Leave::whereHas('user', function ($query) use ($user) {
-            $query->where('department_id', $user->department_id);
-        })->where('user_id', '!=', $user->id)
-        ->get();
     
-        return view('department_head.member-leaves-req-history', compact('leaves'));
-    }
 
     public function search(Request $request)
     {
@@ -404,8 +411,14 @@ class LeaveController extends Controller
         }
 
         $leaves = $query->get();
+        $leaves_pending = $leaves->where('leave_statuses_id', 1);
+        $leaves_processed = $leaves->whereIn('leave_statuses_id', [2,4]);
+        $leaves_rejected = $leaves->whereIn('leave_statuses_id', [3,5,7]);
+        $leaves_approved = $leaves->where('leave_statuses_id', 6);
 
-        return view('department_head.member-leaves-req-history', compact('leaves'));
+        return view('department_head.member-leaves-req-history', compact('leaves_pending', 'leaves_approved', 'leaves_rejected', 'leaves_processed'));
+
+        // return view('department_head.member-leaves-req-history', compact('leaves'));
     }
 
     public function approve_by_head($id){

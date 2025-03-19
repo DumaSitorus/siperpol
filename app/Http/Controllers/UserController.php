@@ -153,6 +153,8 @@ class UserController extends Controller
             ->whereDate('end_leave', '>=', now())  
             ->exists();
 
+        
+
         return view('admin_sdm.account-detail', compact('users', 'isOnLeave', 'leaves', 'leave_total', 'leave_approved', 'leave_rejected', 'leave_processed'));
     }
 
@@ -355,14 +357,13 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        // Hapus foto lama jika ada
         if (!empty($user->profile_photo)) {
             Storage::disk('public')->delete("images/{$user->profile_photo}");
         }
 
-        // Simpan foto baru di storage dan dapatkan nama file
+        
         $filename = $request->file('image')->store('images', 'public');
-        $filename = basename($filename); // Ambil hanya nama file
+        $filename = basename($filename); 
 
         // Update database dengan hanya menyimpan nama file
         $user->update([

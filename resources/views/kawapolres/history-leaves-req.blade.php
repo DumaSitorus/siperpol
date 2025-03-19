@@ -310,6 +310,9 @@
                                 @endforelse
                             </tbody>
                             </table>
+                            <div class="mt-8 m-4 flex items-center">
+                                {{ $leaves_approved->links() }}
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -387,6 +390,9 @@
                                 @endforelse
                             </tbody>
                             </table>
+                            <div class="mt-8 m-4 flex items-center">
+                                {{ $leaves_processed->links() }}
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -464,6 +470,9 @@
                                 @endforelse
                             </tbody>
                             </table>
+                            <div class="mt-8 m-4 flex items-center">
+                                {{ $leaves_rejected->links() }}
+                            </div>
                         </div>
                         </div>
                     </div>

@@ -188,49 +188,49 @@
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">      
     
         <!-- Navbar -->
-    <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
-        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-            <nav>
-                <!-- breadcrumb -->
-                <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
-                <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
-                <li class="leading-normal text-sm">
-                    <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
-                </li>
-                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Analisis Cuti</li>
-                </ol>
-            </nav>
+        <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 bg-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
+            <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+                <nav>
+                    <!-- breadcrumb -->
+                    <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+                    <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+                    <li class="leading-normal text-sm">
+                        <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
+                    </li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Analisis Cuti</li>
+                    </ol>
+                </nav>
 
-            <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-                <div class="flex items-center justify-end sm:ml-auto md:pr-4">
-                    <li class="mx-2 flex items-center">
-                        <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
-                        <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
-                        </a>
-                    </li>
-                    
-                    <li class="mx-2 items-center hidden xl:inline">
-                        <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
-                        href="{{ route('logout') }}">Logout</a>
-                    </li>
+                <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+                    <div class="flex items-center justify-end sm:ml-auto md:pr-4">
+                        <li class="mx-2 flex items-center">
+                            <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                            <i class="fa fa-user sm:mr-1"></i>
+                            <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
+                            </a>
+                        </li>
+                        
+                        <li class="mx-2 items-center hidden xl:inline">
+                            <a class="inline-block px-4 py-2 mb-0 mr-2 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" 
+                            href="{{ route('logout') }}">Logout</a>
+                        </li>
 
-                    <li class="mx-auto flex items-center xl:hidden">
-                        <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
-                        <div class="w-4.5 overflow-hidden">
-                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                        </div>
-                        </a>
-                    </li>
-                    
+                        <li class="mx-auto flex items-center xl:hidden">
+                            <a class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
+                            <div class="w-4.5 overflow-hidden">
+                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                                <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                                <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+                            </div>
+                            </a>
+                        </li>
+                        
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-            <!-- cards -->
+        <!-- cards -->
         <div class="w-full px-6 py-6 mx-auto">
 
             <h5 class="mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
@@ -411,7 +411,6 @@
                     </div>
                     </div>
                 </div>
-            
             </div>
 
             {{-- card row 3 --}}
@@ -583,6 +582,27 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                    <div class="flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl ">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Perbarui Kata Sandi</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <div class="my-4 flex items-center justify-center">
+                                <a href="{{ route('export-user') }}"
+                                type="button" 
+                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Pengguna</a> 
+                            </div>
+
+                            <div class="my-4 flex items-center justify-center">
+                                <a href="{{ route('export-leave') }}"
+                                type="button" 
+                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Cuti/Izin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
  
             </div>
 

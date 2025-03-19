@@ -284,7 +284,7 @@
                         <div class="relative z-10 flex flex-col flex-auto h-full p-4">
                         <h5 class="pt-2 mb-4 font-bold text-white">DAFTAR SATUAN/BAGIAN TERDAFTAR</h5>
                         <div class="p-0 overflow-x-auto">
-                            <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
+                            <table class=" items-center w-full  align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                     <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">ID</th>
@@ -311,9 +311,6 @@
                             @endforelse
                             </tbody>
                             </table>
-                            <div class="mt-8 m-4 flex items-center">
-                                {{-- {{ $users->links() }} --}}
-                            </div>
                         </div>
                         </div>
                     </div>

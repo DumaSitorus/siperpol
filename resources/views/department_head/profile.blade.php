@@ -200,15 +200,15 @@
             <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
                 <div class="flex flex-wrap -mx-3">
                     <div class="flex-none w-auto max-w-full px-3">
-                        <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+                        <div class="text-base ease-soft-in-out h-40 w-40 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
                             @if(Auth::user()->profile_photo && file_exists(public_path('storage/images/'.Auth::user()->profile_photo)))
-                                <a href="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" target="_blank">
+                                <a href="{{ asset('storage/images/' . Auth::user()->profile_photo) }}" target="_blank">
                                     <img src="{{ asset('storage/images/'.Auth::user()->profile_photo) }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
                                 </a>
                             @else
-                                <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
-                                    <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
-                                </a>
+                            <a href="{{ asset('images/empty_profile_photo.png') }}" target="_blank">
+                                <img src="{{ asset('images/empty_profile_photo.png') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                            </a>
                             @endif
                         </div>
                     </div>

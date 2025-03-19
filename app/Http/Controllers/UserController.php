@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Models\User;
 use App\Models\Leave;
 use App\Models\Position;
@@ -9,12 +10,14 @@ use App\Models\LeaveType;
 use Illuminate\View\View;
 use App\Models\Department;
 use App\Imports\UsersImport;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 
 class UserController extends Controller
 {
@@ -371,5 +374,9 @@ class UserController extends Controller
         ]);
 
         return back()->with('success', 'Foto profil berhasil diperbarui!');
+    }
+
+    public function export(){
+        return Excel::download(new UsersExport, 'user-siperpol-'.Carbon::now()->timestamp.'.xlsx');
     }
 }

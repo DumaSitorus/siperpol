@@ -321,6 +321,9 @@
                                 @endforelse
                             </tbody>
                             </table>
+                            <div class="mt-8 m-4 flex items-center">
+                                {{ $leaves->links() }}
+                            </div>
                         </div>
                         </div>
                     </div>

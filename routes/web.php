@@ -41,6 +41,8 @@ Route::post('set_status/{id}', [LeaveController::class, 'set_status'])->name('se
 Route::post('/manualbook/add', [DashboardController::class, 'update_manual_book'])->name('update-manual-book')->middleware('auth:admin_sdm');
 Route::get('/department', [DepartmentController::class, 'index'])->name('department')->middleware('auth:admin_sdm');
 Route::post('/add-department', [DepartmentController::class, 'store'])->name('add-department')->middleware('auth:admin_sdm');
+Route::get('users/export/', [UserController::class, 'export'])->name('export-user')->middleware('auth:admin_sdm');
+Route::get('leaves/export/', [LeaveController::class, 'export'])->name('export-leave')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');

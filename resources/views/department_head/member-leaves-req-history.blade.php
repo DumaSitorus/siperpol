@@ -356,7 +356,7 @@
                                                 
                                             </td>
                                             <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('kawapolres-leave-req', $leave_processed->id) }}">Lihat Detail</a>
+                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('head-leave-req-detail', $leave_processed->id) }}">Lihat Detail</a>
                                             </td>
                                     @empty
                                         <tr>
@@ -433,7 +433,7 @@
                                                 
                                             </td>
                                             <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('kawapolres-leave-req', $leave_approved->id) }}">Lihat Detail</a>
+                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('head-leave-req-detail', $leave_approved->id) }}">Lihat Detail</a>
                                             </td>
                                     @empty
                                         <tr>
@@ -510,7 +510,7 @@
                                                 
                                             </td>
                                             <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('kawapolres-leave-req', $leave_rejected->id) }}">Lihat Detail</a>
+                                                <a class="bg-gradient-to-tl from-sky-600 to-sky-400 p-2.5 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white" href="{{ route('head-leave-req-detail', $leave_rejected->id) }}">Lihat Detail</a>
                                             </td>
                                     @empty
                                         <tr>

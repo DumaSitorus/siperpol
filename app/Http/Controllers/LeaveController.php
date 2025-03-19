@@ -10,8 +10,10 @@ use App\Models\LeaveType;
 use Illuminate\View\View;
 use App\Models\Department;
 use App\Models\LeaveStatus;
+use App\Exports\LeaveExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 
 class LeaveController extends Controller
@@ -538,6 +540,10 @@ class LeaveController extends Controller
 
         $leave->save();
         return back()->with('success', 'Berhasil, status cuti telah diubah');
+    }
+
+    public function export(){
+        return Excel::download(new LeaveExport, 'cuti-siperpol-'.Carbon::now()->timestamp.'.xlsx');
     }
 
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger('position_id'); 
             $table->unsignedBigInteger('department_id'); 
+            $table->string('pangkat')->nullable(); 
             $table->string('profile_photo')->nullable();
             $table->unsignedBigInteger('leave_quota')->nullable();
             $table->rememberToken();

@@ -26,6 +26,7 @@ class UsersExport implements WithMapping, WithHeadings, FromQuery
         return [
             $users->name,
             $users->nrp,
+            $users->pangkat,
             $users->position ? $users->position->name : 'N/A',
             $users->department ? $users->department->name : 'N/A',
         ];
@@ -36,8 +37,9 @@ class UsersExport implements WithMapping, WithHeadings, FromQuery
         return [
             'Nama',
             'NRP',
-            'Posisi',
-            'Satuan/Bagian'
+            'pangkat',
+            'Jabatan',
+            'Fungsi'
         ];
     }
 }

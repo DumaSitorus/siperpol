@@ -6,7 +6,6 @@ use App\Exports\UsersExport;
 use App\Models\User;
 use App\Models\Leave;
 use App\Models\Position;
-use App\Models\LeaveType;
 use Illuminate\View\View;
 use App\Models\Department;
 use App\Imports\UsersImport;
@@ -17,7 +16,6 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Excel as ExcelExcel;
 
 class UserController extends Controller
 {
@@ -43,19 +41,16 @@ class UserController extends Controller
         $query = User::with(['position', 'department']);
 
         if ($request->has('search') && $request->filled('search')) {
-            $column = $request->input('column', 'name'); // Default ke 'name' jika tidak dipilih
+            $column = $request->input('column', 'name'); 
             $search = $request->input('search');
 
-            // Pastikan kolom yang dicari valid untuk mencegah SQL Injection
             $allowedColumns = ['name', 'nrp', 'department_name'];
             if (in_array($column, $allowedColumns)) {
                 if ($column === 'department_name') {
-                    // Jika pencarian berdasarkan satuan (department_name), gunakan relasi
                     $query->whereHas('department', function ($q) use ($search) {
                         $q->where('name', 'LIKE', '%' . $search . '%');
                     });
                 } else {
-                    // Pencarian langsung pada tabel users
                     $query->where($column, 'LIKE', '%' . $search . '%');
                 }
             }
@@ -71,19 +66,16 @@ class UserController extends Controller
         $query = User::with(['position', 'department']);
 
         if ($request->has('search') && $request->filled('search')) {
-            $column = $request->input('column', 'name'); // Default ke 'name' jika tidak dipilih
+            $column = $request->input('column', 'name'); 
             $search = $request->input('search');
 
-            // Pastikan kolom yang dicari valid untuk mencegah SQL Injection
             $allowedColumns = ['name', 'nrp', 'department_name'];
             if (in_array($column, $allowedColumns)) {
                 if ($column === 'department_name') {
-                    // Jika pencarian berdasarkan satuan (department_name), gunakan relasi
                     $query->whereHas('department', function ($q) use ($search) {
                         $q->where('name', 'LIKE', '%' . $search . '%');
                     });
                 } else {
-                    // Pencarian langsung pada tabel users
                     $query->where($column, 'LIKE', '%' . $search . '%');
                 }
             }
@@ -104,10 +96,12 @@ class UserController extends Controller
     public function store(Request $request){
         Session::flash('name', $request->name);
         Session::flash('nrp', $request->nrp);
+        Session::flash('pangkat', $request->pangkat);
 
         $request->validate([
             'name' => 'required',
             'nrp'=> 'required|unique:users,nrp',
+            'pangkat' => 'required',
             'department' => 'required',
             'position' => 'required',
             ],
@@ -115,8 +109,9 @@ class UserController extends Controller
                 'name.required' => 'Nama wajib diisi',
                 'nrp.required' => 'NRP wajib diisi',
                 'nrp.unique' => 'Pengguna dengan NRP ini sudah terdaftar sebelumnya',
-                'department.required' => 'Satuan/Bagian wajib diisi',
-                'position.required' => 'Posisi wajib diisi',
+                'department.required' => 'Fungsi wajib diisi',
+                'position.required' => 'Jabatan wajib diisi',
+                'pangkat.required' => 'Pangkat wajib diisi',
             ],
         );
 
@@ -128,6 +123,7 @@ class UserController extends Controller
         $data = [
             'name' => $request->name,
             'nrp' => $request->nrp,
+            'pangkat' => $request->pangkat,
             'password' => $hashedPassword,
             'department_id' => (int) $request->department,
             'position_id' => (int) $request->position,
@@ -137,7 +133,6 @@ class UserController extends Controller
 
         User::create($data);
         return redirect()->to('account')->with('success', 'Berhasil menambahkan data');
-        // dd($data);
     }
 
     public function show($id){
@@ -246,19 +241,22 @@ class UserController extends Controller
             'nrp'=> 'required',
             'department' => 'required',
             'position' => 'required',
-            'leave_quota' => 'required'
+            'leave_quota' => 'required',
+            'pangkat' => 'required',
             ],
             [
                 'name.required' => 'Nama wajib diisi',
                 'nrp.required' => 'NRP wajib diisi',
-                'department.required' => 'Satuan/Bagian wajib diisi',
-                'position.required' => 'Posisi wajib diisi',
+                'department.required' => 'Fungsi wajib diisi',
+                'position.required' => 'Jabatan wajib diisi',
                 'leave_quota.required' => 'Sisa kuota cuti tahunan wajib diisi',
+                'pangkat.required' => 'Pangkat wajib diisi',
             ],
         );
 
         $data = [
             'name' => $request->name,
+            'pangkat' => $request->pangkat,
             'nrp' => $request->nrp,
             'department_id' => (int) $request->department,
             'position_id' => (int) $request->position,

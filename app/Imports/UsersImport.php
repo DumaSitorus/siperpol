@@ -29,15 +29,15 @@ class UsersImport implements ToCollection, WithHeadingRow
 
             if ($existingUser) {
                 $errors[] = "NRP {$row['nrp']} di baris " . ($index + 1) . " sudah terdaftar.";
-                continue; // Lewati proses pembuatan user jika NRP sudah ada
+                continue; 
             }
 
             // Cek apakah department dan posisi valid
-            $department = Department::where('name', $row['satuan_bagian'])->first();
-            $position = Position::where('name', $row['posisi'])->first();
+            $department = Department::where('name', $row['fungsi'])->first();
+            $position = Position::where('name', $row['jabatan'])->first();
 
             if (!$department || !$position) {
-                $errors[] = "Satuan/Bagian atau Posisi tidak valid di baris " . ($index + 1);
+                $errors[] = "Fungsi atau Jabatan tidak valid di baris " . ($index + 1);
                 continue;
             }
 
@@ -45,6 +45,7 @@ class UsersImport implements ToCollection, WithHeadingRow
             User::create([
                 'name'          => $row['nama'],
                 'nrp'           => $row['nrp'],
+                'pangkat'       => $row['pangkat'],
                 'password'      => Hash::make($row['nrp']), 
                 'department_id' => $department->id,
                 'position_id'   => $position->id,

@@ -12,10 +12,9 @@
 <body class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-200 ">
     <!-- sidenav  -->
     <aside id="sidebar" class="max-w-68.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-s border-0 bg-neutral-800 p-0 text-white antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0">
-        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('department_head.dashboard') }}" >
+        <a class=" px-8 py-6 m-0 text-sm " href="{{ route('admin_sdm.dashboard') }}" >
             <img class="w-50 mx-auto " src="{{ asset('images/logo2.png') }}" alt="logo" /> <br>
         </a>
-      
         <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       
         <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
@@ -25,20 +24,11 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('department_head.dashboard') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('admin_sdm.dashboard') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Ringkasan</span>
-                    </a>
-                </li>
-    
-                <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('profile-head') }}">
-                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pengaturan Akun</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis</span>
                     </a>
                 </li>
     
@@ -48,16 +38,16 @@
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-head-leave-req') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('pending-leave-req') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 352L96 96c0-35.3 28.7-64 64-64l256 0c35.3 0 64 28.7 64 64l0 197.5c0 17-6.7 33.3-18.7 45.3l-58.5 58.5c-12 12-28.3 18.7-45.3 18.7L160 416c-35.3 0-64-28.7-64-64zM272 128c-8.8 0-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0zm24 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-160 0C60.9 512 0 451.1 0 376L0 152c0-13.3 10.7-24 24-24s24 10.7 24 24l0 224c0 48.6 39.4 88 88 88l160 0z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Belum Dikonfirmasi</span>
                     </a>
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('head-leave-req') }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('leave-req-history') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </div>
@@ -65,16 +55,43 @@
                     </a>
                 </li>
 
+                <li class="mt-4 w-full">
+                    <a class="py-2.7 py-3 bg-white/40 rounded-md text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-leave') }}">
+                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 352L96 96c0-35.3 28.7-64 64-64l256 0c35.3 0 64 28.7 64 64l0 197.5c0 17-6.7 33.3-18.7 45.3l-58.5 58.5c-12 12-28.3 18.7-45.3 18.7L160 416c-35.3 0-64-28.7-64-64zM272 128c-8.8 0-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0zm24 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-160 0C60.9 512 0 451.1 0 376L0 152c0-13.3 10.7-24 24-24s24 10.7 24 24l0 224c0 48.6 39.4 88 88 88l160 0z"/></svg>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan</span>
+                    </a>
+                </li>
+
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Monitor Cuti/Izin Anggota</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Manajemen Akun</h6>
                 </li>
     
                 <li class="mt-4 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('member-leave-req',  ['department_id' => Auth::user()->department_id]) }}">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ Route('account') }}">
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M132.7 4.7l-64 64c-4.6 4.6-5.9 11.5-3.5 17.4s8.3 9.9 14.8 9.9l128 0c6.5 0 12.3-3.9 14.8-9.9s1.1-12.9-3.5-17.4l-64-64c-6.2-6.2-16.4-6.2-22.6 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64L64 128zm96 96a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM80 400c0-26.5 21.5-48 48-48l64 0c26.5 0 48 21.5 48 48l0 16c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-16zm192 0c0-26.5 21.5-48 48-48l64 0c26.5 0 48 21.5 48 48l0 16c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-16zm32-128a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM356.7 91.3c6.2 6.2 16.4 6.2 22.6 0l64-64c4.6-4.6 5.9-11.5 3.5-17.4S438.5 0 432 0L304 0c-6.5 0-12.3 3.9-14.8 9.9s-1.1 12.9 3.5 17.4l64 64z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM208 288l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Permohonan Anggota</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Lihat Akun</span>
+                    </a>
+                </li>
+    
+                <li class="mt-4 w-full">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-account') }}">
+                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#26282c" d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Akun</span>
+                    </a>
+                </li>
+
+                <li class="mt-4 w-full">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('department') }}">
+                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM200 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Fungsi</span>
                     </a>
                 </li>
 
@@ -86,7 +103,6 @@
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">logout</span>
                     </a>
                 </li>
-
             </ul>
         </div>
     </aside>
@@ -102,9 +118,9 @@
                     <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                     <li class="leading-normal text-sm">
-                        <a class="opacity-50 text-slate-700">Dasbor</a>
+                        <a class="opacity-50 text-slate-700">Pengajuan Cuti</a>
                     </li>
-                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Pengaturan Akun</li>
+                    <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Formulir</li>
                     </ol>
                     
                 </nav>
@@ -150,7 +166,7 @@
                         <div class="flex flex-wrap -mx-3">
                             <div class="max-w-full px-3 lg:flex-none">
                                 <div class="flex flex-col h-full ">
-                                    <h5 class="font-bold text-center text-xl">Form Pengajuan Cuti/Izin Kepala Fungsi</h5>
+                                    <h5 class="font-bold text-center text-xl">Form Pengajuan Cuti/Izin Anggota Oleh Admin SDM</h5>
                                     <p class="mb-4 text-center font-semibold">Polres Humbang Hasundutan</p>
                                     @if($errors->any())
                                         <div class="mb-4 flex w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -172,11 +188,20 @@
                                             </div>
                                         </div>
                                     @endif
-                                    <form action="{{ route('store-head-leave-req') }}" method="POST" required enctype="multipart/form-data">
+                                    <form action="{{ route('store-leave') }}" method="POST" required enctype="multipart/form-data">
                                         @csrf
+
+                                        <div class="mb-5">
+                                            <label for="nrp" class="mb-3 block text-base font-medium text-[#07074D]">
+                                                NRP Pengaju
+                                            </label>
+                                            <input type="number" name="nrp" id="nrp" value="{{ old('nrp') }}"
+                                                class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md"/>
+                                        </div>
+
                                         <div class="mb-5">
                                             <label for="leave_type" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                Jenis Cuti/izin
+                                                Jenis Cuti/Izin
                                             </label>
                                             <select name="leave_type" id="leave_type"
                                                 class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md">
@@ -195,8 +220,8 @@
                                                     <label for="start_leave" class="mb-3 block text-base font-medium text-[#07074D]">
                                                         Hari Pertama Cuti/Izin
                                                     </label>
-                                                    <input type="date" name="start_leave" id="start_leave"
-                                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                                    <input type="date" name="start_leave" id="start_leave" value="{{ old('start_leave') }}"
+                                                        class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                                 </div>
                                             </div>
                                             <div class="w-full px-3 sm:w-1/2">
@@ -204,8 +229,8 @@
                                                     <label for="end_leave" class="mb-3 block text-base font-medium text-[#07074D]">
                                                         Hari Terakhir Cuti/Izin
                                                     </label>
-                                                    <input type="date" name="end_leave" id="end_leave"
-                                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                                    <input type="date" name="end_leave" id="end_leave" value="{{ old('end_leave') }}"
+                                                        class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                                 </div>
                                             </div>
                                         </div>
@@ -222,7 +247,7 @@
                                                 Catatan
                                             </label>
                                             <textarea name="notes" id="notes" rows="3" placeholder="Tambahkan catatan pesan keterangan pengajuan cuti"
-                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none">{{ old('notes') }}</textarea>
+                                                class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md resize-none">{{ old('notes') }}</textarea>
                                         </div>
                             
                                         <div class="mb-5 pt-3">
@@ -272,7 +297,7 @@
                                         <div>
                                             <button type="submit"
                                                 class="hover:shadow-form w-full rounded-md bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                                Ajukan Cuti/Izin
+                                                Tambahkan pengajuan cuti/izin
                                             </button>
                                         </div>
                                     </form>
@@ -295,21 +320,21 @@
                             </div>
                             <ol class=" pl-2 list-decimal text-white">
                                 <li class="my-2">
-                                    Pilih kolom <strong>Jenis Cuti/Izin</strong> yang sesuai dengan keperluan anda. <br>
-                                    Informasi jenis dan penjelasan dapat dibaca pada Peraturan Kepala Kepolisisan Negara Republik Indonesia Nomor 11 Tahun 2015 tentang Tata Cara Pemberian Cuti dan Izin. <br>
+                                    Pilih kolom <strong>Jenis Cuti</strong> yang sesuai dengan keperluan cuti anda. <br>
+                                    Informasi jenis cuti dan penjelasan dapat dibaca pada Peraturan Kepala Kepolisisan Negara Republik Indonesia Nomor 11 Tahun 2015 tentang Tata Cara Pemberian Cuti dan Izin. <br>
                                     <a class="font-semibold underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Baca Panduan</a>.
                                 </li>
                                 <li class="my-2">
-                                    Pastikan memasukkan rentang tanggal dengan benar. Jika mengajukan cuti tahunan, pastikan jatah cuti tahunan anda masih mencukupi.
+                                    Pastikan memasukkan rentang tanggal cuti dengan benar. Jika mengajukan cuti tahunan, pastikan jatah cuti tahunan anda masih mencukupi.
                                 </li>
                                 <li class="my-2">
-                                    Berikan catatan lengkap mengenai tempat tujuan cuti/izin, Transportasi yang digunakan, pengikut/pendamping, dan keterangan lainnya.
+                                    Berikan catatan pengajuan cuti untuk menjelaskan pengajuan cuti yang diajukan. Berikan penjelasan dengan bahasa yang baik dan sopan.
                                 </li>
                                 <li class="my-2">
                                     Wajib mengunggah minimal 1 Surat penyerta/Bukti. Surat penyerta/Bukti dapat berupa surat pribadi, surat dokter, surat/foto undangan acara, dan jenis lainnya. Surat penyerta/Bukti harus asli, valid dan sesuai dengan jenis cuti yang diajukan. Jika terdapat ketidaksesuaian dengan persyaratan maka pengajuan cuti dapat ditolak. (Format yang diterima berupa gambar dan pdf dan tidak lebih dari 2MB)
                                 </li>
                                 <li class="my-2">
-                                    Setelah mengisi formulir, pastikan pengajuan cuti anda sudah terdaftar pada menu Riwayat Pengajuan.
+                                    Setelah mengisi formulir, pastikan pengajuan anda sudah terdaftar pada menu Riwayat Pengajuan Cuti/Izin.
                                 </li>
                             </ol>
                             </div>

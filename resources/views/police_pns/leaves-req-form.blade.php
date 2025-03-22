@@ -29,7 +29,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Ringkasan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Ringkasan</span>
                     </a>
                 </li>
     
@@ -43,7 +43,7 @@
     
     
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti/Izin</h6>
                 </li>
     
                 <li class="mt-4 w-full">
@@ -51,7 +51,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 352L96 96c0-35.3 28.7-64 64-64l256 0c35.3 0 64 28.7 64 64l0 197.5c0 17-6.7 33.3-18.7 45.3l-58.5 58.5c-12 12-28.3 18.7-45.3 18.7L160 416c-35.3 0-64-28.7-64-64zM272 128c-8.8 0-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0zm24 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-160 0C60.9 512 0 451.1 0 376L0 152c0-13.3 10.7-24 24-24s24 10.7 24 24l0 224c0 48.6 39.4 88 88 88l160 0z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan Cuti/Izin</span>
                     </a>
                 </li>
     
@@ -60,7 +60,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan Cuti/Izin</span>
                     </a>
                 </li>
                 <li class="mt-8 w-full xl:hidden">
@@ -158,13 +158,15 @@
                                         @csrf
                                         <div class="mb-5">
                                             <label for="leave_type" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                Jenis Cuti
+                                                Jenis Cuti/Izin
                                             </label>
                                             <select name="leave_type" id="leave_type"
                                                 class="w-full rounded-md border py-3 px-6 text-base font-medium text-slate-400 outline-none focus:border-[#6A64F1] focus:shadow-md">
                                                 <option value="" disabled selected class="text-slate-500">Pilih jenis cuti</option>
                                                 @foreach ($leave_types as $leave_type)
-                                                    <option value="{{ $leave_type->id }}" class="text-slate-500">{{ $leave_type->type }}</option>
+                                                    <option value="{{ $leave_type->id }}" @selected(old('leave_type') == $leave_type->id) class="text-slate-500">
+                                                        {{ $leave_type->type }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -173,7 +175,7 @@
                                             <div class="w-full px-3 sm:w-1/2">
                                                 <div class="mb-2">
                                                     <label for="start_leave" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                        Hari Pertama Cuti
+                                                        Hari Pertama Cuti/Izin
                                                     </label>
                                                     <input type="date" name="start_leave" id="start_leave"
                                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -182,7 +184,7 @@
                                             <div class="w-full px-3 sm:w-1/2">
                                                 <div class="mb-2">
                                                     <label for="end_leave" class="mb-3 block text-base font-medium text-[#07074D]">
-                                                        Hari Terakhir Cuti
+                                                        Hari Terakhir Cuti/Izin
                                                     </label>
                                                     <input type="date" name="end_leave" id="end_leave"
                                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -193,7 +195,7 @@
                                             <div class="w-full px-3 sm:w-1/2">
                                                 <p id="error_message" class="text-red-500 text-sm mt-1 hidden">❌ Tanggal akhir harus setelah tanggal mulai!</p>
                                                 <div class="mb-5">
-                                                    <p>Pengajuan cuti selama:&nbsp;<span id="leave_days" class="font-semibold font-sm">0</span>&nbsp;hari</p>
+                                                    <p>Pengajuan cuti/izin selama:&nbsp;<span id="leave_days" class="font-semibold font-sm">0</span>&nbsp;hari</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,8 +203,8 @@
                                             <label for="notes" class="mb-3 block text-base font-medium text-[#07074D]">
                                                 Catatan
                                             </label>
-                                            <textarea name="notes" id="notes" rows="3" placeholder="Tambahkan catatan pesan keterangan pengajuan cuti"
-                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none"></textarea>
+                                            <textarea name="notes" id="notes" rows="3" placeholder="Tambahkan catatan pesan keterangan pengajuan cuti/izin"
+                                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md resize-none">{{ old('notes') }}</textarea>
                                         </div>
                             
                                         <div class="mb-5 pt-3">
@@ -252,7 +254,7 @@
                                         <div>
                                             <button type="submit"
                                                 class="hover:shadow-form w-full rounded-md bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                                Ajukan Cuti
+                                                Ajukan Cuti/Izin
                                             </button>
                                         </div>
                                     </form>
@@ -271,25 +273,28 @@
                             <h5 class="pt-2 mb-6 font-bold text-xl text-white text-center">Petunjuk Pengisian Formulir</h5>
                             <div class="m-2 text-white">
                                 <p>Halo, {{ Auth::user()->name }},</p>
-                                <p>Berikut adalah beberapa hal yang perlu anda perhatikan saat mengisi formulir pengajuan cuti.</p>
+                                <p>Berikut adalah beberapa hal yang perlu anda perhatikan saat mengisi formulir pengajuan cuti/izin.</p>
                             </div>
                             <ol class=" pl-2 list-decimal text-white">
                                 <li class="my-2">
-                                    Pilih kolom <strong>Jenis Cuti</strong> yang sesuai dengan keperluan cuti anda. <br>
-                                    Informasi jenis cuti dan penjelasan dapat dibaca pada Peraturan Kepala Kepolisisan Negara Republik Indonesia Nomor 11 Tahun 2015 tentang Tata Cara Pemberian Cuti dan Izin. <br>
-                                    <a class="font-semibold underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Baca Panduan Cuti</a>.
+                                    Pilih kolom <strong>Jenis Cuti</strong> yang sesuai dengan keperluan cuti/izin anda. <br>
+                                    Informasi jenis cuti/izin dan penjelasan dapat dibaca pada Peraturan Kepala Kepolisisan Negara Republik Indonesia Nomor 11 Tahun 2015 tentang Tata Cara Pemberian Cuti dan Izin. <br>
+                                    <a class="font-semibold underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Baca Panduan</a>.
                                 </li>
                                 <li class="my-2">
                                     Pastikan memasukkan rentang tanggal cuti dengan benar. Jika mengajukan cuti tahunan, pastikan jatah cuti tahunan anda masih mencukupi.
                                 </li>
                                 <li class="my-2">
-                                    Berikan catatan pengajuan cuti untuk menjelaskan pengajuan cuti yang diajukan. Berikan penjelasan dengan bahasa yang baik dan sopan.
+                                    Berikan catatan pengajuan cuti/izin untuk menjelaskan pengajuan cuti/izin yang diajukan. Berikan penjelasan dengan bahasa yang baik dan sopan.
                                 </li>
                                 <li class="my-2">
-                                    Wajib mengunggah minimal 1 Surat penyerta/Bukti. Surat penyerta/Bukti dapat berupa surat pribadi, surat dokter, surat/foto undangan acara, dan jenis lainnya. Surat penyerta/Bukti harus asli, valid dan sesuai dengan jenis cuti yang diajukan. Jika terdapat ketidaksesuaian dengan persyaratan maka pengajuan cuti dapat ditolak
+                                    Berikan catatan lengkap mengenai tempat tujuan cuti, Transportasi yang digunakan, pengikut/pendamping, dan keterangan lainnya.
                                 </li>
                                 <li class="my-2">
-                                    Setelah mengisi formulir, pastikan pengajuan cuti anda sudah terdaftar pada menu Riwayat Pengajuan Cuti.
+                                    Wajib mengunggah minimal 1 Surat penyerta/Bukti. Surat penyerta/Bukti dapat berupa surat pribadi, surat dokter, surat/foto undangan acara, dan jenis lainnya. Surat penyerta/Bukti harus asli, valid dan sesuai dengan jenis cuti/izin yang diajukan. Jika terdapat ketidaksesuaian dengan persyaratan maka pengajuan cuti/izin dapat ditolak.(Format yang diterima berupa gambar maupun pdf, tidak lebih dari 2MB)
+                                </li>
+                                <li class="my-2">
+                                    Setelah mengisi formulir, pastikan pengajuan cuti/izin anda sudah terdaftar pada menu Riwayat Pengajuan Cuti.
                                 </li>
                             </ol>
                             </div>

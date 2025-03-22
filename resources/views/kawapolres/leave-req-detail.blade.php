@@ -29,13 +29,13 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis</span>
                     </a>
                 </li>
     
     
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti/Izin</h6>
                 </li>
     
                 <li class="mt-4 w-full">
@@ -52,7 +52,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan</span>
                     </a>
                 </li>
 
@@ -141,7 +141,7 @@
             <div class="w-full px-3 mb-6 lg:mb-0 lg:w-2/3 lg:flex-none">
                 <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="p-6 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-center rounded-t-2xl">
-                        <h2 class="text-2xl font-bold">Detail Pengajuan Cuti</h2>
+                        <h2 class="text-2xl font-bold">Detail Pengajuan</h2>
                         <p class="text-sm mt-1">Diajukan pada: {{ \Carbon\Carbon::parse($leave->created_at)->format('d M Y') }}</p>
                     </div>
                     <div class="flex-auto px-0 pt-0 pb-2">
@@ -162,7 +162,11 @@
                                 <p class="mb-0 text-md leading-tight">:</p>
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <a class="mb-0 text-md leading-tight underline" href="{{ route('detail-account-user', $leave->user->id) }}">{{ $leave->user->name }}</a>
+                                @if ($leave->user)
+                                    <a class="mb-0 text-md leading-tight underline" href="{{ route('detail-account-user', $leave->user->id) }}">{{ $leave->user->name }}</a>
+                                @else
+                                    <p class="mb-0 text-md leading-tight">Pengguna Ini tidak tersedia</>
+                                @endif
                             </td>
                         </tr>
 
@@ -180,7 +184,11 @@
                                 <p class="mb-0 text-md leading-tight">:</p>
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md leading-tight">{{ $leave->user->nrp }}</p>
+                                @if ($leave->user)
+                                    <p class="mb-0 text-md leading-tight">{{ $leave->user->nrp }}</p>
+                                @else
+                                    <p class="mb-0 text-md leading-tight">Data pengguna ini tidak tersedia</p>
+                                @endif
                             </td>
                         </tr>
 
@@ -188,7 +196,7 @@
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">
                                     <div class="px-4 font-semibold">
-                                        Satuan / Bagian
+                                        Pangkat
                                     </div>
                                 <div class="flex flex-col justify-center">
                                 </div>
@@ -198,7 +206,11 @@
                                 <p class="mb-0 text-md leading-tight">:</p>
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md leading-tight">{{ $leave->user->department->name }}</p>
+                                @if ($leave->user)
+                                    <p class="mb-0 text-md leading-tight">{{ $leave->user->pangkat }}</p>
+                                @else
+                                    <p class="mb-0 text-md leading-tight">Data pengguna ini tidak tersedia</p>
+                                @endif
                             </td>
                         </tr>
 
@@ -206,7 +218,7 @@
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">
                                     <div class="px-4 font-semibold">
-                                        Posisi
+                                        Fungsi
                                     </div>
                                 <div class="flex flex-col justify-center">
                                 </div>
@@ -216,7 +228,11 @@
                                 <p class="mb-0 text-md leading-tight">:</p>
                             </td>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
-                                <p class="mb-0 text-md leading-tight">{{ $leave->user->position->name }}</p>
+                                @if ($leave->user)
+                                    <p class="mb-0 text-md leading-tight">{{ $leave->user->department->name }}</p>
+                                @else
+                                    <p class="mb-0 text-md leading-tight">Data pengguna tidak tersedia</p>
+                                @endif
                             </td>
                         </tr>
 
@@ -224,7 +240,29 @@
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">
                                     <div class="px-4 font-semibold">
-                                        Jenis Cuti
+                                        Jabatan
+                                    </div>
+                                <div class="flex flex-col justify-center">
+                                </div>
+                                </div>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <p class="mb-0 text-md leading-tight">:</p>
+                            </td>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                @if ($leave->user)
+                                    <p class="mb-0 text-md leading-tight">{{ $leave->user->position->name }}</p>
+                                @else
+                                    <p class="mb-0 text-md leading-tight">Data pengguna tidak tersedia</p>
+                                @endif
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
+                                <div class="flex px-2 py-1">
+                                    <div class="px-4 font-semibold">
+                                        Jenis Cuti/Izin
                                     </div>
                                 <div class="flex flex-col justify-center">
                                 </div>
@@ -242,7 +280,7 @@
                             <td class="p-2 align-middle bg-transparent border-b border-gray-200 whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">
                                     <div class="px-4 font-semibold">
-                                        Periode Cuti
+                                        Periode Cuti/Izin
                                     </div>
                                 <div class="flex flex-col justify-center">
                                 </div>
@@ -464,18 +502,18 @@
                         </p>
                         <ol class=" pl-2 list-decimal text-white">
                             <li class="mt-2">
-                                Pastikan membaca informasi detail cuti dengan seksama sebelum menyetujui cuti yang diajukan
+                                Pastikan membaca informasi detail cuti/izin dengan seksama sebelum menyetujui cuti/izin yang diajukan
                             </li>
                             <li class="mt-2">
-                                Untuk melihat informasi lengkap mengenai pengaju cuti dapat menekan nama pengaju cuti, maka akan langsung diarahkan ke halaman profilnya
+                                Untuk melihat informasi lengkap mengenai pengaju cuti dapat menekan nama pengaju, maka akan langsung diarahkan ke halaman profilnya
                             </li>
                             <li class="mt-2">
-                                Anda dapat melihat maupun mengunduh surat/bukti penyerta pengajuan cuti dengan menekan tombol: <br>
+                                Anda dapat melihat maupun mengunduh surat/bukti penyerta pengajuan cuti/izin dengan menekan tombol: <br>
                                 <span class="bg-gradient-to-tl from-sky-600 to-sky-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Lihat Bukti/Surat</span>
                                 <span class="bg-gradient-to-tl from-sky-600 to-sky-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Unduh Bukti/Surat</span>
                             </li>
                             <li class="mt-2">
-                                Anda hanya dapat menyetujui izin yang berstatus: <br>
+                                Anda hanya dapat menyetujui cuti/izin yang berstatus: <br>
                                 <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Disetujui SDM</span>
                                 <span class="bg-gradient-to-tl from-purple-600 to-purple-300 px-2.5 py-1 text-xs rounded-sm py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Menunggu Persetujuan Kapolres</span>
                             </li>

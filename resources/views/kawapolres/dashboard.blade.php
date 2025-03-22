@@ -30,13 +30,13 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis</span>
                     </a>
                 </li>
     
     
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti/Izin</h6>
                 </li>
     
                 <li class="mt-4 w-full">
@@ -53,7 +53,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan</span>
                     </a>
                 </li>
 
@@ -103,14 +103,14 @@
                 <li class="leading-normal text-sm">
                     <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
                 </li>
-                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Analisis Cuti</li>
+                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Analisis Cuti/izin</li>
                 </ol>
             </nav>
 
             <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                 <div class="flex items-center justify-end sm:ml-auto md:pr-4">
                     <li class="mx-2 flex items-center">
-                        <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                        <a class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
                         <i class="fa fa-user sm:mr-1"></i>
                         <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
                         </a>
@@ -140,7 +140,7 @@
             <div class="w-full px-6 py-6 mx-auto">
 
                 <h5 class="mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
-                    Ringkasan Cuti
+                    Ringkasan Cuti/Izin
                 </h5>  
     
                 <!-- row 1 -->
@@ -152,7 +152,7 @@
                             <div class="flex flex-row -mx-3 items-center justify-center">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                <p class="mb-0 font-sans text-md font-semibold leading-normal">Total  Keseluruhan</p>
+                                <p class="mb-0 font-sans text-md font-semibold leading-normal">Total Keseluruhan</p>
                                 </div>
                             </div>
                             <div class="px-3 text-right basis-1/3">
@@ -220,12 +220,12 @@
                         <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('./assets/img/ivancik.jpg')">
                             <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
                             <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                            <h5 class="pt-2 mb-4 font-bold text-white">Total Cuti berdasarkan kategori jenis cuti yang pernah diajukan</h5>
+                            <h5 class="pt-2 mb-4 font-bold text-white">Total Cuti/Izin berdasarkan kategori jenis cuti/Izin yang pernah diajukan</h5>
                             <div class="p-0 overflow-x-auto">
                                 <table class=" items-center w-full -mb-2 align-top border-gray-200 text-slate-500">
                                     <thead class="align-bottom">
                                         <tr>
-                                        <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Cuti</th>
+                                        <th class="pl-14 pr-3 py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jenis Cuti/Izin</th>
                                         <th class="py-3 font-medium text-semibold text-centert uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Jumlah</th>
                                         </tr>
                                     </thead>
@@ -271,7 +271,7 @@
                             <div class="flex flex-wrap -mx-3">
                                 <div class="max-w-full px-3 lg:flex-none">
                                     <div class="flex flex-col h-full mb-4">
-                                        <p class="mb-4">Daftar Anggota yang sedang dalam masa cuti</p>
+                                        <p class="mb-4">Daftar Anggota yang sedang dalam masa cuti/izin</p>
                                         @forelse ($user_on_leave as $item)
                                         <table class="table-auto w-full text-md text-left text-inherit">
                                             <tbody class="">
@@ -283,7 +283,7 @@
                                             </tbody>
                                         </table >
                                         @empty
-                                            <p class="mb-4 text-sm text-rose-400">*Tidak ada anggota yang sedang cuti hari ini</p>
+                                            <p class="mb-4 text-sm text-rose-400">*Tidak ada anggota yang sedang cuti/izin hari ini</p>
                                         @endforelse
                                         
                                         <a class="mt-auto mb-0 text-sm font-semibold leading-normal group text-slate-500 underline" href="{{ route('leave-req-history-all') }}">
@@ -303,7 +303,7 @@
                     <div class="w-full px-3 mb-6 lg:mb-0 lg:w-full">
                         <div class="relative bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                             <div class="flex-auto p-4">
-                                <p class="my-2 text-center text-xl font-semibold">Statistik Jumlah Pengajuan Cuti Tahun <script>document.write(new Date().getFullYear() );</script></p>
+                                <p class="my-2 text-center text-xl font-semibold">Statistik Jumlah Pengajuan Cuti/Izin Tahun <script>document.write(new Date().getFullYear() );</script></p>
                                 <div class="mx-4 flex-wrap bg-gray-100">
                                     <div class="w-full overflow-x-auto">
                                         <canvas id="mouthlyLeaveChart" style="min-width: 600px; height: 300px;"></canvas>
@@ -315,14 +315,14 @@
                 </div>
     
                 <h5 class="mt-8 mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
-                    Panduan Cuti
+                    Panduan
                 </h5>  
     
                 <div class="flex flex-wrap mt-4 -mx-3">
                     <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-1/4 lg:flex-none">
                         <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col text-white break-words rounded-2xl border-0 border-solid bg-gradient-to-tl from-gray-900 to-slate-800 bg-clip-border">
                             <div class="flex-auto p-4">
-                                <h6 class="mt-4 mb-0 ml-2 text-xl font-semibold">Buku Panduan Cuti</h6>
+                                <h6 class="mt-4 mb-0 ml-2 text-xl font-semibold">Panduan Pengajuan Cuti dan Izin</h6>
     
                                 <div class="w-full px-6 mx-auto max-w-screen-2xl rounded-xl">
                                     <div class="flex flex-wrap mt-0 -mx-3">
@@ -343,7 +343,7 @@
                                                     </g>
                                                 </svg>
                                                 </div>
-                                                <a class="mb-0 text-md font-semibold leading-tight underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Lihat Buku Panduan</a>
+                                                <a class="mb-0 text-md font-semibold leading-tight underline" href="{{ asset('storage/bukupanduan/buku_panduan.pdf') }}" target="_blank">Lihat Panduan</a>
                                             </div>                   
                                         </div>
                                     </div>

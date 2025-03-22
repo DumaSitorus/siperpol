@@ -28,13 +28,13 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Analisis</span>
                     </a>
                 </li>
     
     
                 <li class="w-full mt-8">
-                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti</h6>
+                    <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengajuan Cuti/Izin</h6>
                 </li>
     
                 <li class="mt-4 w-full">
@@ -51,7 +51,16 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan Cuti</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat Pengajuan</span>
+                    </a>
+                </li>
+
+                <li class="mt-4 w-full">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{{ route('create-leave') }}">
+                        <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 352L96 96c0-35.3 28.7-64 64-64l256 0c35.3 0 64 28.7 64 64l0 197.5c0 17-6.7 33.3-18.7 45.3l-58.5 58.5c-12 12-28.3 18.7-45.3 18.7L160 416c-35.3 0-64-28.7-64-64zM272 128c-8.8 0-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0zm24 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-160 0C60.9 512 0 451.1 0 376L0 152c0-13.3 10.7-24 24-24s24 10.7 24 24l0 224c0 48.6 39.4 88 88 88l160 0z"/></svg>
+                        </div>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Form Pengajuan</span>
                     </a>
                 </li>
 
@@ -82,7 +91,7 @@
                         <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12px" height="12px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM200 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
                         </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Satuan/Bagian</span>
+                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Fungsi</span>
                     </a>
                 </li>
 
@@ -106,19 +115,19 @@
         <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
             <nav>
                 <!-- breadcrumb -->
-                <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+                <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
                 <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                 <li class="leading-normal text-sm">
-                    <a class="opacity-50 text-slate-700" href="javascript:;">Dasbor</a>
+                    <a class="opacity-50 text-slate-700">Pengaturan</a>
                 </li>
-                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Analisis Cuti</li>
+                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Tambah Fungsi</li>
                 </ol>
             </nav>
 
             <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                 <div class="flex items-center justify-end sm:ml-auto md:pr-4">
                     <li class="mx-2 flex items-center">
-                        <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                        <a class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
                         <i class="fa fa-user sm:mr-1"></i>
                         <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
                         </a>
@@ -150,13 +159,13 @@
             <div class="flex flex-wrap mt-6 -mx-3">
                 <div class="w-full px-3 mb-6 lg:mb-0 lg:w-1/2 lg:flex-none">
                     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                        <h5 class="pt-2 mt-4 font-bold text-center">DAFTAR SATUAN/BAGIAN TERDAFTAR</h5>
+                        <h5 class="pt-2 mt-4 font-bold text-center">TAMBAHKAN FUNGSI</h5>
                     <div class="flex-auto p-4">
                         <form action="{{ route('add-department') }}" method="POST">
                             @csrf
                             <div id="departments-wrapper">
                                 <div class="department-input flex mb-2">
-                                    <input type="text" name="departments[]" class="border p-2 w-full rounded-md border-gray-300" placeholder="Nama Departemen" required>
+                                    <input type="text" name="departments[]" class="border p-2 w-full rounded-md border-gray-300" placeholder="Nama Fungsi" required>
                                     <button type="button" class="ml-2 bg-red-500 text-white px-2 py-1 remove-dept hidden">Hapus</button>
                                 </div>
                             </div>
@@ -182,7 +191,7 @@
                             </div>
                             @endif
                             
-                            <button type="button" id="add-department" class="bg-sky-500 text-white px-3 py-1 mt-2 rounded-md">Tambah Satuan/Bagian</button>
+                            <button type="button" id="add-department" class="bg-sky-500 text-white px-3 py-1 mt-2 rounded-md">Tambah Fungsi</button>
                             <button type="submit" class="bg-lime-500 text-white px-3 py-1 mt-2 rounded-md">Simpan</button>
                         </form>
 
@@ -196,13 +205,13 @@
                     <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('./assets/img/ivancik.jpg')">
                         <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
                         <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                        <h5 class="pt-2 mb-4 font-bold text-white">DAFTAR SATUAN/BAGIAN TERDAFTAR</h5>
+                        <h5 class="pt-2 mb-4 font-bold text-white text-center">FUNGSI YANG SUDAH TERDAFTAR</h5>
                         <div class="p-0 overflow-x-auto">
                             <table class=" items-center w-full  align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                     <th class="py-3 font-medium text-semibold text-center uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">ID</th>
-                                    <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama Satuan/Bagian</th>
+                                    <th class="py-3 font-medium text-semibold text-left uppercase align-middle bg-gray-50 border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-500">Nama Fungsi</th>
                                     </tr>
                                 </thead>
                             <tbody>
@@ -293,7 +302,7 @@
             const div = document.createElement("div");
             div.classList.add("department-input", "flex", "mb-2");
             div.innerHTML = `
-                <input type="text" name="departments[]" class="border p-2 w-full rounded-md border-gray-300" placeholder="Nama Departemen" required>
+                <input type="text" name="departments[]" class="border p-2 w-full rounded-md border-gray-300" placeholder="Nama Fungsi" required>
                 <button type="button" class="ml-2 bg-rose-500 text-white px-2 py-1 rounded-md remove-dept">Hapus</button>
             `;
             wrapper.appendChild(div);

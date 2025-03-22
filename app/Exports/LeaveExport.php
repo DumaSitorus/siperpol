@@ -22,6 +22,10 @@ class LeaveExport implements WithMapping, WithHeadings, FromQuery
 
     public function map($leaves): array
     {
+        if (!$leaves->user || $leaves->user->trashed()) {
+            return [];
+        }
+
         return [
             $leaves->user->name,
             $leaves->user->nrp,

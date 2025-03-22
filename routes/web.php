@@ -43,6 +43,8 @@ Route::get('/department', [DepartmentController::class, 'index'])->name('departm
 Route::post('/add-department', [DepartmentController::class, 'store'])->name('add-department')->middleware('auth:admin_sdm');
 Route::get('users/export/', [UserController::class, 'export'])->name('export-user')->middleware('auth:admin_sdm');
 Route::get('leaves/export/', [LeaveController::class, 'export'])->name('export-leave')->middleware('auth:admin_sdm');
+Route::get('/leave_admin/add', [LeaveController::class, 'create_leave'])->name('create-leave')->middleware('auth:admin_sdm');
+Route::post('leave-admin/send', [LeaveController::class, 'store_leave'])->name('store-leave')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');

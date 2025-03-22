@@ -22,13 +22,14 @@ class LeaveExport implements WithMapping, WithHeadings, FromQuery
 
     public function map($leaves): array
     {
-        if (!$leaves->user || $leaves->user->trashed()) {
+        if (!$leaves->user) {
             return [];
         }
 
         return [
             $leaves->user->name,
             $leaves->user->nrp,
+            $leaves->user->pangkat,
             $leaves->leave_type->type,
             $leaves->created_at,
             $leaves->start_leave,
@@ -43,7 +44,8 @@ class LeaveExport implements WithMapping, WithHeadings, FromQuery
     {
         return [
             'Nama Pengaju',
-            'NRP Pengaju',
+            'NRP',
+            'Pangkat',
             'Jenis Cuti',
             'Diajukan Pada',
             'Tanggal awal cuti',

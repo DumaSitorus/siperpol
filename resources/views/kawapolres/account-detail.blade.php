@@ -101,7 +101,7 @@
                     <h6 class="mb-0 font-bold capitalize">SIPERPOL</h6>
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                         <li class="leading-normal text-sm">
-                            <a class="opacity-50 text-slate-700" href="javascript:;">Manajemen Akun</a>
+                            <a class="opacity-50 text-slate-700">Manajemen Akun</a>
                         </li>
                         <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Lihat Akun</li>
                         <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['>']" aria-current="page">Detail Akun</li>
@@ -112,7 +112,7 @@
                 <div class="flex items-center justify-end mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                     <div class="flex items-center justify-end sm:ml-auto md:pr-4">
                         <li class="mx-2 flex items-center">
-                            <a href="../pages/sign-in.html" class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
+                            <a class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
                             <i class="fa fa-user sm:mr-1"></i>
                             <span class="hidden xl:inline">{{  Auth::user()->name }}</span>
                             </a>

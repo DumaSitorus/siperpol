@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function position()
     {
-        return $this->belongsTo(position::class, 'position_id');
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
     public function department()

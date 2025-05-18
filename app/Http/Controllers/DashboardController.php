@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     //
-    public function index_admin_sdm() : View
+    public function index_admin_sdm(Request $request) : View
     {
+        $year = $request->input('year', now()->year);
+
         $total_leave = Leave::count();
         $processed_leave = Leave::where('leave_statuses_id',2)->count();
         $approve_by_sdm_leave = Leave::where('leave_statuses_id',4)->count();
@@ -30,7 +32,7 @@ class DashboardController extends Controller
             ->with('leave_type') 
             ->get();
 
-        $year = now()->year;
+        // $year = now()->year;
 
         $monthly_leave_data = Leave::select(
                 DB::raw('MONTH(start_leave) as month'),
@@ -54,7 +56,7 @@ class DashboardController extends Controller
             ];
         });
 
-        return view('admin_sdm.dashboard', compact('total_leave', 'processed_leave', 'approve_by_sdm_leave', 'approve_by_kawapolres_leave', 'user_on_leave', 'leave_by_type', 'months'));
+        return view('admin_sdm.dashboard', compact('total_leave', 'processed_leave', 'approve_by_sdm_leave', 'approve_by_kawapolres_leave', 'user_on_leave', 'leave_by_type', 'months', 'year'));
     }
 
     public function update_manual_book(Request $request){

@@ -16,21 +16,21 @@ class DepartmentController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'departments' => 'required|array|min:1',
-        'departments.*' => 'required|string|max:255|unique:departments,name',
-    ], [
-        'departments.required' => 'Harap masukkan setidaknya satu Satuan/Bagian.',
-        'departments.*.unique' => 'Nama Satuan/Bagian sudah ada.',
-    ]);
+    {
+        $request->validate([
+            'departments' => 'required|array|min:1',
+            'departments.*' => 'required|string|max:255|unique:departments,name',
+        ], [
+            'departments.required' => 'Harap masukkan setidaknya satu Fungsi.',
+            'departments.*.unique' => 'Nama Fungsi sudah ada.',
+        ]);
 
-    $departments = collect($request->departments)->map(function ($name) {
-        return ['name' => $name, 'created_at' => now(), 'updated_at' => now()];
-    });
+        $departments = collect($request->departments)->map(function ($name) {
+            return ['name' => $name, 'created_at' => now(), 'updated_at' => now()];
+        });
 
-    Department::insert($departments->toArray());
+        Department::insert($departments->toArray());
 
-    return back()->with('success', 'Satuan/Bagian berhasil ditambahkan!');
-}
+        return back()->with('success', 'Fungsi berhasil ditambahkan!');
+    }
 }

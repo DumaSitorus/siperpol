@@ -369,8 +369,6 @@ class LeaveController extends Controller
         return Storage::disk('public')->download($filePath);
     }
 
-    
-
     public function search(Request $request)
     {
         $query = Leave::with(['user', 'leave_type']);
@@ -615,6 +613,12 @@ class LeaveController extends Controller
 
     public function export(){
         return Excel::download(new LeaveExport, 'cuti-siperpol-'.Carbon::now()->timestamp.'.xlsx');
+    }
+
+    public function leave_report() : View 
+    {
+        $leaves_approved = Leave::with(['leave_type', 'user'])->where('leave_statuses_id', 6)->get();
+        return view('admin_sdm.leave-report-pdf', compact('leaves_approved'));
     }
 
 }

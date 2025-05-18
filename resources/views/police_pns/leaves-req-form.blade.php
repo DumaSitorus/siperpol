@@ -213,7 +213,8 @@
                                                 <div class="w-full px-3 sm:w-1/2">
                                                     <label for="evident_1"
                                                         class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                                                        Unggah Surat penyerta/Bukti <span class="text-rose-500">*</span> 
+                                                        Unggah Surat Penyerta/Bukti 1<span class="text-rose-500">*</span> 
+                                                        <br><small>Wajib mengunggah minimal 1</small>
                                                     </label>
                                                 </div>
                                                 <div class="w-full px-3 sm:w-1/2">
@@ -235,7 +236,8 @@
                                                 <div class="w-full px-3 sm:w-1/2">
                                                     <label for="evident_2"
                                                         class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                                                        Unggah Surat penyerta/Bukti 
+                                                        Unggah Surat Penyerta/Bukti 2
+                                                        <br><small>Bukti/surat kedua tidak wajib untuk diunggah</small>
                                                     </label>
                                                 </div>
                                                 <div class="w-full px-3 sm:w-1/2">

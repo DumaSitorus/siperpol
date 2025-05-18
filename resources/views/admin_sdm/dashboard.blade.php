@@ -341,7 +341,16 @@
                 <div class="w-full px-3 mb-6 lg:mb-0 lg:w-full">
                     <div class="relative bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto p-4">
-                            <p class="my-2 text-center text-xl font-semibold">Statistik Jumlah Pengajuan Cuti/Izin Tahun <script>document.write(new Date().getFullYear() );</script></p>
+                            <p class="my-2 text-center text-xl font-semibold">Statistik Jumlah Pengajuan Cuti/Izin Tahun {{ $year }}</p>
+                            <form method="GET" action="{{ route('admin_sdm.dashboard') }}" class="mb-4 text-center">
+                                    <label for="year" class="mr-2 font-medium">Pilih Tahun:</label>
+                                    <select name="year" id="year" onchange="this.form.submit()"
+                                            class="inline-block px-3 py-2 border rounded-md shadow-sm focus:ring">
+                                        @for ($y = now()->year; $y >= 2020; $y--)
+                                            <option value="{{ $y }}" @selected($y == $year)>{{ $y }}</option>
+                                        @endfor
+                                    </select>
+                                </form>
                             <div class="mx-4 flex-wrap bg-gray-100">
                                 <div class="w-full overflow-x-auto">
                                     <canvas id="mouthlyLeaveChart" style="min-width: 600px; height: 300px;"></canvas>
@@ -482,6 +491,47 @@
                 </div>
 
                 <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                    <div class="flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl ">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Back Up Data</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <div class="my-4 flex items-center justify-center">
+                                <a href="{{ route('export-user') }}"
+                                type="button" 
+                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Pengguna</a> 
+                            </div>
+
+                            <div class="my-4 flex items-center justify-center">
+                                <a href="{{ route('export-leave') }}"
+                                type="button" 
+                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Cuti/Izin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
+                    <div class="flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl ">
+                            <h6 class="mb-0 text-center text-lg font-semibold">Laporan Cuti/Izin Personel</h6>
+                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
+                            <div class="my-4 flex items-center justify-center">
+                                <a href="{{ route('leave-report') }}"
+                                type="button" 
+                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Unduh Laporan</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h5 class="mt-8 mb-4 px-2 text-slate-700 text-lg font-semibold border-b border-gray-400/50  lg:w-1/4">
+                Profil Admin
+            </h5>  
+            <div class="flex flex-wrap -mx-3">
+
+                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl">
                             <h6 class="mb-0 text-center text-lg font-semibold ">Informasi Pengguna</h6>
@@ -506,27 +556,6 @@
                     </div>
                 </div>
 
-                <div class="w-full max-w-full px-3 mt-4 xl:w-4/12">
-                    <div class="flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                        <div class="p-4 pb-0 mb-0 bg-white border-b-0 rounded-2xl ">
-                            <h6 class="mb-0 text-center text-lg font-semibold">Back Up Data</h6>
-                            <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
-                            <div class="my-4 flex items-center justify-center">
-                                <a href="{{ route('export-user') }}"
-                                type="button" 
-                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Pengguna</a> 
-                            </div>
-
-                            <div class="my-4 flex items-center justify-center">
-                                <a href="{{ route('export-leave') }}"
-                                type="button" 
-                                class="m-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700 text-center">Export seluruh Data Cuti/Izin</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
- 
             </div>
 
             <footer class="flex pt-4 ">
@@ -589,34 +618,21 @@
         const approvedData = @json(collect($months)->pluck('approved'));
         const rejectedData = @json(collect($months)->pluck('rejected'));
     
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Sedang Diproses',
-                        data: processingData,
-                        backgroundColor: 'rgba(255, 205, 86, 0.7)',
-                        borderColor: 'rgba(255, 205, 86, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Disetujui',
-                        data: approvedData,
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Ditolak',
-                        data: rejectedData,
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
+        if (window.leaveChart) window.leaveChart.destroy();
+
+        window.leaveChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [
+                { label: 'Sedang Diproses', data: processingData,
+                  backgroundColor: 'rgba(255,205,86,0.7)', borderColor:'rgba(255,205,86,1)', borderWidth:1 },
+                { label: 'Disetujui',        data: approvedData,
+                  backgroundColor: 'rgba(75,192,192,0.7)', borderColor:'rgba(75,192,192,1)', borderWidth:1 },
+                { label: 'Ditolak',          data: rejectedData,
+                  backgroundColor: 'rgba(255,99,132,0.7)', borderColor:'rgba(255,99,132,1)', borderWidth:1 },
+            ]
+        },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -630,6 +646,9 @@
                             }
                         }
                     }
+                },
+                    plugins:{
+                    legend:{ position:'bottom' }
                 }
             }
         });

@@ -45,6 +45,7 @@ Route::get('users/export/', [UserController::class, 'export'])->name('export-use
 Route::get('leaves/export/', [LeaveController::class, 'export'])->name('export-leave')->middleware('auth:admin_sdm');
 Route::get('/leave_admin/add', [LeaveController::class, 'create_leave'])->name('create-leave')->middleware('auth:admin_sdm');
 Route::post('leave-admin/send', [LeaveController::class, 'store_leave'])->name('store-leave')->middleware('auth:admin_sdm');
+Route::get('download/leave-report', [LeaveController::class, 'leave_report'])->name('leave-report')->middleware('auth:admin_sdm');
 
 //Role: Kapolres & Wakil Kapolres
 Route::get('/kawapolres/dashboard', [DashboardController::class, 'index_kawapolres'])->name('kawapolres.dashboard')->middleware('auth:kawapolres');
@@ -99,4 +100,3 @@ Route::get('/getthefile', function(){
 
 //all
 Route::get('/download-evident/{filename}', [LeaveController::class, 'download_evident'])->name('download.evident');
-
